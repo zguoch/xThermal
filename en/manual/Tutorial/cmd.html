@@ -1,0 +1,2430 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Command line tool &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/manual/Tutorial/cmd.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Desktop app with GUI" href="gui.html" />
+    <link rel="prev" title="Tutorial" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Install/apps/index.html">App install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compile/index.html">Build from source</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Command line tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gui.html">Desktop app with GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ios.html">Apple ios app</a></li>
+<li class="toctree-l3"><a class="reference internal" href="API.html">API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Cookbooks/index.html">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Benchmarks/index.html">Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Manual</a> &raquo;</li>
+      
+          <li><a href="index.html">Tutorial</a> &raquo;</li>
+      
+      <li>Command line tool</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="gui.html" class="btn btn-neutral float-right" title="Desktop app with GUI" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="command-line-tool">
+<span id="cmd"></span><h1>Command line tool<a class="headerlink" href="#command-line-tool" title="Permalink to this headline"></a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline"></a></h2>
+<p><strong>swEOS</strong> [ <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong>  [ <em>dimension</em> ]]
+[ <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>  [ <em>variables</em> ] ]
+[ <a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong>  [<span class="math notranslate nohighlight">\(p_{bar}\)</span>] ]
+[ <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong>  [<span class="math notranslate nohighlight">\(T_{^{\circ}C}\)</span>] ]
+[ <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong>  [<span class="math notranslate nohighlight">\(x_{wt. NaCl}\)</span>] ]
+[ <a class="reference internal" href="#h"><span> <strong>-H</strong></span></a></strong>  [<span class="math notranslate nohighlight">\(h_{kJ/kg}\)</span>] ]
+[ <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong>  <em>min1/delta1/max1/min2/delta2/max2/min3/delta3/max3</em> ]
+[ <a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong>  [<em>inputfile</em>] ]
+[ <a class="reference internal" href="#o"><span> <strong>-O</strong></span></a></strong>  [<em>outputfile</em>] ]
+[ <a class="reference internal" href="#tt"><span> <strong>-t</strong></span></a></strong>  [<em>threads</em>] ]
+[ <a class="reference internal" href="#n"><span> <strong>-n</strong></span></a></strong>  ]
+[ <a class="reference internal" href="#hh"><span> <strong>-h</strong></span></a></strong>  ]</p>
+<p><strong>Note:</strong> No space is allowed between the option flag and the associated arguments.</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<p><strong>swEOS</strong> can calculate phase relations and thermodynamic properties of salt water in single point, one-dimension, two-dimension and three-dimension, respectively.</p>
+</div>
+<div class="section" id="required-arguments">
+<h2>Required Arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline"></a></h2>
+<dl class="simple" id="d">
+<dt><a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> [ <em>dimension</em> ]</dt><dd><p>Sets dimension. This is the first key option, the available arguments are <strong>0</strong>, <strong>1</strong>, <strong>2</strong> and <strong>3</strong>.</p>
+<ul class="simple">
+<li><p><strong>0</strong> means <strong>single point</strong> calculation. If <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> is set to <strong>0</strong>, the <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option only support <strong>PTX</strong> or <strong>PHX</strong>. In addition, the pressure, salinity, temperature or enthalpy must be specified by <a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong>, <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong>, <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong> or <a class="reference internal" href="#h"><span> <strong>-H</strong></span></a></strong> option, respectively.</p></li>
+<li><p><strong>1</strong> means only one variable changes and the others are set to fixed value. If <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> is set to <strong>1</strong>, the <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option only support <strong>P</strong>, <strong>T</strong>, <strong>X</strong>, or <strong>H</strong>. The range of variable specified by <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option is set by <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option. And the other variables are set to fixed value by <a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong>, <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong>, <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong> or <a class="reference internal" href="#h"><span> <strong>-H</strong></span></a></strong> options. The result will be saved to file. If the output file name is not specified by <a class="reference internal" href="#o"><span> <strong>-O</strong></span></a></strong> option, swEOS will use the default file name and print the file path in terminal.</p></li>
+<li><p><strong>2</strong> means change two variables and fixed the third variable. Similar to <strong>-D1</strong> case.</p></li>
+<li><p><strong>3</strong> means no fixed variable. Similar to <strong>-D1</strong> case.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="v">
+<dt><a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>  [ <em>variables</em> ]</dt><dd><p>Sets variables accroding to <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> option. This is the second key option, the available arguments are <strong>PTX</strong>, <strong>PHX</strong>, <strong>P</strong>, <strong>T</strong>, <strong>X</strong>, <strong>H</strong>, <strong>PT</strong>, <strong>PX</strong>, <strong>TX</strong>, <strong>PH</strong> and <strong>HX</strong>.</p>
+<ul class="simple">
+<li><p><strong>PTX</strong>, if argument of <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> option is <strong>0</strong> (single point or multiple points case), then the pressure, temperature and salinity is set by <a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong>, <a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong> and <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong> option, respectively. While if argument of <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> is <strong>3</strong> (three dimension case), the range of pressure, temperature and salinity must be specified by <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option <strong>in the same order</strong> of argument of <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option. Therefore, for the same calculation, <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option can be <strong>PTX</strong>, <strong>PXT</strong>, <strong>TPX</strong>, <strong>TXP</strong>, <strong>XPT</strong> and <strong>XTP</strong> unless you set <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option in the save order. For example, <code class="code docutils literal notranslate"><span class="pre">-VXPT</span> <span class="pre">-R0/0.1/1/5/1/400/0/1/100</span></code> means salinity in range of [0, 1] with interval of 0.1, pressure in range of [5, 400] bar with interval of 1 bar, temperature in range of [0, 100] <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span> with interval 1 <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span> . Alternately, you can also do the same thing using command of <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong>  <em>TPX</em> <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong>  <em>0/1/100/5/1/400/0/0.1/1</em> .</p></li>
+<li><p><strong>PHX</strong>, similar to <strong>PTX</strong>, it just replaced temperature with enthalpy.</p></li>
+<li><p><strong>T</strong>. This is only valid when argument of <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> option is <strong>1</strong> (one dimension case). It means temperature is the independent variable, its range is specified by <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option, e.g. <code class="code docutils literal notranslate"><span class="pre">-R0/1/100</span></code> means temperature in range of [0, 100] <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span> with interval of 1 <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span>,  pressure and salinity are fixed by <a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong> and <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong> option, respectively. In addition, the output file name has to be specified by <a class="reference internal" href="#o"><span> <strong>-O</strong></span></a></strong> option, will write as csv file format. <strong>P</strong>, <strong>X</strong>, <strong>H</strong> similar to <strong>T</strong>.</p></li>
+<li><p><strong>PT</strong>. This is only valid when argument of <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> option is set to <strong>2</strong> (two dimension case). It means pressure and temperature are the independent variable, their range are specified by <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option, e.g. <code class="code docutils literal notranslate"><span class="pre">-R5/1/500/0/1/100</span></code> means temperature in range of [0, 100] <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span> with interval of 1 <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span>, pressure in range of [5, 500] bar with interval of 1 bar. Salinity is the fixed variable and the fixed value is specified by <a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong> option. Note that it doesn’t matter what the order of variable follow <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option, e.g. <code class="code docutils literal notranslate"><span class="pre">-VPT</span></code> and <code class="code docutils literal notranslate"><span class="pre">-VTP</span></code> are all valid, but the order of range follow <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option matters, it must be the same order with <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option. For example, <code class="code docutils literal notranslate"><span class="pre">-VPT</span> <span class="pre">-R5/1/500/0/100</span></code> and <code class="code docutils literal notranslate"><span class="pre">-VTP</span> <span class="pre">-R0/1/100/5/1/500</span></code> are equivalent. Of course, you also have to specify output file by <a class="reference internal" href="#o"><span> <strong>-O</strong></span></a></strong> option. <strong>PX</strong>, <strong>TX</strong>, <strong>PH</strong>, <strong>HX</strong> are similar with <strong>PT</strong>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple" id="p">
+<dt><a class="reference internal" href="#p"><span> <strong>-P</strong></span></a></strong>  [ <em>pressure</em> ]</dt><dd><p>Sets fixed pressure value, it should be a float or integer number. The unit is <strong>bar</strong>.</p>
+</dd>
+</dl>
+<dl class="simple" id="t">
+<dt><a class="reference internal" href="#t"><span> <strong>-T</strong></span></a></strong>  [ <em>temperature</em> ]</dt><dd><p>Sets fixed temperature value, it should be a float or integer number. The unit is <span class="math notranslate nohighlight">\(^{\circ}\text{C}\)</span>.</p>
+</dd>
+</dl>
+<dl class="simple" id="x">
+<dt><a class="reference internal" href="#x"><span> <strong>-X</strong></span></a></strong>  [ <em>salinity</em> ]</dt><dd><p>Sets fixed salinity value, it should be a float or integer number. The unit is <span class="math notranslate nohighlight">\(wt. NaCl\)</span>.</p>
+</dd>
+</dl>
+<dl class="simple" id="h">
+<dt><a class="reference internal" href="#h"><span> <strong>-H</strong></span></a></strong>  [ <em>enthalpy</em> ]</dt><dd><p>Sets fixed enthalpy value, it should be a float or integer number.</p>
+</dd>
+</dl>
+<dl class="simple" id="r">
+<dt><a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong>  [ <em>min/delta/max</em> ]</dt><dd><p>Sets range and interval of independent variable(s), <a class="reference internal" href="#r"><span> <strong>-R</strong></span></a></strong> option must correspond to <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> and <a class="reference internal" href="#d"><span> <strong>-D</strong></span></a></strong> options. For example, <code class="code docutils literal notranslate"><span class="pre">-D1</span> <span class="pre">-VT</span> <span class="pre">-R0/1/100</span></code> , <code class="code docutils literal notranslate"><span class="pre">-D2</span> <span class="pre">-VTX</span> <span class="pre">-R0/1/100/0/0.1/0.8</span></code> , <code class="code docutils literal notranslate"><span class="pre">-D3</span> <span class="pre">-VTXP</span> <span class="pre">-R0/1/100/0/0.1/0.8/5/1/500</span></code> .</p>
+</dd>
+</dl>
+<dl id="g">
+<dt><a class="reference internal" href="#g"><span> <strong>-G</strong></span></a></strong>  [ <em>inputfile</em> ]</dt><dd><p>Sets input file for multiple points calculation, the input file with three columns with delimiter of space or table( <code class="code docutils literal notranslate"><span class="pre">\t</span></code> ) correspondint to <a class="reference internal" href="#v"><span> <strong>-V</strong></span></a></strong> option. For example, <code class="code docutils literal notranslate"><span class="pre">-D0</span> <span class="pre">-VPTX</span> <span class="pre">-Ginput.txt</span></code> means calculate EOS of some points, independent variables of each point are pressure, temperature and salinity which are listed in <code class="code docutils literal notranslate"><span class="pre">input.txt</span></code> as belows</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">PTX</label><div class="tab-content docutils container">
+<div class="literal-block-wrapper docutils container" id="lst-inputfile-ptx">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Input file for multi-points calculation, three columns are <code class="code docutils literal notranslate"><span class="pre">p(bar)</span> <span class="pre">T(deg.C)</span> <span class="pre">X(wt%</span> <span class="pre">NaCl)</span></code></span><a class="headerlink" href="#lst-inputfile-ptx" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">316</span> <span class="m">10</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">11</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">12</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">13</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">14</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">15</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">16</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">17</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">18</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">19</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">20</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">21</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">22</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">23</span>      <span class="m">0</span>.032
+</pre></div>
+</div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">PHX</label><div class="tab-content docutils container">
+<div class="literal-block-wrapper docutils container" id="lst-inputfile-phx">
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Input file for multi-points calculation, three columns are <code class="code docutils literal notranslate"><span class="pre">p(bar)</span> <span class="pre">H(kJ/kg)</span> <span class="pre">X(wt%</span> <span class="pre">NaCl)</span></code></span><a class="headerlink" href="#lst-inputfile-phx" title="Permalink to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">316</span>     <span class="m">74</span>.3015 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">78</span>.2695 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">82</span>.2389 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">86</span>.2098 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">90</span>.1822 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">94</span>.1561 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">98</span>.1316 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">102</span>.109 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">106</span>.087 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">110</span>.067 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">114</span>.049 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">118</span>.031 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">122</span>.016 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">126</span>.001 <span class="m">0</span>.032
+<span class="m">316</span>     <span class="m">126</span>.001 <span class="m">0</span>.032
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+<dl class="simple" id="o">
+<dt><a class="reference internal" href="#o"><span> <strong>-O</strong></span></a></strong>  [ <em>outputfile</em> ]</dt><dd><p>Sets output file name for one, two and three-dimensional calculation. The supported file format for 1D is csv, for 2D and 3D can be one of txt(delimiter is <code class="code docutils literal notranslate"><span class="pre">\t</span></code> ), csv(delimiter is <code class="code docutils literal notranslate"><span class="pre">,</span></code> ) and vtk. Because temperature, pressure and salinity have different scaling, if open the vtk file directlly by paraview, you can not see anything in salinity dimension. Therefore there is a python script generated by <code class="code docutils literal notranslate"><span class="pre">swEOS</span></code> can deal with the scaling issue automatically. You just need to type a command in terminal to visualize the result. e.g.  <code class="code docutils literal notranslate"><span class="pre">paraview</span> <span class="pre">--script=test3D.vtk.py</span></code> .</p>
+</dd>
+</dl>
+<dl class="simple" id="tt">
+<dt><a class="reference internal" href="#tt"><span> <strong>-t</strong></span></a></strong>  [ <em>thread</em> ]</dt><dd><p>Sets number of threads for parallel computing.</p>
+</dd>
+</dl>
+<dl id="n">
+<dt><a class="reference internal" href="#n"><span> <strong>-n</strong></span></a></strong></dt><dd><p>If need to normalize the coordinates of result in vtk file, it is only valid in 3D calculation. Because the coordinates of the results are (P,T,X), (P,H,X), … with different scale, if use paraview to visualize the result, one have to deal with the coordinate scale. One option is set using <a class="reference internal" href="#n"><span> <strong>-n</strong></span></a></strong> to normalize the coordinate. Otherwise, a python script will be generated by swEOS automatically, one can use this python script to visualize results (see also <a class="reference internal" href="#cmd-3d"><span class="std std-ref">Three-dimensional calculation</span></a>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">3D calculation using 8 threads, H in [100, 600] kJ/kg, P in [10, 500] bar, X in [0.001, 1]</span>
+<span class="go">[################################]100%</span>
+<span class="go">Writing results to file ...</span>
+<span class="go">Results have been saved to file: PTX.vtk</span>
+<span class="hll"><span class="go">Paraview-python script is generated as : PTX.vtk.py</span>
+</span><span class="hll"><span class="go">You can use command of  paraview --script=PTX.vtk.py to visualize result in paraview</span>
+</span></pre></div>
+</div>
+</dd>
+</dl>
+<dl class="simple" id="hh">
+<dt><a class="reference internal" href="#hh"><span> <strong>-h</strong></span></a></strong></dt><dd><p>Print a short message about the syntax of the command.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<div class="section" id="single-point-calculation">
+<h3>Single point calculation<a class="headerlink" href="#single-point-calculation" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swEOS -D <span class="m">0</span> -V PXT -P <span class="m">316</span> -T <span class="m">100</span> -X <span class="m">0</span>.032
+swEOS -D <span class="m">0</span> -V PXH -H <span class="m">438</span> -P <span class="m">316</span> -X <span class="m">0</span>.032
+</pre></div>
+</div>
+<script id="asciicast-z13UZmFuRN7U39tVguaBkXF12" src="https://asciinema.org/a/zCb09bq5gI4UKZYGPHMOxYdrK.js" async data-autoplay="false"></script></div>
+<div class="section" id="multi-points-calculation">
+<h3>Multi-points calculation<a class="headerlink" href="#multi-points-calculation" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swEOS -D <span class="m">0</span> -V PHX -G phx.txt -O PHX_0D.csv
+swEOS -D <span class="m">0</span> -V PTX -G ptx.txt -O PTX_0D.csv
+</pre></div>
+</div>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Usage animation</label><div class="tab-content docutils container">
+<script id="asciicast-vevYoK7t4jfuODEfBKfQfGBZ6" src="https://asciinema.org/a/zCb09bq5gI4UKZYGPHMOxYdrK.js" async data-autoplay="false"></script></div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Input: PTX</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">316</span> <span class="m">10</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">11</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">12</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">13</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">14</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">15</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">16</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">17</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">18</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">19</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">20</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">21</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">22</span>      <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">23</span>      <span class="m">0</span>.032
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">Result: PTX</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Calculation result with <cite>PTX</cite> input file</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1036.03</p></td>
+<td><p>1036.03</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>74.3015</p></td>
+<td><p>74.3015</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00139265</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.81</p></td>
+<td><p>1035.81</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>78.2695</p></td>
+<td><p>78.2695</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00135602</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.59</p></td>
+<td><p>1035.59</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>82.2389</p></td>
+<td><p>82.2389</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00132091</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.35</p></td>
+<td><p>1035.35</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>86.2098</p></td>
+<td><p>86.2098</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00128723</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.11</p></td>
+<td><p>1035.11</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>90.1822</p></td>
+<td><p>90.1822</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00125491</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.86</p></td>
+<td><p>1034.86</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>94.1561</p></td>
+<td><p>94.1561</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00122386</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.61</p></td>
+<td><p>1034.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>98.1316</p></td>
+<td><p>98.1316</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00119402</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>17</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.34</p></td>
+<td><p>1034.34</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>102.109</p></td>
+<td><p>102.109</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00116533</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>18</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.07</p></td>
+<td><p>1034.07</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>106.087</p></td>
+<td><p>106.087</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00113773</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>19</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.79</p></td>
+<td><p>1033.79</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>110.067</p></td>
+<td><p>110.067</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00111117</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.51</p></td>
+<td><p>1033.51</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>114.049</p></td>
+<td><p>114.049</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00108558</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.21</p></td>
+<td><p>1033.21</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>118.031</p></td>
+<td><p>118.031</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00106093</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.91</p></td>
+<td><p>1032.91</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>122.016</p></td>
+<td><p>122.016</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00103717</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>23</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.61</p></td>
+<td><p>1032.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>126.001</p></td>
+<td><p>126.001</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00101425</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>23</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.61</p></td>
+<td><p>1032.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>126.001</p></td>
+<td><p>126.001</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00101425</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--1-input--4" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--4">Input: PHX</label><div class="tab-content docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">316</span> <span class="m">74</span>.3015 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">78</span>.2695 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">82</span>.2389 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">86</span>.2098 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">90</span>.1822 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">94</span>.1561 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">98</span>.1316 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">102</span>.109 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">106</span>.087 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">110</span>.067 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">114</span>.049 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">118</span>.031 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">122</span>.016 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">126</span>.001 <span class="m">0</span>.032
+<span class="m">316</span> <span class="m">126</span>.001 <span class="m">0</span>.032
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--5" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--5">Result: PHX</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Calculation result with <cite>PHX</cite> input file</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>9.99903</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1036.03</p></td>
+<td><p>1036.03</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>74.2976</p></td>
+<td><p>74.2976</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00139268</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.999</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.81</p></td>
+<td><p>1035.81</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>78.2653</p></td>
+<td><p>78.2653</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00135606</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>11.9989</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.59</p></td>
+<td><p>1035.59</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>82.2344</p></td>
+<td><p>82.2344</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00132095</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>12.9988</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.35</p></td>
+<td><p>1035.35</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>86.2051</p></td>
+<td><p>86.2051</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00128727</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>13.9988</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1035.11</p></td>
+<td><p>1035.11</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>90.1772</p></td>
+<td><p>90.1772</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00125495</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>14.9987</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.86</p></td>
+<td><p>1034.86</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>94.1509</p></td>
+<td><p>94.1509</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.0012239</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>15.9986</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.61</p></td>
+<td><p>1034.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>98.1262</p></td>
+<td><p>98.1262</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00119406</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>16.9987</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.34</p></td>
+<td><p>1034.34</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>102.103</p></td>
+<td><p>102.103</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00116537</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>17.9985</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1034.07</p></td>
+<td><p>1034.07</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>106.081</p></td>
+<td><p>106.081</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00113777</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>18.9985</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.79</p></td>
+<td><p>1033.79</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>110.061</p></td>
+<td><p>110.061</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00111121</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>19.9986</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.51</p></td>
+<td><p>1033.51</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>114.043</p></td>
+<td><p>114.043</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00108562</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>20.9984</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1033.21</p></td>
+<td><p>1033.21</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>118.025</p></td>
+<td><p>118.025</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00106097</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>21.9985</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.91</p></td>
+<td><p>1032.91</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>122.01</p></td>
+<td><p>122.01</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00103721</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>22.9984</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.61</p></td>
+<td><p>1032.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>125.995</p></td>
+<td><p>125.995</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00101429</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>22.9984</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.61</p></td>
+<td><p>1032.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>125.995</p></td>
+<td><p>125.995</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00101429</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>22.9984</p></td>
+<td><p>316</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1032.61</p></td>
+<td><p>1032.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>125.995</p></td>
+<td><p>125.995</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00101429</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="one-dimensional-calculation">
+<h3>One-dimensional calculation<a class="headerlink" href="#one-dimensional-calculation" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swEOS -D <span class="m">1</span> -V H -X <span class="m">0</span>.032 -P <span class="m">399</span> -R <span class="m">43</span>/1/100 -O H_1D.csv
+swEOS -D <span class="m">1</span> -V T -X <span class="m">0</span>.032 -P <span class="m">399</span> -R <span class="m">0</span>/1/100 -O T_1D.csv
+swEOS -D <span class="m">1</span> -V P -X <span class="m">0</span>.032 -T <span class="m">100</span> -R <span class="m">5</span>/1/100 -O P_1D.csv
+swEOS -D <span class="m">1</span> -V X -T <span class="m">100</span> -P <span class="m">399</span> -R <span class="m">0</span>/0.001/1 -O X_1D.csv
+</pre></div>
+</div>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Usage animation</label><div class="tab-content docutils container">
+<script id="asciicast-iIdDC7uC5lvoHVvsBVgWyi64Y" src="https://asciinema.org/a/zCb09bq5gI4UKZYGPHMOxYdrK.js" async data-autoplay="false"></script></div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">Results: change T</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Fix P and X, change T</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.2</p></td>
+<td><p>1041.2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>50.6992</p></td>
+<td><p>50.6992</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00173781</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.03</p></td>
+<td><p>1041.03</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>54.6358</p></td>
+<td><p>54.6358</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00168646</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1040.86</p></td>
+<td><p>1040.86</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>58.5725</p></td>
+<td><p>58.5725</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00163743</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1040.68</p></td>
+<td><p>1040.68</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>62.5098</p></td>
+<td><p>62.5098</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00159059</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1040.49</p></td>
+<td><p>1040.49</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>66.4479</p></td>
+<td><p>66.4479</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00154583</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>96</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>999.76</p></td>
+<td><p>999.76</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>424.937</p></td>
+<td><p>424.937</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000335152</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>97</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>999.113</p></td>
+<td><p>999.113</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>428.951</p></td>
+<td><p>428.951</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000331626</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>98</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>998.463</p></td>
+<td><p>998.463</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>432.966</p></td>
+<td><p>432.966</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000328166</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>99</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>997.809</p></td>
+<td><p>997.809</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>436.981</p></td>
+<td><p>436.981</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000324769</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>997.151</p></td>
+<td><p>997.151</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>440.998</p></td>
+<td><p>440.998</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000321433</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--2-input--3" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--3">Results: change P</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Fix T and X, change P</span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>10</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>980.288</p></td>
+<td><p>980.288</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>410.864</p></td>
+<td><p>410.864</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000310974</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>11</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>980.332</p></td>
+<td><p>980.332</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>410.942</p></td>
+<td><p>410.942</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000311001</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>12</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>980.376</p></td>
+<td><p>980.376</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>411.019</p></td>
+<td><p>411.019</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000311028</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>13</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>980.42</p></td>
+<td><p>980.42</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>411.096</p></td>
+<td><p>411.096</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000311055</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>14</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>980.465</p></td>
+<td><p>980.465</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>411.173</p></td>
+<td><p>411.173</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000311081</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>…</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>95</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.088</p></td>
+<td><p>984.088</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.43</p></td>
+<td><p>417.43</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000313254</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>96</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.133</p></td>
+<td><p>984.133</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.508</p></td>
+<td><p>417.508</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00031328</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>97</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.177</p></td>
+<td><p>984.177</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.585</p></td>
+<td><p>417.585</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000313307</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>98</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.222</p></td>
+<td><p>984.222</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.662</p></td>
+<td><p>417.662</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000313334</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>99</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.266</p></td>
+<td><p>984.266</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.74</p></td>
+<td><p>417.74</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000313361</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>100</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>984.311</p></td>
+<td><p>984.311</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>417.817</p></td>
+<td><p>417.817</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000313388</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--2-input--4" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--4">Results: change X</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Fix P and T, change X</span><a class="headerlink" href="#id5" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>976.076</p></td>
+<td><p>976.076</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>449.16</p></td>
+<td><p>449.16</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00029246</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.001</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>976.729</p></td>
+<td><p>976.729</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>448.896</p></td>
+<td><p>448.896</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00029413</p></td>
+<td><p>0</p></td>
+<td><p>0.001</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.002</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>977.382</p></td>
+<td><p>977.382</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>448.632</p></td>
+<td><p>448.632</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00029538</p></td>
+<td><p>0</p></td>
+<td><p>0.002</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.003</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>978.036</p></td>
+<td><p>978.036</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>448.369</p></td>
+<td><p>448.369</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.000296513</p></td>
+<td><p>0</p></td>
+<td><p>0.003</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.994</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2133.81</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>109.823</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.0150758</p></td>
+<td><p>0</p></td>
+<td><p>0.984924</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.995</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2136.23</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>109.427</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.0125774</p></td>
+<td><p>0</p></td>
+<td><p>0.987423</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.996</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2138.64</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>109.031</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.0100733</p></td>
+<td><p>0</p></td>
+<td><p>0.989927</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.997</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2141.07</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>108.634</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.00756352</p></td>
+<td><p>0</p></td>
+<td><p>0.992436</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.998</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2143.5</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>108.238</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.00504806</p></td>
+<td><p>0</p></td>
+<td><p>0.994952</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>399</p></td>
+<td><p>0.999</p></td>
+<td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+<td><p>2145.93</p></td>
+<td><p>1182.84</p></td>
+<td><p>0</p></td>
+<td><p>2148.37</p></td>
+<td><p>107.842</p></td>
+<td><p>391.953</p></td>
+<td><p>0</p></td>
+<td><p>107.446</p></td>
+<td><p>0.0025269</p></td>
+<td><p>0</p></td>
+<td><p>0.997473</p></td>
+<td><p>0.000564111</p></td>
+<td><p>0</p></td>
+<td><p>0.282037</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--2-input--5" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--5">Results: change H</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Fix P and X, change H</span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>T(C)</p></td>
+<td><p>P(bar)</p></td>
+<td><p>X</p></td>
+<td><p>Phase Index</p></td>
+<td><p>Phase Region</p></td>
+<td><p>Bulk density(kg/m3)</p></td>
+<td><p>Liquid density(kg/m3)</p></td>
+<td><p>Vapour density(kg/m3)</p></td>
+<td><p>Halite density(kg/m3)</p></td>
+<td><p>Bulk enthalpy(kJ/kg)</p></td>
+<td><p>Liquid enthalpy(kJ/kg)</p></td>
+<td><p>Vapour enthalpy(kJ/kg)</p></td>
+<td><p>Halite enthalpy(kJ/kg)</p></td>
+<td><p>Liquid Saturation</p></td>
+<td><p>Vapour Saturation</p></td>
+<td><p>Halite Saturation</p></td>
+<td><p>Liquid viscosity</p></td>
+<td><p>Vapour viscosity</p></td>
+<td><p>Liquid salinity</p></td>
+<td><p>Vapour salinity</p></td>
+</tr>
+<tr class="row-even"><td><p>1.00948</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.35</p></td>
+<td><p>1041.35</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>46.7996</p></td>
+<td><p>46.7996</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00179106</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.26345</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.32</p></td>
+<td><p>1041.32</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>47.7996</p></td>
+<td><p>47.7996</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00177718</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>1.51743</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.28</p></td>
+<td><p>1041.28</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>48.7995</p></td>
+<td><p>48.7995</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00176346</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.77142</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.24</p></td>
+<td><p>1041.24</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>49.7994</p></td>
+<td><p>49.7994</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00174989</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>2.02541</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.2</p></td>
+<td><p>1041.2</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>50.7993</p></td>
+<td><p>50.7993</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00173648</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.27941</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.15</p></td>
+<td><p>1041.15</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>51.7992</p></td>
+<td><p>51.7992</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00172323</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>2.53341</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.11</p></td>
+<td><p>1041.11</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>52.7991</p></td>
+<td><p>52.7991</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00171013</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.78742</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1041.07</p></td>
+<td><p>1041.07</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>53.799</p></td>
+<td><p>53.799</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00169718</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>…</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>13.9466</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1038.67</p></td>
+<td><p>1038.67</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>97.7957</p></td>
+<td><p>97.7957</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00125143</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>14.1997</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1038.61</p></td>
+<td><p>1038.61</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>98.7957</p></td>
+<td><p>98.7957</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00124356</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>14.4526</p></td>
+<td><p>399</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+<td><p>1038.54</p></td>
+<td><p>1038.54</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>99.7956</p></td>
+<td><p>99.7956</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0.00123577</p></td>
+<td><p>0</p></td>
+<td><p>0.032</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="two-dimensional-calculation">
+<h3>Two-dimensional calculation<a class="headerlink" href="#two-dimensional-calculation" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swEOS -D <span class="m">2</span> -V PT -R <span class="m">10</span>/0.1/100/1/1/500 -X <span class="m">0</span>.032 -O PT_2D.vtk
+swEOS -D <span class="m">2</span> -V PX -R <span class="m">100</span>/0.1/800/0/0.01/1 -T <span class="m">100</span>  -O PX_2D.vtk
+swEOS -D <span class="m">2</span> -V TX -R <span class="m">1</span>/1/800/0/0.01/1 -P <span class="m">100</span>  -O TX_2D.vtk
+swEOS -D <span class="m">2</span> -V PH -R <span class="m">100</span>/1/800/100/1/700 -X <span class="m">0</span>.032  -O PH_2D.vtk
+swEOS -D <span class="m">2</span> -V XH -R <span class="m">0</span>.001/0.001/1/100/1/700 -P <span class="m">200</span>  -O XH_2D.vtk
+</pre></div>
+</div>
+<script id="asciicast-7p6v2o8fux1lvW2T48o3oBsev" src="https://asciinema.org/a/zCb09bq5gI4UKZYGPHMOxYdrK.js" async data-autoplay="false"></script></div>
+<div class="section" id="three-dimensional-calculation">
+<span id="cmd-3d"></span><h3>Three-dimensional calculation<a class="headerlink" href="#three-dimensional-calculation" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swEOS -D <span class="m">3</span> -V PTX -R <span class="m">10</span>/10/500/1/10/600/0/0.01/1 -O PTX.vtk
+swEOS -D <span class="m">3</span> -V PHX -R <span class="m">10</span>/10/500/100/10/600/0.001/0.01/1 -O PTX.vtk
+</pre></div>
+</div>
+<script id="asciicast-t2PDdWGa13XRh76tlB4OYGpFu" src="https://asciinema.org/a/zCb09bq5gI4UKZYGPHMOxYdrK.js" async data-autoplay="false"></script><div class="admonition-phase-region-index-table admonition">
+<p class="admonition-title">Phase region index table</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Phase region index</p></td>
+<td><p>Phase region</p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Single phase(Liquid)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Liquid + Vapor at X=0</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Pure vapour phase</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Liquid + Halite</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Vapour + Halite</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Vapour + Liquid + Halite</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Vapour + Liquid on the liquid side</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Vapour + Liquid on the vapour side</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gui.html" class="btn btn-neutral float-right" title="Desktop app with GUI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+python xThermo package
+=========================
+
+.. toctree::
+
+   xThermo.H2ONaCl

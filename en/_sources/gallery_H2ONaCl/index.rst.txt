@@ -1,0 +1,293 @@
+:orphan:
+
+
+
+.. _sphx_glr_gallery_H2ONaCl:
+
+======================
+Gallery of H2O-NaCl
+======================
+
+Present example usage, benchmark test, comparison of the H2O-NaCl library.
+
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_gallery_H2ONaCl_HPX:
+
+H-P-X space
+==================
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="0. Phase diagram">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/HPX/images/thumb/sphx_glr_plot_PhaseDiagram_HPX_thumb.svg
+     :alt: 0. Phase diagram
+
+     :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_PhaseDiagram_HPX.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/HPX/plot_PhaseDiagram_HPX
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="1. Properties">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/HPX/images/thumb/sphx_glr_plot_Properties_HPX_thumb.svg
+     :alt: 1. Properties
+
+     :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_Properties_HPX.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/HPX/plot_Properties_HPX
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Help function definition">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/HPX/images/thumb/sphx_glr_helpfunc_thumb.png
+     :alt: Help function definition
+
+     :ref:`sphx_glr_gallery_H2ONaCl_HPX_helpfunc.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/HPX/helpfunc
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr_gallery_H2ONaCl_pT:
+
+p-T space
+==================
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="0. Phase diagram">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_PhaseDiagram_PTX_thumb.svg
+     :alt: 0. Phase diagram
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_PhaseDiagram_PTX.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_PhaseDiagram_PTX
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="1. Critical curve">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_critical_thumb.svg
+     :alt: 1. Critical curve
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_critical.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_critical
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="2. Halite liquidus">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_haliteLiquidus_thumb.svg
+     :alt: 2. Halite liquidus
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_haliteLiquidus.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_haliteLiquidus
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="3. Vapor + Liquid + Halite coexistence surface">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_VLH_thumb.svg
+     :alt: 3. Vapor + Liquid + Halite coexistence surface
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VLH.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_VLH
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="4. Vapor + Liquid coexistence surface">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_VL_thumb.svg
+     :alt: 4. Vapor + Liquid coexistence surface
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VL.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_VL
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="5. Vapor + Halite coexistence surface">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_VH_thumb.svg
+     :alt: 5. Vapor + Halite coexistence surface
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VH.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_VH
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="6. Phase diagram">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_plot_Properties_PTX_thumb.svg
+     :alt: 6. Phase diagram
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_Properties_PTX.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/plot_Properties_PTX
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Help function definition">
+
+.. only:: html
+
+ .. figure:: /gallery_H2ONaCl/pT/images/thumb/sphx_glr_helpfunc_thumb.png
+     :alt: Help function definition
+
+     :ref:`sphx_glr_gallery_H2ONaCl_pT_helpfunc.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery_H2ONaCl/pT/helpfunc
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-gallery
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+    :download:`Download all examples in Python source code: gallery_H2ONaCl_python.zip </gallery_H2ONaCl/gallery_H2ONaCl_python.zip>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+    :download:`Download all examples in Jupyter notebooks: gallery_H2ONaCl_jupyter.zip </gallery_H2ONaCl/gallery_H2ONaCl_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

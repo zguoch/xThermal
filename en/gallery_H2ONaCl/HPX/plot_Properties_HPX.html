@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Properties &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/gallery_H2ONaCl/HPX/plot_Properties_HPX.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Help function definition" href="helpfunc.html" />
+    <link rel="prev" title="0. Phase diagram" href="plot_PhaseDiagram_HPX.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Gallery of H2O-NaCl</a> &raquo;</li>
+      
+      <li>1. Properties</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="helpfunc.html" class="btn btn-neutral float-right" title="Help function definition" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_PhaseDiagram_HPX.html" class="btn btn-neutral float-left" title="0. Phase diagram" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-h2onacl-hpx-plot-properties-hpx-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="properties">
+<span id="sphx-glr-gallery-h2onacl-hpx-plot-properties-hpx-py"></span><h1>1. Properties<a class="headerlink" href="#properties" title="Permalink to this headline"></a></h1>
+<p>Calculate and plot phase diagram.</p>
+<details class="summary-python-code">
+<summary>Python code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">linecache</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
+<span class="c1"># 3d plot</span>
+<span class="kn">import</span> <span class="nn">helpfunc</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Arial&#39;</span>  <span class="c1"># default font family</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>  <span class="c1"># font for math</span>
+<span class="n">dpi</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">fmt_figs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pdf&#39;</span><span class="p">]</span>  <span class="c1"># [&#39;svg&#39;,&#39;pdf&#39;]</span>
+<span class="n">figpath</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+<span class="n">result_path</span><span class="o">=</span><span class="s1">&#39;../../../gallery_H2ONaCl/pT&#39;</span>
+<span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">fmt_fig</span> <span class="ow">in</span> <span class="n">fmt_figs</span><span class="p">:</span>
+        <span class="n">figname_full</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">figpath</span><span class="p">,</span> <span class="n">figname</span><span class="p">,</span> <span class="n">fmt_fig</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname_full</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;figure saved: &#39;</span><span class="p">,</span> <span class="n">figname_full</span><span class="p">)</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span><span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="c1"># Import package of xThermo</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">H2O</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">NaCl</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">H2ONaCl</span>
+<span class="n">sw_84</span> <span class="o">=</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">cH2ONaCl</span><span class="p">(</span><span class="s2">&quot;IAPS84&quot;</span><span class="p">)</span>
+<span class="n">sw_95</span> <span class="o">=</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">cH2ONaCl</span><span class="p">(</span><span class="s2">&quot;IAPWS95&quot;</span><span class="p">)</span>
+<span class="n">sw_95_CoolProp</span> <span class="o">=</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">cH2ONaCl</span><span class="p">(</span><span class="s2">&quot;IAPWS95_CoolProp&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_Phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span><span class="n">YY</span><span class="p">,</span><span class="n">Phase</span><span class="p">,</span><span class="n">sw</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Dark2&quot;</span><span class="p">):</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="c1"># customize cmap</span>
+    <span class="n">phase_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Phase</span><span class="p">))</span>
+    <span class="n">phase_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">phase0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">):</span>
+        <span class="n">Phase</span><span class="p">[</span><span class="n">Phase</span><span class="o">==</span><span class="n">phase0</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="n">phase_unique</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">10</span>
+        <span class="n">phase_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">sw</span><span class="o">.</span><span class="n">phase_name</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">phase0</span><span class="p">))</span>
+    <span class="n">colors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">))</span>
+    <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span><span class="s1">&#39;violet&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">CS</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span><span class="n">YY</span><span class="p">,</span> <span class="n">Phase</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">Phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">Phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">Phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax_cb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">cb</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">ticklocation</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Phase</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">XX</span><span class="p">,</span><span class="n">YY</span><span class="p">,</span><span class="n">prop</span><span class="p">,</span> <span class="n">prop_name</span><span class="o">=</span><span class="s1">&#39;prop&#39;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s1">&#39;unit&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="n">CS</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span><span class="n">YY</span><span class="p">,</span><span class="n">prop</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">ax_cb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">cb</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">ticklocation</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (</span><span class="si">%s</span><span class="s1">)&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">prop_name</span><span class="p">,</span> <span class="n">prop_unit</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_props_P0X0</span><span class="p">(</span><span class="n">sw</span><span class="p">):</span>
+    <span class="n">P0</span><span class="p">,</span><span class="n">X0</span> <span class="o">=</span> <span class="mf">100E5</span><span class="p">,</span><span class="mf">0.1</span>
+    <span class="n">T</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Tmin</span><span class="p">(),</span><span class="n">sw</span><span class="o">.</span><span class="n">Tmax</span><span class="p">(),</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="n">X0</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">T</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="n">P0</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">UpdateState_TPX</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+    <span class="c1"># plot</span>
+    <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">state</span><span class="o">.</span><span class="n">H</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Props_P</span><span class="si">%.0f</span><span class="s1">bar_X</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">X0</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_props_H0</span><span class="p">(</span><span class="n">H0</span><span class="p">,</span> <span class="n">sw</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">*</span><span class="mf">1E5</span>
+    <span class="n">PP</span><span class="p">,</span><span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">HH</span> <span class="o">=</span> <span class="n">PP</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="n">H0</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">UpdateState_HPX</span><span class="p">(</span><span class="n">HH</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">PP</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">XX</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">phase</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">phase</span>
+            <span class="n">Rho</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Rho</span>
+            <span class="n">Cp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Cp</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">Mu_l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_l</span>
+            <span class="n">Mu_v</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_v</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">T</span><span class="o">&lt;</span><span class="mf">273.15</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+
+    <span class="n">xx</span><span class="p">,</span><span class="n">yy</span> <span class="o">=</span> <span class="n">XX</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">PP</span><span class="o">/</span><span class="mf">1E5</span>
+    <span class="c1"># 1. phase</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_Phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">sw</span><span class="p">)</span>
+    <span class="c1"># 2. Rho</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Rho</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Density&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;kg/m$^\mathregular</span><span class="si">{3}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="c1"># 3. H</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$^{\circ}$C&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># 3. Cp</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Isobaric specific heat&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;J/kg/K&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
+    <span class="c1"># 1. Mu_l</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_l</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_l$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.grid()</span>
+    <span class="c1"># 2. Mu_v</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_v</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_v$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BuGn&#39;</span><span class="p">)</span>
+
+    <span class="c1"># set axis</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Bulk salinity (wt.% NaCl)&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Props_H</span><span class="si">%.0f</span><span class="s1">MJ_kg&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">H0</span><span class="o">/</span><span class="mf">1E6</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_props_P0</span><span class="p">(</span><span class="n">P0</span><span class="p">,</span> <span class="n">sw</span><span class="p">):</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1E-6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">HH</span><span class="p">,</span><span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">PP</span> <span class="o">=</span> <span class="n">HH</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="n">P0</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">UpdateState_HPX</span><span class="p">(</span><span class="n">HH</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">PP</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">XX</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">phase</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">phase</span>
+            <span class="n">Rho</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Rho</span>
+            <span class="n">Cp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Cp</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">Mu_l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_l</span>
+            <span class="n">Mu_v</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_v</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">T</span><span class="o">&lt;</span><span class="mf">273.15</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+
+    <span class="n">xx</span><span class="p">,</span><span class="n">yy</span> <span class="o">=</span> <span class="n">XX</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">HH</span><span class="o">/</span><span class="mf">1E6</span>
+    <span class="c1"># 1. phase</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_Phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">sw</span><span class="p">)</span>
+    <span class="c1"># 2. Rho</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Rho</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Density&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;kg/m$^\mathregular</span><span class="si">{3}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="c1"># 3. H</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">T</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$^{\circ}$C&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># 3. Cp</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Isobaric specific heat&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;J/kg/K&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
+    <span class="c1"># 1. Mu_l</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_l</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_l$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.grid()</span>
+    <span class="c1"># 2. Mu_v</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_v</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_v$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BuGn&#39;</span><span class="p">)</span>
+
+    <span class="c1"># set axis</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Bulk salinity (wt.% NaCl)&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Specific enthalpy (MJ/kg)&#39;</span><span class="p">)</span>
+
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Props_P</span><span class="si">%.0f</span><span class="s1">bar&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">plot_props_X0</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span><span class="n">sw</span><span class="p">):</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1E5</span><span class="p">,</span> <span class="mf">1000E5</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+    <span class="n">HH</span><span class="p">,</span><span class="n">PP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">XX</span> <span class="o">=</span> <span class="n">HH</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="n">X0</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Rho</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Cp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="n">Mu_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="n">sw</span><span class="o">.</span><span class="n">UpdateState_HPX</span><span class="p">(</span><span class="n">HH</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">PP</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">XX</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">phase</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">phase</span>
+            <span class="n">Rho</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Rho</span>
+            <span class="n">Cp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Cp</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">Mu_l</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_l</span>
+            <span class="n">Mu_v</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">Mu_v</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">T</span><span class="o">&lt;</span><span class="mf">273.15</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="c1"># plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">})</span>
+
+    <span class="n">xx</span><span class="p">,</span><span class="n">yy</span> <span class="o">=</span> <span class="n">HH</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span><span class="n">PP</span><span class="o">/</span><span class="mf">1E5</span>
+    <span class="c1"># 1. phase</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_Phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">sw</span><span class="p">)</span>
+    <span class="c1"># 2. Rho</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Rho</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Density&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;kg/m$^\mathregular</span><span class="si">{3}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="c1"># 3. H</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$^{\circ}$C&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># 3. Cp</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="n">Cp</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;Isobaric specific heat&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;J/kg/K&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
+    <span class="c1"># 1. Mu_l</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_l</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_l$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;GnBu&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.grid()</span>
+    <span class="c1"># 2. Mu_v</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plot_prop</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xx</span><span class="p">,</span><span class="n">yy</span><span class="p">,</span> <span class="p">(</span><span class="n">Mu_v</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span><span class="n">prop_name</span><span class="o">=</span><span class="s2">&quot;log$_</span><span class="si">{10}</span><span class="s2">$ $\mu_v$&quot;</span><span class="p">,</span> <span class="n">prop_unit</span><span class="o">=</span><span class="s2">&quot;$\mu Pa \cdot s$&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BuGn&#39;</span><span class="p">)</span>
+
+    <span class="c1"># set axis</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Specific enthalpy (MJ/kg)&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]:</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># ax.set_xscale(&#39;log&#39;)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Props_X</span><span class="si">%.0f</span><span class="s1">wt&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">X0</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># plot_props_P0X0(sw_84)</span>
+</pre></div>
+</div>
+</details><div class="section" id="isobaric-section">
+<h2>Isobaric section<a class="headerlink" href="#isobaric-section" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_props_P0</span><span class="p">(</span><span class="mf">100E5</span><span class="p">,</span> <span class="n">sw_84</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_Properties_HPX_001.svg" srcset="../../_images/sphx_glr_plot_Properties_HPX_001.svg, ../../_images/sphx_glr_plot_Properties_HPX_001_2_0x.svg 2.0x" alt="plot Properties HPX" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>figure saved:  ./Props_P100bar.pdf
+</pre></div>
+</div>
+</div>
+<div class="section" id="const-enthalpy">
+<h2>Const enthalpy<a class="headerlink" href="#const-enthalpy" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_props_H0</span><span class="p">(</span><span class="mf">2E6</span><span class="p">,</span> <span class="n">sw_84</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_Properties_HPX_002.svg" srcset="../../_images/sphx_glr_plot_Properties_HPX_002.svg, ../../_images/sphx_glr_plot_Properties_HPX_002_2_0x.svg 2.0x" alt="plot Properties HPX" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>figure saved:  ./Props_H2MJ_kg.pdf
+</pre></div>
+</div>
+</div>
+<div class="section" id="constant-x">
+<h2>Constant X<a class="headerlink" href="#constant-x" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_props_X0</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sw_84</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_Properties_HPX_003.svg" srcset="../../_images/sphx_glr_plot_Properties_HPX_003.svg, ../../_images/sphx_glr_plot_Properties_HPX_003_2_0x.svg 2.0x" alt="plot Properties HPX" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>figure saved:  ./Props_X10wt.pdf
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 10 minutes  7.917 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-h2onacl-hpx-plot-properties-hpx-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/bb8f473abdb3ee0fea2065c00413f0e2/plot_Properties_HPX.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_Properties_HPX.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/fd6bec4d6316d3f92e921f6bbd3e384d/plot_Properties_HPX.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_Properties_HPX.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="helpfunc.html" class="btn btn-neutral float-right" title="Help function definition" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_PhaseDiagram_HPX.html" class="btn btn-neutral float-left" title="0. Phase diagram" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

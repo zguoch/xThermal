@@ -1,0 +1,473 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build from source &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/manual/Compile/index.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial" href="../Tutorial/index.html" />
+    <link rel="prev" title="Linux" href="../Install/apps/linux.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Install/apps/index.html">App install</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cookbooks/index.html">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Benchmarks/index.html">Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Manual</a> &raquo;</li>
+      
+      <li>Build from source</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../Tutorial/index.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Install/apps/linux.html" class="btn btn-neutral float-left" title="Linux" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="build-from-source">
+<span id="build"></span><h1>Build from source<a class="headerlink" href="#build-from-source" title="Permalink to this headline"></a></h1>
+<div class="section" id="build-c-library">
+<span id="build-lib"></span><h2>Build c++ library<a class="headerlink" href="#build-c-library" title="Permalink to this headline"></a></h2>
+<p>One can download the source code and save it to wherever you like, assuming save the source to <code class="code docutils literal notranslate"><span class="pre">Download</span></code> download folder.</p>
+<ol class="arabic simple" start="2">
+<li><p>How to do ?</p></li>
+</ol>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Animation on macOS</label><div class="tab-content docutils container">
+<script id="asciicast-9cN1baxW50xXDPBDKKjmU5mH0" src="https://asciinema.org/a/9cN1baxW50xXDPBDKKjmU5mH0.js" async></script></div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">macOS</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cmake.org">CMake</a> : &gt;=3.3</p></li>
+<li><p>C++ compiler</p></li>
+<li><p>make</p></li>
+<li><p>git (optional)</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. clone source code from github, or just download the source code and skip this step.</span>
+git clone https://github.com/zguoch/saltwatereos.git
+
+<span class="c1"># 2. check directory in to Library folder of the source code</span>
+<span class="nb">cd</span> Library
+
+<span class="c1"># 3. create a build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 4. cmake without building other APIs</span>
+cmake -DBuild_API_MultiLanguage<span class="o">=</span>OFF ..
+
+<span class="c1"># 5. build the lib: you will get libeosH2ONaCl.a in the build folder</span>
+make
+
+<span class="c1"># 6. install the lib to ../lib path, so the ../lib path will be created and libeosH2ONaCl.a is copied in this path</span>
+make install
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Linux</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cmake.org">CMake</a> : &gt;=3.3</p></li>
+<li><p>C++ compiler</p></li>
+<li><p>make</p></li>
+<li><p>git (optional)</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. clone source code from github, or just download the source code and skip this step.</span>
+git clone https://github.com/zguoch/saltwatereos.git
+
+<span class="c1"># 2. check directory in to Library folder of the source code</span>
+<span class="nb">cd</span> Library
+
+<span class="c1"># 3. create a build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 4. cmake without building other APIs</span>
+cmake -DBuild_API_MultiLanguage<span class="o">=</span>OFF ..
+
+<span class="c1"># 5. build the lib: you will get libeosH2ONaCl.a in the build folder</span>
+make
+
+<span class="c1"># 6. install the lib to ../lib path, so the ../lib path will be created and libeosH2ONaCl.a is copied in this path</span>
+make install
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--4" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--4">Windows 10: Visual Studio</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cmake.org">CMake</a> : &gt;=3.3</p></li>
+<li><p><a class="reference external" href="https://visualstudio.microsoft.com/vs/older-downloads/">Visual Studio 2017 Community</a></p></li>
+<li><p>git (optional)</p></li>
+</ul>
+<p>The <a class="reference external" href="https://visualstudio.microsoft.com/vs/older-downloads/">Visual Studio 2017 Community</a> have to be installed and the path of <cite>MSBUILD.exe</cite> is added in the system environment PATH variable. All the following steps are performed in PowerShell.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. clone source code from github, or just download the source code and skip this step.</span>
+git clone https://github.com/zguoch/saltwatereos.git
+
+<span class="c1"># 2. check directory in to Library folder of the source code</span>
+<span class="nb">cd</span> Library
+
+<span class="c1"># 3. create a build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 4. cmake without building other APIs</span>
+cmake -DBuild_API_MultiLanguage<span class="o">=</span>OFF -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_GENERATOR_PLATFORM<span class="o">=</span>x64 ..
+
+<span class="c1"># 5. build using msbuild.exe: then you will find eosH2ONaCl.lib is generated in the Release folder</span>
+msbuild /m /p:Configuration<span class="o">=</span>Release eosH2ONaCl.vcxproj
+
+<span class="c1"># 6. install (optional): the eosH2ONaCl.lib is copied to ../lib folder</span>
+msbuild /m /p:Configuration<span class="o">=</span>Release INSTALL.vcxproj
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>What will you get ?</p></li>
+</ol>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">macOS</label><div class="tab-content docutils container">
+<img alt="../../_images/build_lib_macOS.png" src="../../_images/build_lib_macOS.png" />
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Linux</label><div class="tab-content docutils container">
+<p>need to make snapshot</p>
+</div>
+<input class="tab-input" id="tab-set--1-input--3" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--3">Windows 10: Visual Studio</label><div class="tab-content docutils container">
+<img alt="../../_images/build_lib_windows.png" src="../../_images/build_lib_windows.png" />
+</div>
+</div>
+</div>
+<div class="section" id="build-standalone-command-line-tool">
+<span id="build-cmd"></span><h2>Build standalone command line tool<a class="headerlink" href="#build-standalone-command-line-tool" title="Permalink to this headline"></a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you want to compile the standalone command line tool by yourself, you have to finish the previous step of <a class="reference internal" href="#build-lib"><span class="std std-ref">Build c++ library</span></a> firstly!</p>
+</div>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Animation on macOS</label><div class="tab-content docutils container">
+<script id="asciicast-AS1QAbLASVACpYpUHbMZaC4s0" src="https://asciinema.org/a/AS1QAbLASVACpYpUHbMZaC4s0.js" async></script></div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">macOS</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p>All requirements in <a class="reference internal" href="#build-lib"><span class="std std-ref">Build c++ library</span></a> step</p></li>
+<li><p>OpenMP: could use <cite>brew install libomp</cite> and check <cite>/usr/local/Cellar/libomp/*/include</cite> path. The cmake will automatically detect the OpenMP include files and library files.</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. go to the commandline folder in the source code path</span>
+<span class="nb">cd</span> commandline
+
+<span class="c1"># 2. create build folder and check directory to the build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 3. cmake</span>
+cmake ..
+
+<span class="c1"># 4. build</span>
+make
+
+<span class="c1"># 5. check if swEOS is generated</span>
+ls
+
+<span class="c1"># 6. test it</span>
+./swEOS -h
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--3" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--3">Linux</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p>All requirements in <a class="reference internal" href="#build-lib"><span class="std std-ref">Build c++ library</span></a> step</p></li>
+<li><p>OpenMP: could use <cite>sudo apt-get install libomp</cite>. The cmake will automatically detect the OpenMP include files and library files.</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. go to the commandline folder in the source code path</span>
+<span class="nb">cd</span> commandline
+
+<span class="c1"># 2. create build folder and check directory to the build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 3. cmake</span>
+cmake ..
+
+<span class="c1"># 4. build</span>
+make
+
+<span class="c1"># 5. check if swEOS is generated</span>
+ls
+
+<span class="c1"># 6. test it</span>
+./swEOS -h
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--4" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--4">Windows 10: Visual Studio</label><div class="tab-content docutils container">
+<div class="admonition-requirements-basic-development-environment admonition">
+<p class="admonition-title">Requirements: basic development environment</p>
+<ul class="simple">
+<li><p>All requirements in <a class="reference internal" href="#build-lib"><span class="std std-ref">Build c++ library</span></a> step</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. go to the commandline folder in the source code path</span>
+<span class="nb">cd</span> commandline
+
+<span class="c1"># 2. create build folder and check directory to the build folder</span>
+mkdir build
+<span class="nb">cd</span> build
+
+<span class="c1"># 4. cmake</span>
+cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_GENERATOR_PLATFORM<span class="o">=</span>x64 ..
+
+<span class="c1"># 5. build using msbuild.exe: the swEOS.exe will generated in the Release folder</span>
+msbuild /m /p:Configuration<span class="o">=</span>Release swEOS.vcxproj
+
+<span class="c1"># 6. Test it</span>
+./Release/swEOS.exe -h
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="build-apis">
+<h2>Build APIs<a class="headerlink" href="#build-apis" title="Permalink to this headline"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>APIs of other programing language, e.g., python, tcl, js, depends on a lot of tools (e.g. swig, npm, python) and need a lot of programing skills.
+We don’t recommend users to try out this unless they master cross-platform and multi-language programing skills. But users can use the APIs for research, for example the python API <code class="code docutils literal notranslate"><span class="pre">pyswEOS</span></code> python users.</p>
+<p>Of course, users can find details in the source code if they are interested in that.</p>
+</div>
+</div>
+<div class="section" id="build-desktop-app-with-gui">
+<h2>Build Desktop App with GUI<a class="headerlink" href="#build-desktop-app-with-gui" title="Permalink to this headline"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Again, compilation of the desktop app with GUI also not that easy, because the GUI version is depends on <a class="reference external" href="https://www.qt.io">Qt</a> and <a class="reference external" href="https://vtk.org">VTK</a>.
+Therefore, it also needs a lot of programing skills to reach that.
+If users are interested in building the GUI version by themselves, please read the source code.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Tutorial/index.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Install/apps/linux.html" class="btn btn-neutral float-left" title="Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

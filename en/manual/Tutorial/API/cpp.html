@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++ &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/manual/Tutorial/API/cpp.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Cookbooks" href="../../Cookbooks/index.html" />
+    <link rel="prev" title="API" href="../API.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../../index.html" class="icon icon-home"> xThermo
+            <img src="../../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Install/apps/index.html">App install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Compile/index.html">Build from source</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cmd.html">Command line tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gui.html">Desktop app with GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ios.html">Apple ios app</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../API.html">API</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">C++</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Cookbooks/index.html">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Benchmarks/index.html">Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../../index.html">Manual</a> &raquo;</li>
+      
+          <li><a href="../index.html">Tutorial</a> &raquo;</li>
+      
+          <li><a href="../API.html">API</a> &raquo;</li>
+      
+      <li>C++</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../../Cookbooks/index.html" class="btn btn-neutral float-right" title="Cookbooks" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../API.html" class="btn btn-neutral float-left" title="API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="api-tutorial-cpp"></span><div class="section" id="c">
+<h1>C++<a class="headerlink" href="#c" title="Permalink to this headline"></a></h1>
+<p>The C++ API is provided by head files and a library file named <code class="code docutils literal notranslate"><span class="pre">libeosH2ONaCl.a</span></code> for macOS and linux,  <code class="code docutils literal notranslate"><span class="pre">libeosH2ONaCl.lib</span></code> for windows system, respectively. The head files and library file are contained in the app installer (in the <code class="code docutils literal notranslate"><span class="pre">include</span></code> and <code class="code docutils literal notranslate"><span class="pre">lib</span></code> folder), see also <a class="reference internal" href="../../Install/apps/index.html#install"><span class="std std-ref">App install</span></a> section.</p>
+<p>Before starting to use c++ api of swEOS, the <a class="reference external" href="https://cmake.org">CMake</a> and c++ compiler have to be installed.</p>
+<div class="section" id="how-to-start">
+<h2>How to start ?<a class="headerlink" href="#how-to-start" title="Permalink to this headline"></a></h2>
+<p>Assuming the library file and head files has been downloaded and saved in <code class="code docutils literal notranslate"><span class="pre">~/Download/swEOS</span></code> (please use your own path) path, it means that the <code class="code docutils literal notranslate"><span class="pre">lib</span></code> folder and <code class="code docutils literal notranslate"><span class="pre">include</span></code> folder are in <code class="code docutils literal notranslate"><span class="pre">~/Download/swEOS</span></code> path.</p>
+<p><strong>Step 1.</strong> Create a source code folder and check directory to this folder.</p>
+<p><strong>Step 2.</strong> Create c++ source code, e.g. <a class="reference download internal" download="" href="../../../_downloads/80826e0b1cda807ea2ad7afdb8c1ea9d/main.cpp"><code class="xref download docutils literal notranslate"><span class="pre">main.cpp</span></code></a>, see <a class="reference internal" href="#lst-tutorial-api-cpp"><span class="std std-numref">Listing 5</span></a>. Include the head file(line 1) and instantiate a object (line 5) of <code class="code docutils literal notranslate"><span class="pre">cH2ONaCl</span></code> class, then all the properties and member functions can be accessed through object <code class="code docutils literal notranslate"><span class="pre">eos</span></code>, e.g. density (line 9).</p>
+<div class="literal-block-wrapper docutils container" id="lst-tutorial-api-cpp">
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Source code of C++ api for calculating density of H2ONaCl.</span><a class="headerlink" href="#lst-tutorial-api-cpp" title="Permalink to this code"></a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;H2ONaCl.H&quot;</span><span class="cp"></span>
+</span><span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="linenos"> 3</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="linenos"> 5</span><span class="w">    </span><span class="n">H2ONaCl</span><span class="o">::</span><span class="n">cH2ONaCl</span><span class="w"> </span><span class="n">eos</span><span class="p">;</span><span class="w"></span>
+</span><span class="linenos"> 6</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mf">200E5</span><span class="p">;</span><span class="w">   </span><span class="c1">//Pa</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">T</span><span class="o">=</span><span class="mi">400</span><span class="o">+</span><span class="mf">273.15</span><span class="p">;</span><span class="w">   </span><span class="c1">//K</span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">X</span><span class="o">=</span><span class="mf">0.2</span><span class="p">;</span><span class="w">    </span><span class="c1">//wt.% NaCl</span>
+<span class="hll"><span class="linenos"> 9</span><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">rho</span><span class="o">=</span><span class="n">eos</span><span class="p">.</span><span class="n">rho_pTX</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">);</span><span class="w"> </span><span class="c1">//kg/m3</span>
+</span><span class="linenos">10</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; Pressure(bar): &quot;</span><span class="o">&lt;&lt;</span><span class="n">p</span><span class="o">/</span><span class="mf">1E5</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">             </span><span class="o">&lt;&lt;</span><span class="s">&quot; Temperature(deg.C): &quot;</span><span class="o">&lt;&lt;</span><span class="n">T</span><span class="mf">-273.15</span><span class="o">&lt;&lt;</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">             </span><span class="o">&lt;&lt;</span><span class="s">&quot; Salinity (wt.% NaCl): &quot;</span><span class="o">&lt;&lt;</span><span class="n">X</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot; Density(kg/m3): &quot;</span><span class="o">&lt;&lt;</span><span class="n">rho</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">14</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p><strong>Step 3.</strong> Create <a class="reference download internal" download="" href="../../../_downloads/44824da376c2614bce166dc6a621310b/CMakeLists.txt"><code class="xref download docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code></a>, see <a class="reference internal" href="#lst-tutorial-api-cpp-cmake"><span class="std std-numref">Listing 6</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="lst-tutorial-api-cpp-cmake">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">CMake file</span><a class="headerlink" href="#lst-tutorial-api-cpp-cmake" title="Permalink to this code"></a></div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># 0. CMake Minimum version</span>
+<span class="linenos"> 2</span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.3...3.12</span><span class="w"> </span><span class="s">FATAL_ERROR</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nb">project</span><span class="p">(</span><span class="s">test_swEOS</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CXX</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">11</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span><span class="w"> </span><span class="s">ON</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c"># 1. set path of SWEOS library, which can be downloaded from https://github.com/zguoch/saltwatereos/releases according to your OS</span>
+<span class="linenos"> 9</span><span class="nb">set</span><span class="p">(</span><span class="s">SWEOS_DIR</span><span class="w"> </span><span class="s2">&quot;../../&quot;</span><span class="w"> </span><span class="s">CACHE</span><span class="w"> </span><span class="s">FILEPATH</span><span class="w"> </span><span class="s2">&quot;Main path of SWEOS library&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="nb">if</span><span class="p">(</span><span class="s">EXISTS</span><span class="w"> </span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/include</span><span class="w"> </span><span class="s">AND</span><span class="w">  </span><span class="s">EXISTS</span><span class="w"> </span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/lib/libeosH2ONaCl.a</span><span class="p">)</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span><span class="w"> </span><span class="s2">&quot;SWEOS head files found: &quot;</span><span class="w"> </span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/include</span><span class="p">)</span><span class="w">  </span>
+<span class="linenos">12</span><span class="w">  </span><span class="nb">message</span><span class="p">(</span><span class="s">STATUS</span><span class="w"> </span><span class="s2">&quot;SWEOS libraries found: &quot;</span><span class="w"> </span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/lib/libeosH2ONaCl.a</span><span class="w"> </span><span class="p">)</span><span class="w">   </span>
+<span class="linenos">13</span><span class="nb">else</span><span class="p">()</span>
+<span class="linenos">14</span><span class="w">  </span><span class="nb">message</span><span class="p">(</span><span class="s">FATAL_ERROR</span><span class="w"> </span><span class="s2">&quot;Please specify path of SWEOS library which contains lib and include paths\n cmake -DSWEOS_DIR=path_of_SWEOS .. &quot;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="nb">endif</span><span class="p">()</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nb">aux_source_directory</span><span class="p">(</span><span class="s">.</span><span class="w"> </span><span class="s">SRC_MAIN</span><span class="p">)</span>
+<span class="linenos">18</span><span class="nb">include_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/include</span><span class="p">)</span>
+<span class="linenos">19</span><span class="nb">link_directories</span><span class="p">(</span><span class="o">${</span><span class="nv">SWEOS_DIR</span><span class="o">}</span><span class="s">/lib</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="hll"><span class="linenos">21</span><span class="nb">add_executable</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">22</span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">eosH2ONaCl</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p><strong>Step 4.</strong> Configure and generate project using <a class="reference external" href="https://cmake.org">CMake</a> command line tool or GUI app.</p>
+<p>Please remember set cmake cache variable of <code class="code docutils literal notranslate"><span class="pre">SWEOS_DIR</span></code> to specify the swEOS library path which contains <code class="code docutils literal notranslate"><span class="pre">lib</span></code> and <code class="code docutils literal notranslate"><span class="pre">include</span></code> folders.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir build
+<span class="nb">cd</span> build
+cmake cmake -DSWEOS_DIR<span class="o">=</span>~/Download/swEOS ..
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="code docutils literal notranslate"><span class="pre">SWEOS_DIR</span></code> is not set or set incorrectly, you will get the following error information. Then you just make sure set a correct path for <code class="code docutils literal notranslate"><span class="pre">SWEOS_DIR</span></code> to fix the problem.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">CMake Error at CMakeLists.txt:14 (message):</span>
+<span class="go">Please specify path of SWEOS library which contains lib and include paths</span>
+
+<span class="go">    cmake -DSWEOS_DIR=path_of_SWEOS ..</span>
+
+<span class="go">-- Configuring incomplete, errors occurred!</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Step 5.</strong> Compile and build the program.</p>
+<p>In macOS or Linux system, just run <code class="code docutils literal notranslate"><span class="pre">make</span></code> to compile and build the program. While, in Windows system and using <a class="reference external" href="https://visualstudio.microsoft.com/vs/older-downloads/">Visual Studio 2017 Community</a>, you will get a <code class="code docutils literal notranslate"><span class="pre">.sln</span></code> file. Now, every VS user should know how to do!</p>
+<p><strong>Step 6.</strong> Run the program.</p>
+<p>The executable program name is <code class="code docutils literal notranslate"><span class="pre">test_swEOS</span></code>, which is configured in the CMakeLists file (see line 4 of <a class="reference internal" href="#lst-tutorial-api-cpp-cmake"><span class="std std-numref">Listing 6</span></a>). Run this program in the terminal, you will get the output like this,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./test_swEOS</span>
+
+<span class="go">Pressure(bar): 200</span>
+<span class="go">Temperature(deg.C): 400</span>
+<span class="go">Salinity (wt.% NaCl): 0.2</span>
+<span class="go">Density(kg/m3): 188.056</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-features">
+<h2>More features<a class="headerlink" href="#more-features" title="Permalink to this headline"></a></h2>
+<p>All right, now you must know how to use c++ api of swEOS package in your own program, see <a class="reference internal" href="../../Cookbooks/index.html#cookbooks"><span class="std std-ref">Cookbooks</span></a> for usage of more functions.</p>
+<p>pip install scipyFoam</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Cookbooks/index.html" class="btn btn-neutral float-right" title="Cookbooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../API.html" class="btn btn-neutral float-left" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

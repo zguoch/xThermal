@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0. Phase diagram &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/gallery_H2O/pH/plot_PhaseDiagram_pH.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="0. Phase diagram" href="../pT/plot_PhaseDiagram_pT.html" />
+    <link rel="prev" title="Gallery of H2O" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Gallery of H2O</a> &raquo;</li>
+      
+      <li>0. Phase diagram</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../pT/plot_PhaseDiagram_pT.html" class="btn btn-neutral float-right" title="0. Phase diagram" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Gallery of H2O" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-h2o-ph-plot-phasediagram-ph-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="phase-diagram">
+<span id="sphx-glr-gallery-h2o-ph-plot-phasediagram-ph-py"></span><h1>0. Phase diagram<a class="headerlink" href="#phase-diagram" title="Permalink to this headline"></a></h1>
+<details class="summary-python-code">
+<summary>Python code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some python packages for data visualization</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Arial&#39;</span>  <span class="c1">#default font family</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span> <span class="c1">#font for math</span>
+<span class="n">dpi</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">fmt_figs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pdf&#39;</span><span class="p">]</span> <span class="c1">#[&#39;svg&#39;,&#39;pdf&#39;]</span>
+<span class="n">result_path</span><span class="o">=</span><span class="s1">&#39;.&#39;</span>
+<span class="n">figpath</span><span class="o">=</span><span class="n">result_path</span>
+<span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">fmt_fig</span> <span class="ow">in</span> <span class="n">fmt_figs</span><span class="p">:</span>
+        <span class="n">figname_full</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">figpath</span><span class="p">,</span><span class="n">figname</span><span class="p">,</span><span class="n">fmt_fig</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname_full</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;figure saved: &#39;</span><span class="p">,</span><span class="n">figname_full</span><span class="p">)</span>
+
+<span class="c1"># Import package of xThermo</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">H2O</span>
+<span class="n">iaps84</span> <span class="o">=</span> <span class="n">H2O</span><span class="o">.</span><span class="n">cIAPS84</span><span class="p">()</span>
+<span class="n">iapws95_CoolProp</span> <span class="o">=</span> <span class="n">H2O</span><span class="o">.</span><span class="n">cIAPWS95_CoolProp</span><span class="p">()</span>
+<span class="n">iapws95</span> <span class="o">=</span> <span class="n">H2O</span><span class="o">.</span><span class="n">cIAPWS95</span><span class="p">()</span>
+
+<span class="c1"># Calculate</span>
+<span class="k">def</span> <span class="nf">cal_phase</span><span class="p">(</span><span class="n">water</span><span class="p">):</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1E5</span><span class="p">,</span><span class="mf">500e5</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+    <span class="c1"># p = np.zeros_like(H)</span>
+    <span class="c1"># for i in range(0,len(H)): p[i] = water.Boiling_p(T[i])</span>
+    <span class="c1"># calculate phase index</span>
+    <span class="n">HH</span><span class="p">,</span> <span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">HH</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">HH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="c1"># props=water.UpdateState_HPX(HH[i][j], pp[i][j])</span>
+            <span class="c1"># phase[i][j]=props.phase</span>
+            <span class="n">phase</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">findPhaseRegion_HPX</span><span class="p">(</span><span class="n">HH</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">phase_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">phase</span><span class="p">))</span>
+    <span class="n">phase_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">phase0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">):</span>
+        <span class="n">phase</span><span class="p">[</span><span class="n">phase</span><span class="o">==</span><span class="n">phase0</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="n">phase_unique</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">10</span>
+        <span class="n">phase_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">water</span><span class="o">.</span><span class="n">phase_name</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">phase0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">H</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">HH</span><span class="p">,</span><span class="n">pp</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">phase_name</span>
+
+<span class="c1"># Plot both linear and log scale</span>
+<span class="k">def</span> <span class="nf">phaseDiagram</span><span class="p">(</span><span class="n">water</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">T</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">HH</span><span class="p">,</span><span class="n">pp</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">phase_name</span> <span class="o">=</span> <span class="n">cal_phase</span><span class="p">(</span><span class="n">water</span><span class="p">)</span>
+    <span class="n">pp</span><span class="p">,</span><span class="n">HH</span> <span class="o">=</span> <span class="n">pp</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">HH</span><span class="o">/</span><span class="mf">1E6</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">axes</span><span class="o">==</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># fig,axes=plt.subplots(1,2,figsize=(15,7),gridspec_kw={&#39;wspace&#39;:0.02},dpi=dpi)</span>
+        <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># plot</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Dark2&quot;</span><span class="p">)</span>
+    <span class="c1"># customize cmap</span>
+    <span class="n">colors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">))</span>
+    <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span><span class="s1">&#39;violet&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span><span class="s1">&#39;m&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">pp</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">pp</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">HH</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">HH</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span><span class="mf">0.98</span><span class="p">,</span><span class="n">water</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="n">bbox</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fc&#39;</span><span class="p">:</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="s1">&#39;ec&#39;</span><span class="p">:</span><span class="s1">&#39;gray&#39;</span><span class="p">},</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Specific enthalpy (MJ/kg)&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.plot(T-273.15, p/1E5, label=&#39;Boiling curve&#39;)</span>
+    <span class="c1"># ax.plot(water.T_critical()-273.15, water.p_critical()/1E5,&#39;o&#39;,mfc=&#39;r&#39;,mec=&#39;w&#39;,label=&#39;Critical point&#39;)</span>
+    <span class="n">CS</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">HH</span><span class="p">,</span><span class="n">pp</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax_cb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.03</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">cb</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">ticklocation</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span>
+    <span class="c1"># if(ax==axes[1]):</span>
+    <span class="c1">#     ax.yaxis.set_ticks_position(&#39;right&#39;)</span>
+    <span class="c1">#     ax.xaxis.set_minor_locator(MultipleLocator(20))</span>
+    <span class="c1">#     ax.grid(which=&#39;major&#39;,color=&#39;gray&#39;)</span>
+    <span class="c1">#     ax.grid(which=&#39;minor&#39;,color=&#39;lightgray&#39;)</span>
+    <span class="c1"># ax.legend(loc=&#39;lower right&#39;)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;phase_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">water</span><span class="o">.</span><span class="n">name</span><span class="p">()))</span>
+</pre></div>
+</div>
+</details><div class="section" id="iaps84-phase-diagram">
+<h2>IAPS84 Phase diagram<a class="headerlink" href="#iaps84-phase-diagram" title="Permalink to this headline"></a></h2>
+<p>phaseDiagram(iaps84)</p>
+</div>
+<div class="section" id="iapws95-phase-diagram-build-in-xthermo">
+<h2>IAPWS95 Phase diagram: build in xThermo<a class="headerlink" href="#iapws95-phase-diagram-build-in-xthermo" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phaseDiagram</span><span class="p">(</span><span class="n">iapws95</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_PhaseDiagram_pH_001.svg" srcset="../../_images/sphx_glr_plot_PhaseDiagram_pH_001.svg, ../../_images/sphx_glr_plot_PhaseDiagram_pH_001_2_0x.svg 2.0x" alt="plot PhaseDiagram pH" class = "sphx-glr-single-img"/><p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>figure saved:  ./phase_IAPWS95.pdf
+</pre></div>
+</div>
+</div>
+<div class="section" id="iapws95-phase-diagram-coolprop">
+<h2>IAPWS95 Phase diagram: CoolProp<a class="headerlink" href="#iapws95-phase-diagram-coolprop" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># phaseDiagram(iapws95_CoolProp)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  31.379 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-h2o-ph-plot-phasediagram-ph-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/cb70dd8880b189516e3bff7915de7bc9/plot_PhaseDiagram_pH.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_PhaseDiagram_pH.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/355c182644189987748d27c9a16fd833/plot_PhaseDiagram_pH.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_PhaseDiagram_pH.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pT/plot_PhaseDiagram_pT.html" class="btn btn-neutral float-right" title="0. Phase diagram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Gallery of H2O" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

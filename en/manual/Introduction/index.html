@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/manual/Introduction/index.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="App install" href="../Install/apps/index.html" />
+    <link rel="prev" title="Manual" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Manual</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Install/apps/index.html">App install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Compile/index.html">Build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Cookbooks/index.html">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Benchmarks/index.html">Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Manual</a> &raquo;</li>
+      
+      <li>Introduction</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../Install/apps/index.html" class="btn btn-neutral float-right" title="App install" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Manual" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
+<p>Realistic simulations of fluid flow in natural hydrothermal systems require accurate formulation of fluid properties
+especially for seawater convection at mid-ocean ridges.
+In order to explore circulation patterns and realistic phase seperation phenomenon,
+we have to calculate equation of state of binary salt-water fluids over pressure-temperature-salinity ranges encountered in the Earth’s crust.
+Fortunately, pure water can be described by the IAPS-84 equation of state and <span id="id2">[<a class="reference internal" href="../../index.html#id10" title="Thomas Driesner and Christoph A. Heinrich. The system H2O-NaCl. Part I: Correlation formulae for phase relations in temperature-pressure-composition space from 0 to 1000 °C, 0 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4880–4901, 2007. URL: https://doi.org/10.1016/j.gca.2006.01.033, doi:10.1016/j.gca.2006.01.033.">Driesner &amp; Heinrich, 2007</a>, <a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span> have developed a set of correction formulations of phase relations and thermodynamic properties for NaCl-H2O system.
+Further, we have developed a set of multi-language ( <a class="reference external" href="https://www">C++</a> , <a class="reference external" href="https://www">Swift</a> , <a class="reference external" href="https://www">Python</a> , <a class="reference external" href="https://www">Matlab</a> ) and multi-platform ( <a class="reference external" href="https://www">Windows</a> , <a class="reference external" href="https://www">MacOS</a> , <a class="reference external" href="https://www">Linux</a> , <a class="reference external" href="https://www">IOS</a> ) tools, including callable <a class="reference external" href="https://www">C++ library</a> , <a class="reference external" href="../Application/desktop.html">desktop application</a> with graphical user interface (GUI), <a class="reference external" href="https://www">command line tools</a> (just like <a class="reference external" href="http://gmt.soest.hawaii.edu">gmt</a> style), and Mobile apps for <a class="reference external" href="https://www">iphone</a> and <a class="reference external" href="https://www">ipad</a> . In addition, parallel computing is available for desktop application and command line tool.</p>
+<div class="section" id="platforms">
+<h2>Platforms<a class="headerlink" href="#platforms" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 27%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="#"><img alt="mac" class="align-middle" src="../../_images/mac.svg" width="80px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="linux" class="align-middle" src="../../_images/linux.svg" width="80px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="windows" class="align-middle" src="../../_images/windows.svg" width="80px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="ios" class="align-middle" src="../../_images/ios.svg" width="80px" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 38%" />
+<col style="width: 27%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="#"><img alt="desktop" class="align-middle" src="../../_images/apps_desktop.png" style="width: 300px;" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="cmd" class="align-middle" src="../../_images/apps_cmd.png" style="width: 300px;" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="mobile" class="align-middle" src="../../_images/apps_mobile.png" style="width: 300px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="supported-programing-languages">
+<h2>Supported Programing Languages<a class="headerlink" href="#supported-programing-languages" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference external" href="#"><img alt="c++" class="align-middle" src="../../_images/cpp.svg" width="50px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="matlab" class="align-middle" src="../../_images/matlab.png" style="width: 50px;" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="python" class="align-middle" src="../../_images/python.svg" width="50px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="swift" class="align-middle" src="../../_images/swift.svg" width="50px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="JS" class="align-middle" src="../../_images/js.svg" width="50px" /></a></p></td>
+<td><p><a class="reference external" href="#"><img alt="tcl" class="align-middle" src="../../_images/tcl.svg" width="30px" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="authors-and-developers">
+<h2>Authors and Developers<a class="headerlink" href="#authors-and-developers" title="Permalink to this headline"></a></h2>
+</div>
+<div class="section" id="cite">
+<h2>Cite<a class="headerlink" href="#cite" title="Permalink to this headline"></a></h2>
+<a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.4603878"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg" /></a>
+<div class="highlight-bib notranslate"><div class="highlight"><pre><span></span><span class="nc">@software</span><span class="p">{</span><span class="nl">zhikui_guo_2021_4603878</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">author</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">{Zhikui Guo and</span>
+<span class="s">                  Lars Rüpke}</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">title</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">{{swEOS: multi-platform multi-language package of</span>
+<span class="s">                     salt-water equation of state}}</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">month</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="nv">mar</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">year</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="m">2021</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">publisher</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">{Zenodo}</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">version</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">{1.7.0}</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">doi</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">{10.5281/zenodo.4603878}</span><span class="p">,</span><span class="w"></span>
+<span class="w">   </span><span class="na">url</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">{https://doi.org/10.5281/zenodo.4603878}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Install/apps/index.html" class="btn btn-neutral float-right" title="App install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

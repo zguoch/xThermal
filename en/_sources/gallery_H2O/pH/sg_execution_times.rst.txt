@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_gallery_H2O_pH_sg_execution_times:
+
+Computation times
+=================
+**00:31.379** total execution time for **gallery_H2O_pH** files:
+
++--------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_gallery_H2O_pH_plot_PhaseDiagram_pH.py` (``plot_PhaseDiagram_pH.py``) | 00:31.379 | 0.0 MB |
++--------------------------------------------------------------------------------------+-----------+--------+

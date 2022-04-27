@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>macOS &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/manual/Install/apps/mac.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/tabs.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Windows" href="windows.html" />
+    <link rel="prev" title="App install" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../../index.html" class="icon icon-home"> xThermo
+            <img src="../../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Introduction/index.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App install</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linux.html">Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Compile/index.html">Build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tutorial/index.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Cookbooks/index.html">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Benchmarks/index.html">Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gallery_H2ONaCl/index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../../index.html">Manual</a> &raquo;</li>
+      
+          <li><a href="index.html">App install</a> &raquo;</li>
+      
+      <li>macOS</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="windows.html" class="btn btn-neutral float-right" title="Windows" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="App install" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="macos">
+<span id="install-mac"></span><h1>macOS<a class="headerlink" href="#macos" title="Permalink to this headline"></a></h1>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline"></a></h2>
+<p>Please go to the <a class="reference external" href="https://www.sweos.info/mac/">download page of macOS installer of swEOS</a> to download the proper version (e.g. Catalina or newer) according to your system version.
+If there is not a proper version, please look at the <a class="reference internal" href="../../Compile/index.html#build"><span class="std std-ref">Build from source</span></a> section for help.</p>
+</div>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline"></a></h2>
+<p>The downloaded installer is a <code class="code docutils literal notranslate"><span class="pre">.dmg</span></code> file.
+Then you can get all the files (see <a class="reference internal" href="#fig-installer-mac"><span class="std std-numref">Fig. 1</span></a>) of swEOS app by simply double clicking the .dmg file and accepting the licence.</p>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">what’s in the installer (snapshot)</label><div class="tab-content docutils container">
+<div class="figure align-center" id="fig-installer-mac">
+<img alt="../../../_images/mac_installer_contents.png" src="../../../_images/mac_installer_contents.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Files in the installer</span><a class="headerlink" href="#fig-installer-mac" title="Permalink to this image"></a></p>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">what’s in the installer (file tree)</label><div class="tab-content docutils container">
+<div class="literal-block-wrapper docutils container" id="lst-installer-mac">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">File trees of macOS installer of swEOS app</span><a class="headerlink" href="#lst-installer-mac" title="Permalink to this code"></a></div>
+<div class="highlight-terminfo notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">/Volumes/swEOS-MacOSX-Installer</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="nt">├──</span><span class="na"> API</span>
+<span class="linenos"> 3</span><span class="na">│   ├── c++</span>
+<span class="linenos"> 4</span><span class="na">│   │   ├── CMakeLists.txt</span>
+<span class="linenos"> 5</span><span class="na">│   │   ├── ReadMe.md</span>
+<span class="linenos"> 6</span><span class="na">│   │   └── main.cpp</span>
+<span class="linenos"> 7</span><span class="na">│   ├── python</span>
+<span class="linenos"> 8</span><span class="na">│   │   ├── H2O.py</span>
+<span class="linenos"> 9</span><span class="na">│   │   ├── H2ONaCl.py</span>
+<span class="linenos">10</span><span class="na">│   │   ├── NaCl.py</span>
+<span class="linenos">11</span><span class="na">│   │   ├── PhaseDiagramSlice.py</span>
+<span class="linenos">12</span><span class="na">│   │   ├── _H2O.so</span>
+<span class="linenos">13</span><span class="na">│   │   ├── _H2ONaCl.so</span>
+<span class="linenos">14</span><span class="na">│   │   ├── _NaCl.so</span>
+<span class="linenos">15</span><span class="na">│   │   ├── test_H2O.py</span>
+<span class="linenos">16</span><span class="na">│   │   ├── test_H2ONaCl.py</span>
+<span class="linenos">17</span><span class="na">│   │   └── test_NaCl.py</span>
+<span class="linenos">18</span><span class="na">│   └── tcl</span>
+<span class="linenos">19</span><span class="na">│       ├── H2O</span>
+<span class="linenos">20</span><span class="na">│       ├── H2ONaCl</span>
+<span class="linenos">21</span><span class="na">│       ├── NaCl</span>
+<span class="linenos">22</span><span class="na">│       ├── test_H2O.tcl</span>
+<span class="linenos">23</span><span class="na">│       ├── test_H2ONaCl.tcl</span>
+<span class="linenos">24</span><span class="na">│       └── test_NaCl.tcl</span>
+<span class="linenos">25</span><span class="na">├── Applications -&gt; /Applications</span>
+<span class="linenos">26</span><span class="na">├── LICENSE</span>
+<span class="hll"><span class="linenos">27</span><span class="na">├── commandline</span>
+</span><span class="hll"><span class="linenos">28</span><span class="na">│   └── swEOS</span>
+</span><span class="linenos">29</span><span class="na">├── include</span>
+<span class="linenos">30</span><span class="na">│   ├── Gallery.H</span>
+<span class="linenos">31</span><span class="na">│   ├── H2O.H</span>
+<span class="linenos">32</span><span class="na">│   ├── H2ONaCl.H</span>
+<span class="linenos">33</span><span class="na">│   ├── NaCl.H</span>
+<span class="linenos">34</span><span class="na">│   ├── Polynomial.h</span>
+<span class="linenos">35</span><span class="na">│   ├── PolynomialRootFinder.h</span>
+<span class="linenos">36</span><span class="na">│   ├── Validation.H</span>
+<span class="linenos">37</span><span class="na">│   ├── dataStruct_H2ONaCl.H</span>
+<span class="linenos">38</span><span class="na">│   ├── stdfunc.H</span>
+<span class="linenos">39</span><span class="na">│   └── steam4.h</span>
+<span class="linenos">40</span><span class="na">├── lib</span>
+<span class="linenos">41</span><span class="na">│   └── libeosH2ONaCl.a</span>
+<span class="hll"><span class="linenos">42</span><span class="na">└── swEOS.app</span>
+</span><span class="hll"><span class="linenos">43</span><span class="na">    └── Contents</span>
+</span><span class="hll"><span class="linenos">44</span><span class="na">        ├── Frameworks</span>
+</span><span class="hll"><span class="linenos">45</span><span class="na">        ├── Info.plist</span>
+</span><span class="hll"><span class="linenos">46</span><span class="na">        ├── MacOS</span>
+</span><span class="hll"><span class="linenos">47</span><span class="na">        ├── PlugIns</span>
+</span><span class="hll"><span class="linenos">48</span><span class="na">        └── Resources</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="desktop-app-with-gui">
+<h3>Desktop app with GUI<a class="headerlink" href="#desktop-app-with-gui" title="Permalink to this headline"></a></h3>
+<p>If you want to use the desktop app, just drag the <code class="code docutils literal notranslate"><span class="pre">swEOS</span></code> (see <a class="reference internal" href="#fig-installer-mac"><span class="std std-numref">Fig. 1</span></a>) to <code class="code docutils literal notranslate"><span class="pre">Applications</span></code> folder.
+This “drag” install process is the same as any other macOS app.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The app has not been notarized by Apple because there is no funding to support a Apple Developer ID.
+Therefore the <code class="code docutils literal notranslate"><span class="pre">swEOS</span></code> app will be blocked by the Gatekeeper of macOS (see <a class="reference external" href="https://support.apple.com/en-us/HT202491">Apple support</a> for more details).
+In order to allow swEOS to run on your macOS, you have to run the following command with superuser permission(<code class="code docutils literal notranslate"><span class="pre">sudo</span></code>) in the terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo xattr -r -d com.apple.quarantine /Applications/swEOS.app
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="command-line-tool">
+<h3>Command line tool<a class="headerlink" href="#command-line-tool" title="Permalink to this headline"></a></h3>
+<p>The standalone command line tool(cmd) is also included in the installer,
+if you want to use this cmd app,
+just need to copy <code class="code docutils literal notranslate"><span class="pre">commandline/swEOS</span></code> (see lines 27-28 in <a class="reference internal" href="#lst-installer-mac"><span class="std std-numref">Listing 1</span></a>) file to some directory (e.g. /usr/local/bin) in your file system,
+or make a symbol link to the environment PATH folder, e.g. <code class="code docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/Applications/swEOS.app/Contents/MacOS/swEOS</span> <span class="pre">/usr/local/bin</span></code>。
+The you can use the cmd app in the for batch calculation purpose (see the following animation).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If there is a error information of <code class="code docutils literal notranslate"><span class="pre">permission</span> <span class="pre">denied:</span> <span class="pre">swEOS</span></code>, one can run command of <code class="code docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">755</span> <span class="pre">/usr/local/bin/swEOS</span></code> to change its file model as an executable.</p>
+</div>
+<script id="asciicast-medkRdN2iBZI1GQQ6UpxafFFP" src="https://asciinema.org/a/medkRdN2iBZI1GQQ6UpxafFFP.js" async></script></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="windows.html" class="btn btn-neutral float-right" title="Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="App install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>

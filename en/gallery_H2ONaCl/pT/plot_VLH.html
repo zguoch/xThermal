@@ -1,0 +1,2281 @@
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Vapor + Liquid + Halite coexistence surface &mdash; xThermo 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/gdal.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/logo.png"/>
+    <link rel="canonical" href="www.scibyte.cn/gallery_H2ONaCl/pT/plot_VLH.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+        <script src="../../_static/js/echarts/echarts.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Vapor + Liquid coexistence surface" href="plot_VL.html" />
+    <link rel="prev" title="2. Halite liquidus" href="plot_haliteLiquidus.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #02007e" >
+            <a href="../../index.html" class="icon icon-home"> xThermo
+            <img src="../../_static/logo_beta.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+    
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development and technique report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../manual/index.html">Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../API/doc/index.html">Doc of APIs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Gallery</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_H2O/index.html">Gallery of H2O</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gallery_NaCl/index.html">Gallery of NaCl</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Gallery of H2O-NaCl</a></li>
+</ul>
+
+
+    
+        <p class="caption">
+            <span class="caption-text">Getting help</span>
+        </p>
+        <ul>
+            
+                <li class="toctree-l1"><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/"><i class="fa fa-home fa-fw"></i> Homepage</a></li>
+            
+                <li class="toctree-l1"><a href="https://zenodo.org/record/4603878/export/hx#.YRPazi8RrSw"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4603878.svg"></a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos/blob/master/LICENSE"><i class="fa fa-book fa-fw"></i> License:GPL</a></li>
+            
+                <li class="toctree-l1"><a href="mailto:zguo@geomar.de"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
+            
+                <li class="toctree-l1"><a href="https://gitlab.com/hydrothermal-openfoam/saltwatereos/-/issues"><i class="fa fa-gitlab fa-fw"></i> Bug report</a></li>
+            
+                <li class="toctree-l1"><a href="https://github.com/zguoch/saltwatereos"><i class="fa fa-github fa-fw"></i> Source Code</a></li>
+            
+                <li class="toctree-l1"><a href="https://www.sweos.info/doxygen/"><i class="fa fa-github fa-fw"></i> Code documentation</a></li>
+            
+        </ul>
+    
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #02007e" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">xThermo</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html"> xThermo 1.0 documentation </a> &raquo;</li>
+      
+          <li><a href="../index.html">Gallery of H2O-NaCl</a> &raquo;</li>
+      
+      <li>3. Vapor + Liquid + Halite coexistence surface</li>
+    
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="plot_VL.html" class="btn btn-neutral float-right" title="4. Vapor + Liquid coexistence surface" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_haliteLiquidus.html" class="btn btn-neutral float-left" title="2. Halite liquidus" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-h2onacl-pt-plot-vlh-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="vapor-liquid-halite-coexistence-surface">
+<span id="sphx-glr-gallery-h2onacl-pt-plot-vlh-py"></span><h1>3. Vapor + Liquid + Halite coexistence surface<a class="headerlink" href="#vapor-liquid-halite-coexistence-surface" title="Permalink to this headline"></a></h1>
+<p>Calculate VLH surface and properties, and compare result with <span id="id1">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span>.</p>
+<details class="summary-python-code">
+<summary>Python code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">linecache</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">patches</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
+<span class="c1"># 3d plot</span>
+<span class="kn">import</span> <span class="nn">helpfunc</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Arial&#39;</span>  <span class="c1"># default font family</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.fontset&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;cm&#39;</span>  <span class="c1"># font for math</span>
+<span class="n">fmt_figs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># [&#39;svg&#39;,&#39;pdf&#39;]</span>
+<span class="n">figpath</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+<span class="n">result_path</span><span class="o">=</span><span class="s1">&#39;../../../gallery_H2ONaCl/pT&#39;</span>
+<span class="k">def</span> <span class="nf">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">fmt_fig</span> <span class="ow">in</span> <span class="n">fmt_figs</span><span class="p">:</span>
+        <span class="n">figname_full</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">figpath</span><span class="p">,</span> <span class="n">figname</span><span class="p">,</span> <span class="n">fmt_fig</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname_full</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;figure saved: &#39;</span><span class="p">,</span> <span class="n">figname_full</span><span class="p">)</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span><span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">b</span><span class="p">)))</span>
+<span class="c1"># Import package of xThermo</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">H2O</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">NaCl</span>
+<span class="kn">from</span> <span class="nn">xThermo</span> <span class="kn">import</span> <span class="n">H2ONaCl</span>
+<span class="n">sw_84</span> <span class="o">=</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">cH2ONaCl</span><span class="p">(</span><span class="s2">&quot;IAPS84&quot;</span><span class="p">)</span>
+<span class="n">sw_95</span> <span class="o">=</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">cH2ONaCl</span><span class="p">(</span><span class="s2">&quot;IAPWS95&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_3d</span><span class="p">(</span><span class="n">sw</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">):</span>
+    <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+    <span class="n">xcenter</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># X&lt;1% wt.% use log scale, if X&gt;=1% wt.% NaCl, use linear scale</span>
+    <span class="n">axtrans</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">scale</span><span class="o">==</span><span class="s1">&#39;loglinear&#39;</span><span class="p">):</span>
+        <span class="n">axtrans</span><span class="o">=</span><span class="n">helpfunc</span><span class="o">.</span><span class="n">set_axis_diagram_3D_loglinearx</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">xcenter</span><span class="o">=</span><span class="n">xcenter</span><span class="p">,</span><span class="n">ratio_log_lin</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">zlim</span><span class="o">=</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">pmin</span><span class="p">()</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="mi">600</span><span class="p">),</span><span class="n">xMajor_loc_log</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">xMajor_loc_linear</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">xMinor_loc_linear</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zMajor_loc</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">zMinor_loc</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">yMajor_loc</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">1E-10</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;log$_{\mathregular</span><span class="si">{10}</span><span class="s1">}$(Wt.% NaCl)&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">helpfunc</span><span class="o">.</span><span class="n">set_axis_diagram_3D</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">zlim</span><span class="o">=</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">pmin</span><span class="p">()</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="mi">600</span><span class="p">),</span><span class="n">zMajor_loc</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">zMinor_loc</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">transform_X</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span> <span class="p">:</span> <span class="n">helpfunc</span><span class="o">.</span><span class="n">data2axis_loglin</span><span class="p">(</span><span class="n">axtrans</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span><span class="n">scale</span><span class="o">==</span><span class="s1">&#39;loglinear&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="n">X</span>
+    <span class="c1"># calculate boundary surface of VLH</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">H2ONaCl</span><span class="o">.</span><span class="n">T_MIN_VLH</span><span class="p">,</span> <span class="n">sw</span><span class="o">.</span><span class="n">Tmax_VLH</span><span class="p">()</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Tmax_VLH</span><span class="p">()</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">sw</span><span class="o">.</span><span class="n">Tmax_VLH</span><span class="p">(),</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="n">P_vlh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">P_VLH</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+    <span class="n">Xl_vlh</span><span class="p">,</span> <span class="n">Xv_vlh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">X_VLH</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">P_vlh</span><span class="p">))</span>
+    <span class="c1"># plot</span>
+    <span class="n">n_log</span><span class="p">,</span><span class="n">n_linear</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">H2ONaCl</span><span class="o">.</span><span class="n">X_MIN</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">X_MAX</span><span class="p">,</span> <span class="n">n_log</span><span class="o">+</span><span class="n">n_linear</span><span class="p">)</span>
+    <span class="n">TT</span><span class="p">,</span><span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+    <span class="n">PP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">TT</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">PP</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">PP</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span><span class="o">=</span><span class="n">P_vlh</span>
+    <span class="c1"># 1. vapor -&gt; liquid region</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">PP</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">XX</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">Xv_vlh</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">xcenter</span><span class="o">/</span><span class="mi">100</span><span class="p">),</span><span class="n">n_log</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xcenter</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">Xl_vlh</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">n_linear</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">XX</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="n">TT</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">PP</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;V+L+H: vapor-&gt;liquid&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.plot_surface(transform_X(XX*100),TT-273.15,PP/1E5,ec=&#39;gray&#39;,linewidth=0.1)</span>
+    <span class="c1"># 2. liquid -&gt; halite region</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">PP</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">XX</span><span class="p">[:,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">Xl_vlh</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">XX</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span><span class="n">TT</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">PP</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;V+L+H: liquid-&gt;halite&#39;</span><span class="p">)</span>
+    <span class="c1"># ax.plot_surface(transform_X((XX*100)),TT-273.15,PP/1E5,ec=&#39;gray&#39;,linewidth=0.1)</span>
+    <span class="c1"># ax.plot(X_haliteLiquidus*100, T-273.15, P/1E5,color=&#39;orange&#39;,label=&#39;V+L+H: liquid&#39;,lw=1,zorder=10)</span>
+    <span class="c1"># VLH: halite</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">Xl_vlh</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="mi">100</span><span class="p">),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P_vlh</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;VLH: halite&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># VLH: liquid</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">Xl_vlh</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P_vlh</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;VLH: liquid&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># VLH: vapor</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">Xv_vlh</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P_vlh</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;VLH: vapor&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="c1"># project halite saturated vapor on X-T plane</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transform_X</span><span class="p">(</span><span class="n">Xv_vlh</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">T</span><span class="o">*</span><span class="mi">0</span><span class="o">+</span><span class="n">sw</span><span class="o">.</span><span class="n">pmin</span><span class="p">()</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fig.11 of Driesner &amp; Heinrich(2007)&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">leg</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1"># change legend handle of wireframe of phase boundaries to wireframe hatch</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">leg</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">leg</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_color</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">leg</span><span class="o">.</span><span class="n">texts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_text</span><span class="p">,</span><span class="n">hatch</span><span class="o">=</span><span class="s1">&#39;++++&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">leg</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="c1"># text</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">text3d</span><span class="p">(</span><span class="n">ax</span><span class="p">,(</span><span class="n">transform_X</span><span class="p">(</span><span class="mf">1E-8</span><span class="p">),</span><span class="mi">800</span><span class="p">,</span><span class="n">sw</span><span class="o">.</span><span class="n">pmin</span><span class="p">()</span><span class="o">/</span><span class="mf">1E5</span><span class="p">),</span><span class="s2">&quot;P$_</span><span class="si">{min}</span><span class="s2">$=</span><span class="si">%.0f</span><span class="s2"> bar&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">pmin</span><span class="p">()</span><span class="o">/</span><span class="mf">1E5</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span><span class="n">angle</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span><span class="n">fc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;PhaseBoundary_VLH_3D_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+</pre></div>
+</div>
+</details><div class="section" id="general-3d-view">
+<h2>General 3D view<a class="headerlink" href="#general-3d-view" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_3d</span><span class="p">(</span><span class="n">sw_84</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">plot_3d</span><span class="p">(</span><span class="n">sw_84</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="s1">&#39;loglinear&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_plot_VLH_001.svg" srcset="../../_images/sphx_glr_plot_VLH_001.svg, ../../_images/sphx_glr_plot_VLH_001_2_0x.svg 2.0x" alt="plot VLH" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_plot_VLH_002.svg" srcset="../../_images/sphx_glr_plot_VLH_002.svg, ../../_images/sphx_glr_plot_VLH_002_2_0x.svg 2.0x" alt="plot VLH" class = "sphx-glr-multi-img"/></li>
+</ul>
+</div>
+<div class="section" id="benchmark-comparison">
+<h2>Benchmark comparison<a class="headerlink" href="#benchmark-comparison" title="Permalink to this headline"></a></h2>
+<p>Compare result of <a class="reference external" href="https://www.sweos.info">xThermo</a> and <span id="id2">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span>, and also compare result based on different EOS of water.</p>
+<details class="summary-python-code">
+<summary>Python code</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">contourf_phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">TT</span><span class="p">,</span><span class="n">pp</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">phase_name</span><span class="p">,</span><span class="n">ax_cb</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Dark2&quot;</span><span class="p">)</span>
+    <span class="c1"># customize cmap</span>
+    <span class="n">colors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="p">))</span>
+    <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span><span class="s1">&#39;violet&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span><span class="s1">&#39;lightcyan&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span><span class="o">.</span><span class="n">colors</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">CS</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">TT</span><span class="p">,</span><span class="n">pp</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">ax_cb</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span> <span class="n">ax_cb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.03</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">cb</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">ticklocation</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span><span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">phase</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">cb</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">phase_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">CS</span><span class="p">,</span><span class="n">ax_cb</span><span class="p">,</span><span class="n">cb</span>
+<span class="k">def</span> <span class="nf">plot_props_VLH</span><span class="p">(</span><span class="n">sw</span><span class="p">,</span><span class="n">water</span><span class="p">,</span><span class="n">mmc5</span><span class="o">=</span><span class="s1">&#39;../Driesner2007a/1-s2.0-S0016703707002943-mmc5.txt&#39;</span><span class="p">,</span><span class="n">mmc3</span><span class="o">=</span><span class="s1">&#39;../Driesner2007b/1-s2.0-S0016703707002955-mmc3.txt&#39;</span><span class="p">):</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mmc5</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please set correct mmc1 file path: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mmc5</span><span class="p">))</span>
+        <span class="n">exit</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">mmc5</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">T0_5</span><span class="p">,</span><span class="n">P0_5</span><span class="p">,</span><span class="n">XV0_5</span><span class="p">,</span><span class="n">XL0_5</span><span class="o">=</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1E5</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mmc3</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please set correct mmc1 file path: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mmc3</span><span class="p">))</span>
+        <span class="n">exit</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">mmc3</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">T0</span><span class="p">,</span><span class="n">P0</span><span class="p">,</span><span class="n">XV0</span><span class="p">,</span><span class="n">rhoV0</span><span class="p">,</span><span class="n">hV0</span><span class="p">,</span><span class="n">XL0</span><span class="p">,</span><span class="n">rhoL0</span><span class="p">,</span><span class="n">hL0</span><span class="o">=</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1E5</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">5</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">6</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">7</span><span class="p">]</span>
+    <span class="c1"># calculate</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">H2ONaCl</span><span class="o">.</span><span class="n">T_MIN_VLH</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">T_MAX_VLH</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">P_VLH</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+    <span class="c1"># X_haliteLiquidus=np.array(sw.X_HaliteLiquidus(T,P))</span>
+    <span class="n">XL_</span><span class="p">,</span><span class="n">XV_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">X_VLH</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">P</span><span class="p">))</span>
+    <span class="n">rhoV_</span><span class="p">,</span> <span class="n">rhoL_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Rho_phase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">XV_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Vapor</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Rho_phase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">XL_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Liquid</span><span class="p">))</span>
+    <span class="n">hV_</span><span class="p">,</span> <span class="n">hL_</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">H_phase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">XV_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Vapor</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">H_phase</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">XL_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Liquid</span><span class="p">))</span>
+
+    <span class="c1"># plot</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">},</span><span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># 1. liquid salinity</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">line</span><span class="o">=</span><span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Wt2Mol</span><span class="p">(</span><span class="n">XL_</span><span class="p">)),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax_cb</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.6</span><span class="p">])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">line</span><span class="p">,</span><span class="n">cax</span> <span class="o">=</span> <span class="n">ax_cb</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">XL0_5</span><span class="p">,</span> <span class="n">T0_5</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner &amp; Heinrich(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.04</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Liquid composition X$_{\mathregular</span><span class="si">{NaCl}</span><span class="s1">}$ (mole fraction)&#39;</span><span class="p">)</span>
+    <span class="c1"># 2. vapor salinity</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Wt2Mol</span><span class="p">(</span><span class="n">XV_</span><span class="p">)),</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">XV0_5</span><span class="p">,</span> <span class="n">T0_5</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner &amp; Heinrich(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vapor composition X$_{\mathregular</span><span class="si">{NaCl}</span><span class="s1">}$ (mole fraction)&#39;</span><span class="p">)</span>
+    <span class="c1"># 3. liquid density</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">rhoL_</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rhoL0</span><span class="p">,</span> <span class="n">T0</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Liquid density (kg/m$^{\mathregular</span><span class="si">{3}</span><span class="s1">}$)&#39;</span><span class="p">)</span>
+    <span class="c1"># 4. Vapor density</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">rhoV_</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rhoV0</span><span class="p">,</span> <span class="n">T0</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vapor density (kg/m$^{\mathregular</span><span class="si">{3}</span><span class="s1">}$)&#39;</span><span class="p">)</span>
+    <span class="c1"># 5. liquid enthalpy</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">hL_</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hL_</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hL0</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">T0</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Liquid enthalpy (MJ/kg)&#39;</span><span class="p">)</span>
+    <span class="c1"># 6. vapor enthalpy</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">helpfunc</span><span class="o">.</span><span class="n">plot_coloredline</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">hV_</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hV0</span><span class="o">/</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">T0</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">markeredgewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Driesner(2007)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Vapor enthalpy (MJ/kg)&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">H2ONaCl</span><span class="o">.</span><span class="n">T_MIN_VLH</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;T=</span><span class="si">%.2f</span><span class="s1"> $^{\circ}$C, p=1 bar&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">H2ONaCl</span><span class="o">.</span><span class="n">T_MIN_VLH</span><span class="o">-</span><span class="mf">273.15</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="c1"># ax.set_ylim(300,T.max()-273.15 + 20)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature ($^{\circ}$C)&#39;</span><span class="p">)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;VLH_props_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">name_backend</span><span class="p">()))</span>
+
+    <span class="c1"># let&#39;s checkout what happens in the (low T, low p) and (high T, low p) region for the liquid enthalpy</span>
+    <span class="n">q1</span><span class="p">,</span><span class="n">q2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">q1q2_Tstar_H</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">XL_</span><span class="p">))</span>
+    <span class="n">q1_v</span><span class="p">,</span><span class="n">q2_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">q1q2_Tstar_H</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">XV_</span><span class="p">))</span>
+    <span class="n">Tstar_H</span><span class="p">,</span><span class="n">Tstar_H_v</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">+</span> <span class="n">q2</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">q1_v</span> <span class="o">+</span> <span class="n">q2_v</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="n">n1</span><span class="p">,</span><span class="n">n2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">n1n2_Tstar_V</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">XL_</span><span class="p">))</span>
+    <span class="n">n1_v</span><span class="p">,</span><span class="n">n2_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">n1n2_Tstar_V</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">XV_</span><span class="p">))</span>
+    <span class="n">Tstar_V</span><span class="p">,</span><span class="n">Tstar_V_v</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span> <span class="o">+</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">n1_v</span> <span class="o">+</span> <span class="n">n2_v</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="n">T_water</span><span class="p">,</span><span class="n">p_water</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Tstar_H</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Tstar_H_v</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Tstar_V</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Tstar_V_v</span><span class="o">.</span><span class="n">min</span><span class="p">()])</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">Tstar_H</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">Tstar_H_v</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">Tstar_V</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">Tstar_V_v</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">max</span><span class="p">())</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">TT</span><span class="p">,</span><span class="n">pp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">T_water</span><span class="p">,</span><span class="mi">10</span><span class="o">**</span><span class="n">p_water</span><span class="p">)</span>
+    <span class="n">phase</span><span class="p">,</span><span class="n">rho</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">TT</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">TT</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">TT</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TT</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">TT</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">props</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">UpdateState_TPX</span><span class="p">(</span><span class="n">TT</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">phase</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">props</span><span class="o">.</span><span class="n">phase</span>
+            <span class="n">rho</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">props</span><span class="o">.</span><span class="n">Rho</span>
+            <span class="n">h</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">props</span><span class="o">.</span><span class="n">H</span>
+    <span class="c1"># get phase names</span>
+    <span class="n">phase_unique</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">phase</span><span class="p">))</span>
+    <span class="n">phase_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">phase0</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">phase_unique</span><span class="p">):</span>
+        <span class="n">phase</span><span class="p">[</span><span class="n">phase</span><span class="o">==</span><span class="n">phase0</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="n">phase_unique</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">10</span>
+        <span class="n">phase_name</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">water</span><span class="o">.</span><span class="n">phase_name</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">phase0</span><span class="p">))</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.05</span><span class="p">},</span><span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+    <span class="n">l_L</span><span class="p">,</span><span class="n">l_V</span><span class="o">=</span><span class="p">[],[]</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">prop</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="n">phase</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">h</span><span class="o">/</span><span class="mf">1E6</span><span class="p">],[</span><span class="s1">&#39;Paired&#39;</span><span class="p">,</span><span class="s1">&#39;YlGnBu_r&#39;</span><span class="p">,</span><span class="s1">&#39;RdBu&#39;</span><span class="p">],[</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span><span class="s1">&#39;Density (kg/m$^{\mathregular</span><span class="si">{3}</span><span class="s1">}$)&#39;</span><span class="p">,</span><span class="s1">&#39;Specific enthalpy (MJ/kg)&#39;</span><span class="p">]):</span>
+        <span class="n">CS</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ax</span><span class="o">==</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">CS</span><span class="p">,</span><span class="n">ax_cb</span><span class="p">,</span><span class="n">cb</span><span class="o">=</span><span class="n">contourf_phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">TT</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">pp</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">prop</span><span class="p">,</span><span class="n">phase_name</span><span class="p">,</span><span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.03</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">CS</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">TT</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span><span class="n">pp</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">prop</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+            <span class="n">ax_cb</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.02</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span><span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+            <span class="n">ax_cb</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+            <span class="n">ax_cb</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+        <span class="n">l_L</span><span class="p">,</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tstar_H</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$T^*_h$: liquid&#39;</span><span class="p">)</span>
+        <span class="n">l_V</span><span class="p">,</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tstar_H_v</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$T^*_h$: vapor&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tstar_V</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$T^*_V$: liquid&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tstar_V_v</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$T^*_V$: vapor&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">P</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">markevery</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">mec</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">mew</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$T_</span><span class="si">{VLH}</span><span class="s1">$&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature ($^{\circ}$C)&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">)</span> <span class="c1">#,bbox_to_anchor=[1.01,0]</span>
+    <span class="c1"># x0,y0=Tstar_H[int(len(Tstar_H)/4)]-273.15,P[int(len(Tstar_H)/4)]/1E5</span>
+    <span class="c1"># axes[0].annotate(&quot;$T^{*}_h - p$ path of\nsaturated liquid phase\non VLH coexistence&quot;,</span>
+    <span class="c1">#                     xy=(x0,y0),xytext=(x0-100,y0), ha=&#39;right&#39;,va=&#39;center&#39;,bbox={&#39;fc&#39;:&#39;None&#39;,&#39;ec&#39;:l_L.get_color()},fontsize=14,fontweight=&#39;bold&#39;,</span>
+    <span class="c1">#                     arrowprops=dict(arrowstyle=&quot;-&gt;&quot;,connectionstyle=&quot;arc3&quot;),)</span>
+    <span class="c1"># x0,y0=Tstar_H_v[int(len(Tstar_H)/5)]-273.15,P[int(len(Tstar_H)/5)]/1E5</span>
+    <span class="c1"># axes[0].annotate(&quot;$T^{*}_h - p$ path of\nsaturated vapor phase\non VLH coexistence&quot;,</span>
+    <span class="c1">#                  xy=(x0,y0),xytext=(x0,y0/100), ha=&#39;center&#39;,va=&#39;center&#39;,bbox={&#39;fc&#39;:&#39;None&#39;,&#39;ec&#39;:l_V.get_color()},fontsize=14,fontweight=&#39;bold&#39;,</span>
+    <span class="c1">#                  arrowprops=dict(arrowstyle=&quot;-&gt;&quot;,connectionstyle=&quot;arc3&quot;),)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Tstar_VLH_</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">name_backend</span><span class="p">()))</span>
+<span class="k">def</span> <span class="nf">mscatter</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.markers</span> <span class="k">as</span> <span class="nn">mmarkers</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ax</span><span class="p">:</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">marker</span> <span class="ow">in</span> <span class="n">m</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">marker</span><span class="p">,</span> <span class="n">mmarkers</span><span class="o">.</span><span class="n">MarkerStyle</span><span class="p">):</span>
+                <span class="n">marker_obj</span> <span class="o">=</span> <span class="n">marker</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">marker_obj</span> <span class="o">=</span> <span class="n">mmarkers</span><span class="o">.</span><span class="n">MarkerStyle</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">marker_obj</span><span class="o">.</span><span class="n">get_path</span><span class="p">()</span><span class="o">.</span><span class="n">transformed</span><span class="p">(</span>
+                <span class="n">marker_obj</span><span class="o">.</span><span class="n">get_transform</span><span class="p">())</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">set_paths</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sc</span>
+<span class="k">def</span> <span class="nf">plot_err</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rainbow&#39;</span><span class="p">,</span><span class="n">markers_VL</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">scale_data</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mf">1E-6</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># plot difference between xThermo and Driesner(2007b)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">scale_data</span><span class="o">==</span><span class="s1">&#39;log&#39;</span><span class="p">):</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">CenteredNorm</span><span class="p">(</span><span class="n">vcenter</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;seismic&#39;</span>
+    <span class="n">CS</span><span class="o">=</span><span class="n">mscatter</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="n">markers_VL</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax_cb</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.02</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span><span class="n">cax</span><span class="o">=</span><span class="n">ax_cb</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">ax_cb</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+    <span class="n">ax_cb</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">markers_VL</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">markers_VL</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Vapor&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">markers_VL</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Liquid&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">benchmark_VLH</span><span class="p">(</span><span class="n">sw</span><span class="p">,</span><span class="n">mmc3</span><span class="o">=</span><span class="s1">&#39;../Driesner2007b/1-s2.0-S0016703707002955-mmc3.txt&#39;</span><span class="p">):</span>
+    <span class="c1"># compare</span>
+    <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mmc3</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please set correct mmc1 file path: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">mmc3</span><span class="p">))</span>
+        <span class="n">exit</span><span class="p">()</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">mmc3</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">T0</span><span class="p">,</span><span class="n">P0</span><span class="p">,</span><span class="n">XV0</span><span class="p">,</span><span class="n">rhoV0</span><span class="p">,</span><span class="n">hV0</span><span class="p">,</span><span class="n">XL0</span><span class="p">,</span><span class="n">rhoL0</span><span class="p">,</span><span class="n">hL0</span><span class="o">=</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">273.15</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mf">1E5</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">4</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">5</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">6</span><span class="p">],</span><span class="n">data</span><span class="p">[:,</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">ind</span><span class="o">=</span><span class="p">(</span><span class="n">T0</span><span class="o">&gt;</span><span class="n">sw</span><span class="o">.</span><span class="n">Tmin_VLH</span><span class="p">())</span>
+    <span class="c1"># only compare the result in valid range of pressure: &gt;1bar</span>
+    <span class="n">T0</span><span class="p">,</span><span class="n">P0</span><span class="p">,</span><span class="n">XV0</span><span class="p">,</span><span class="n">rhoV0</span><span class="p">,</span><span class="n">hV0</span><span class="p">,</span><span class="n">XL0</span><span class="p">,</span><span class="n">rhoL0</span><span class="p">,</span><span class="n">hL0</span> <span class="o">=</span> <span class="n">T0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">P0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">XV0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">rhoV0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">hV0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">XL0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">rhoL0</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span><span class="n">hL0</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span>
+    <span class="c1"># 1. calculate halite liquidus</span>
+    <span class="n">P_</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">P_VLH</span><span class="p">(</span><span class="n">T0</span><span class="p">))</span>
+    <span class="n">XL_</span><span class="p">,</span><span class="n">XV_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">X_VLH</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span><span class="n">P_</span><span class="p">))</span>
+    <span class="n">XL_mol_</span><span class="p">,</span><span class="n">XV_mol_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Wt2Mol</span><span class="p">(</span><span class="n">XL_</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Wt2Mol</span><span class="p">(</span><span class="n">XV_</span><span class="p">))</span>
+    <span class="c1"># 2. calculate saturated liquid density and vapor density</span>
+    <span class="n">rhoV_</span><span class="p">,</span> <span class="n">rhoL_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Rho_phase</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">P_</span><span class="p">,</span> <span class="n">XV_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Vapor</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">Rho_phase</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">P_</span><span class="p">,</span> <span class="n">XL_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Liquid</span><span class="p">))</span>
+    <span class="n">hV_</span><span class="p">,</span> <span class="n">hL_</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">H_phase</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">P_</span><span class="p">,</span> <span class="n">XV_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Vapor</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sw</span><span class="o">.</span><span class="n">H_phase</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">P_</span><span class="p">,</span> <span class="n">XL_</span><span class="p">,</span> <span class="n">H2ONaCl</span><span class="o">.</span><span class="n">Liquid</span><span class="p">))</span>
+    <span class="c1"># compare result dict</span>
+    <span class="n">Data0</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="s1">&#39;XV&#39;</span><span class="p">:</span><span class="n">XV0</span><span class="p">,</span><span class="s1">&#39;rhoV&#39;</span><span class="p">:</span><span class="n">rhoV0</span><span class="p">,</span><span class="s1">&#39;hV&#39;</span><span class="p">:</span><span class="n">hV0</span><span class="p">,</span><span class="s1">&#39;XL&#39;</span><span class="p">:</span><span class="n">XL0</span><span class="p">,</span><span class="s1">&#39;rhoL&#39;</span><span class="p">:</span><span class="n">rhoL0</span><span class="p">,</span><span class="s1">&#39;hL&#39;</span><span class="p">:</span><span class="n">hL0</span><span class="p">}</span>
+    <span class="n">Data_</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;p&#39;</span><span class="p">:</span><span class="n">P_</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="s1">&#39;XV&#39;</span><span class="p">:</span><span class="n">XV_mol_</span><span class="p">,</span><span class="s1">&#39;rhoV&#39;</span><span class="p">:</span><span class="n">rhoV_</span><span class="p">,</span><span class="s1">&#39;hV&#39;</span><span class="p">:</span><span class="n">hV_</span><span class="p">,</span><span class="s1">&#39;XL&#39;</span><span class="p">:</span><span class="n">XL_mol_</span><span class="p">,</span><span class="s1">&#39;rhoL&#39;</span><span class="p">:</span><span class="n">rhoL_</span><span class="p">,</span><span class="s1">&#39;hL&#39;</span><span class="p">:</span><span class="n">hL_</span><span class="p">}</span>
+    <span class="n">Err</span><span class="p">,</span><span class="n">RErr</span><span class="o">=</span><span class="p">{},{}</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">Data0</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="n">Err</span><span class="p">[</span><span class="n">key</span><span class="p">],</span><span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">Data0</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">-</span><span class="n">Data_</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Data0</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">-</span><span class="n">Data_</span><span class="p">[</span><span class="n">key</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Data0</span><span class="p">[</span><span class="n">key</span><span class="p">])</span><span class="o">*</span><span class="mf">100.0</span>
+    <span class="c1"># print to file</span>
+    <span class="n">fpout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/mmc3_</span><span class="si">%s</span><span class="s1">.csv&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">result_path</span><span class="p">,</span><span class="n">sw</span><span class="o">.</span><span class="n">name_backend</span><span class="p">()),</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">fpout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;T[C],P(Driesner)[bar],P(xThermo),P(diff)[bar],XV(Driesner)[mol],XV(xThermo)[mol],XV(diff)[mol],RhoV(Driesner)[kg/m3],RhoV(xThermo),RhoV(err),HV(Driesner)[J/kg],HV(xThermo),HV(err),XL(Driesner)[mol],XL(xThermo)[mol],XL(diff)[mol],RhoL(Driesner)[kg/m3],RhoL(xThermo),RhoL(err),HL(Driesner)[J/kg],HL(xThermo),HL(err)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">T0</span><span class="p">)):</span>
+        <span class="n">fpout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">T0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mf">273.15</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">Data0</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">fpout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;,</span><span class="si">%.6e</span><span class="s1">,</span><span class="si">%.6e</span><span class="s1">,</span><span class="si">%.6e</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">Data0</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">Data_</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="n">compare</span><span class="p">(</span><span class="n">Data0</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">],</span><span class="n">Data_</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">i</span><span class="p">])))</span>
+        <span class="n">fpout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">fpout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># plot difference</span>
+    <span class="n">offset_p</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wspace&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">})</span>
+    <span class="n">plot_err</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">T0</span><span class="p">,</span> <span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span> <span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">],</span><span class="s1">&#39;Relative difference: Pressure (%)&#39;</span><span class="p">)</span>
+    <span class="n">markers</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">T0</span><span class="p">))</span>
+    <span class="n">plot_err</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span><span class="n">T0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="o">+</span><span class="n">offset_p</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;XV&#39;</span><span class="p">],</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;XL&#39;</span><span class="p">]),</span><span class="s1">&#39;Relative difference: Composition (%)&#39;</span><span class="p">,</span><span class="n">markers_VL</span><span class="o">=</span><span class="n">markers</span><span class="p">)</span>
+    <span class="n">plot_err</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span><span class="n">T0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="o">+</span><span class="n">offset_p</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;rhoV&#39;</span><span class="p">],</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;rhoL&#39;</span><span class="p">]),</span><span class="s1">&#39;Relative difference: Density (%)&#39;</span><span class="p">,</span><span class="n">markers_VL</span><span class="o">=</span><span class="n">markers</span><span class="p">)</span>
+    <span class="n">plot_err</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span><span class="n">T0</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="p">,</span><span class="n">P0</span><span class="o">/</span><span class="mf">1E5</span><span class="o">+</span><span class="n">offset_p</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;hV&#39;</span><span class="p">],</span><span class="n">RErr</span><span class="p">[</span><span class="s1">&#39;hL&#39;</span><span class="p">]),</span><span class="s1">&#39;Relative difference: Specific enthalpy (%)&#39;</span><span class="p">,</span><span class="n">markers_VL</span><span class="o">=</span><span class="n">markers</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature ($^{\circ}$C)&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">)</span>
+    <span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;diff_VLH&#39;</span><span class="p">)</span>
+    <span class="c1"># statistics of the difference</span>
+    <span class="n">table</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">Err</span><span class="o">.</span><span class="n">keys</span><span class="p">()),[</span><span class="s1">&#39;Pressure (bar)&#39;</span><span class="p">,</span><span class="s1">&#39;XV (mole fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;RhoV (kg/m3)&#39;</span><span class="p">,</span><span class="s1">&#39;HV (J/kg)&#39;</span><span class="p">,</span><span class="s1">&#39;XL (mole fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;RhoL (kg/m3)&#39;</span><span class="p">,</span><span class="s1">&#39;HL (J/kg)&#39;</span><span class="p">]):</span>
+        <span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="o">~</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">]))]</span>
+        <span class="n">table</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">name</span><span class="p">,</span><span class="n">Err</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Err</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">RErr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Critical property&#39;</span><span class="p">,</span> <span class="s1">&#39;Err. Min&#39;</span><span class="p">,</span> <span class="s1">&#39;Err. Max&#39;</span><span class="p">,</span><span class="s1">&#39;RE. Min(%)&#39;</span><span class="p">,</span><span class="s1">&#39;RE. Max(%)&#39;</span><span class="p">],</span><span class="n">numalign</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span><span class="n">floatfmt</span><span class="o">=</span><span class="s2">&quot;.6f&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</details><div class="section" id="based-on-iaps84-eos">
+<h3>Based on IAPS84 EOS<a class="headerlink" href="#based-on-iaps84-eos" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_props_VLH</span><span class="p">(</span><span class="n">sw_84</span><span class="p">,</span><span class="n">H2O</span><span class="o">.</span><span class="n">cIAPS84</span><span class="p">())</span>
+<span class="n">benchmark_VLH</span><span class="p">(</span><span class="n">sw_84</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img src="../../_images/sphx_glr_plot_VLH_003.svg" srcset="../../_images/sphx_glr_plot_VLH_003.svg, ../../_images/sphx_glr_plot_VLH_003_2_0x.svg 2.0x" alt="plot VLH" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_plot_VLH_004.svg" srcset="../../_images/sphx_glr_plot_VLH_004.svg, ../../_images/sphx_glr_plot_VLH_004_2_0x.svg 2.0x" alt="plot VLH" class = "sphx-glr-multi-img"/></li>
+<li><img src="../../_images/sphx_glr_plot_VLH_005.svg" srcset="../../_images/sphx_glr_plot_VLH_005.svg, ../../_images/sphx_glr_plot_VLH_005_2_0x.svg 2.0x" alt="plot VLH" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Critical property      Err. Min      Err. Max    RE. Min(%)    RE. Max(%)
+-------------------  ----------  ------------  ------------  ------------
+Pressure (bar)        -0.000049      0.000047      0.000000      0.000046
+XV (mole fraction)    -0.000000      0.000000      0.000001      0.000086
+RhoV (kg/m3)          -0.000047      0.000051      0.000000      0.000044
+HV (J/kg)             -0.476585      0.496180      0.000000      0.000017
+XL (mole fraction)    -0.000000      0.000000      0.000000      0.000035
+RhoL (kg/m3)          -2.586687      0.573672      0.000069      0.221916
+HL (J/kg)             -0.397883  31484.746126      0.000000      2.880293
+</pre></div>
+</div>
+</div>
+<div class="section" id="based-on-iapws95-eos">
+<h3>Based on IAPWS95 EOS<a class="headerlink" href="#based-on-iapws95-eos" title="Permalink to this headline"></a></h3>
+<p>plot_props_VLH(sw_95,H2O.cIAPWS95_CoolProp())
+benchmark_VLH(sw_95)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <span class="math notranslate nohighlight">\(T^*_h\)</span> equation (22) in <span id="id3">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span> seems not valid for saturated liquid phase on VLH surface when in
+(low T, low p) and (high T, low p) regions, because the corrected <span class="math notranslate nohighlight">\(T^*_h-p\)</span> path cross the boiling curve of water (see above),
+therefore there are some value jupms on liquid enthalpy curve.
+However, <span id="id4">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span> gives some smooth values in low-p regions (see dashed lines with dots in above figures), how to get such values?
+Well, for the hydrothermal modeling, this issue is not that critical because the pressure always high (&gt;=50bar).</p>
+</div>
+</div>
+</div>
+<div class="section" id="result-table">
+<h2>Result table<a class="headerlink" href="#result-table" title="Permalink to this headline"></a></h2>
+<p>Result data calculated by <a class="reference external" href="https://www.sweos.info">xThermo</a> based on both water EOS of IAPS84 and IAPWS95.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0016703707002955?via%3Dihub">Electronic Annex EA-3</a> in <span id="id5">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span> and Fig. 11 in <span id="id6">[<a class="reference internal" href="../../index.html#id10" title="Thomas Driesner and Christoph A. Heinrich. The system H2O-NaCl. Part I: Correlation formulae for phase relations in temperature-pressure-composition space from 0 to 1000 °C, 0 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4880–4901, 2007. URL: https://doi.org/10.1016/j.gca.2006.01.033, doi:10.1016/j.gca.2006.01.033.">Driesner &amp; Heinrich, 2007</a>]</span>.</p>
+</div>
+<div class="tab-set docutils container">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">IAPS84</label><div class="tab-content docutils container">
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Comparison between result of <span id="id7">[<a class="reference internal" href="../../index.html#id11" title="Thomas Driesner. The system H2O-NaCl. Part II: Correlations for molar volume, enthalpy, and isobaric heat capacity from 0 to 1000 °C, 1 to 5000 bar, and 0 to 1 XNaCl. Geochimica et Cosmochimica Acta, 71(20):4902–4919, 2007. URL: https://doi.org/10.1016/j.gca.2007.05.026, doi:10.1016/j.gca.2007.05.026.">Driesner, 2007</a>]</span> and result calculated by <a class="reference external" href="https://www.sweos.info">xThermo</a>.</span><a class="headerlink" href="#id9" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>T[C]</p></th>
+<th class="head"><p>P(Driesner)[bar]</p></th>
+<th class="head"><p>P(xThermo)</p></th>
+<th class="head"><p>P(diff)[bar]</p></th>
+<th class="head"><p>XV(Driesner)[mol]</p></th>
+<th class="head"><p>XV(xThermo)[mol]</p></th>
+<th class="head"><p>XV(diff)[mol]</p></th>
+<th class="head"><p>RhoV(Driesner)[kg/m3]</p></th>
+<th class="head"><p>RhoV(xThermo)</p></th>
+<th class="head"><p>RhoV(err)</p></th>
+<th class="head"><p>HV(Driesner)[J/kg]</p></th>
+<th class="head"><p>HV(xThermo)</p></th>
+<th class="head"><p>HV(err)</p></th>
+<th class="head"><p>XL(Driesner)[mol]</p></th>
+<th class="head"><p>XL(xThermo)[mol]</p></th>
+<th class="head"><p>XL(diff)[mol]</p></th>
+<th class="head"><p>RhoL(Driesner)[kg/m3]</p></th>
+<th class="head"><p>RhoL(xThermo)</p></th>
+<th class="head"><p>RhoL(err)</p></th>
+<th class="head"><p>HL(Driesner)[J/kg]</p></th>
+<th class="head"><p>HL(xThermo)</p></th>
+<th class="head"><p>HL(err)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1.100000e+02</p></td>
+<td><p>1.076843e+00</p></td>
+<td><p>1.076843e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.224200e-12</p></td>
+<td><p>1.224200e-12</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.178428e-01</p></td>
+<td><p>6.178428e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.695338e+06</p></td>
+<td><p>2.695338e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.086770e-01</p></td>
+<td><p>1.086770e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.165615e+03</p></td>
+<td><p>1.168202e+03</p></td>
+<td><p>-2.587000e+00</p></td>
+<td><p>3.887576e+05</p></td>
+<td><p>3.887576e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.200000e+02</p></td>
+<td><p>1.480065e+00</p></td>
+<td><p>1.480065e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.877098e-12</p></td>
+<td><p>3.877098e-12</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.303800e-01</p></td>
+<td><p>8.303800e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.711467e+06</p></td>
+<td><p>2.711467e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.101720e-01</p></td>
+<td><p>1.101720e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.161810e+03</p></td>
+<td><p>1.163876e+03</p></td>
+<td><p>-2.066000e+00</p></td>
+<td><p>4.210115e+05</p></td>
+<td><p>4.210115e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>1.300000e+02</p></td>
+<td><p>1.996592e+00</p></td>
+<td><p>1.996592e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.130252e-11</p></td>
+<td><p>1.130252e-11</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.096609e+00</p></td>
+<td><p>1.096609e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.727177e+06</p></td>
+<td><p>2.727177e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.117528e-01</p></td>
+<td><p>1.117528e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.157922e+03</p></td>
+<td><p>1.159551e+03</p></td>
+<td><p>-1.629000e+00</p></td>
+<td><p>4.531268e+05</p></td>
+<td><p>4.531268e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.400000e+02</p></td>
+<td><p>2.649862e+00</p></td>
+<td><p>2.649862e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.059775e-11</p></td>
+<td><p>3.059775e-11</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.426443e+00</p></td>
+<td><p>1.426443e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.742413e+06</p></td>
+<td><p>2.742413e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.134206e-01</p></td>
+<td><p>1.134206e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.153969e+03</p></td>
+<td><p>1.155221e+03</p></td>
+<td><p>-1.252000e+00</p></td>
+<td><p>4.850981e+05</p></td>
+<td><p>4.850981e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>1.500000e+02</p></td>
+<td><p>3.466540e+00</p></td>
+<td><p>3.466540e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.743987e-11</p></td>
+<td><p>7.743987e-11</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.831081e+00</p></td>
+<td><p>1.831081e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.757117e+06</p></td>
+<td><p>2.757117e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.151778e-01</p></td>
+<td><p>1.151778e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.149964e+03</p></td>
+<td><p>1.150889e+03</p></td>
+<td><p>-9.250000e-01</p></td>
+<td><p>5.169183e+05</p></td>
+<td><p>5.169183e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.600000e+02</p></td>
+<td><p>4.476529e+00</p></td>
+<td><p>4.476529e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.842399e-10</p></td>
+<td><p>1.842399e-10</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.323025e+00</p></td>
+<td><p>2.323025e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.771227e+06</p></td>
+<td><p>2.771227e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.170283e-01</p></td>
+<td><p>1.170283e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.145922e+03</p></td>
+<td><p>1.146563e+03</p></td>
+<td><p>-6.410000e-01</p></td>
+<td><p>5.485789e+05</p></td>
+<td><p>5.485789e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>1.700000e+02</p></td>
+<td><p>5.712858e+00</p></td>
+<td><p>5.712858e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.140402e-10</p></td>
+<td><p>4.140402e-10</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.916075e+00</p></td>
+<td><p>2.916075e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.784682e+06</p></td>
+<td><p>2.784682e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.189769e-01</p></td>
+<td><p>1.189769e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.141856e+03</p></td>
+<td><p>1.142257e+03</p></td>
+<td><p>-4.010000e-01</p></td>
+<td><p>5.800697e+05</p></td>
+<td><p>5.800697e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.800000e+02</p></td>
+<td><p>7.211468e+00</p></td>
+<td><p>7.211468e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.828598e-10</p></td>
+<td><p>8.828598e-10</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.625293e+00</p></td>
+<td><p>3.625293e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.797422e+06</p></td>
+<td><p>2.797422e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.210297e-01</p></td>
+<td><p>1.210297e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.137784e+03</p></td>
+<td><p>1.137991e+03</p></td>
+<td><p>-2.070000e-01</p></td>
+<td><p>6.113793e+05</p></td>
+<td><p>6.113793e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>1.900000e+02</p></td>
+<td><p>9.010874e+00</p></td>
+<td><p>9.010874e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.793958e-09</p></td>
+<td><p>1.793958e-09</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.466951e+00</p></td>
+<td><p>4.466951e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.809388e+06</p></td>
+<td><p>2.809388e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.231938e-01</p></td>
+<td><p>1.231938e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.133724e+03</p></td>
+<td><p>1.133793e+03</p></td>
+<td><p>-6.900000e-02</p></td>
+<td><p>6.424942e+05</p></td>
+<td><p>6.424942e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.000000e+02</p></td>
+<td><p>1.115172e+01</p></td>
+<td><p>1.115172e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.488547e-09</p></td>
+<td><p>3.488547e-09</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.458452e+00</p></td>
+<td><p>5.458452e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.820528e+06</p></td>
+<td><p>2.820528e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.254775e-01</p></td>
+<td><p>1.254775e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.129696e+03</p></td>
+<td><p>1.129695e+03</p></td>
+<td><p>1.000000e-03</p></td>
+<td><p>6.733992e+05</p></td>
+<td><p>6.733992e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>2.100000e+02</p></td>
+<td><p>1.367623e+01</p></td>
+<td><p>1.367623e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.519220e-09</p></td>
+<td><p>6.519220e-09</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.618226e+00</p></td>
+<td><p>6.618226e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.830793e+06</p></td>
+<td><p>2.830793e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.278900e-01</p></td>
+<td><p>1.278900e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.125722e+03</p></td>
+<td><p>1.125718e+03</p></td>
+<td><p>4.000000e-03</p></td>
+<td><p>7.040770e+05</p></td>
+<td><p>7.040769e+05</p></td>
+<td><p>1.000000e-01</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.200000e+02</p></td>
+<td><p>1.662757e+01</p></td>
+<td><p>1.662757e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.175532e-08</p></td>
+<td><p>1.175532e-08</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.965607e+00</p></td>
+<td><p>7.965607e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.840144e+06</p></td>
+<td><p>2.840144e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.304413e-01</p></td>
+<td><p>1.304413e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.121822e+03</p></td>
+<td><p>1.121817e+03</p></td>
+<td><p>5.000000e-03</p></td>
+<td><p>7.345074e+05</p></td>
+<td><p>7.345074e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>2.300000e+02</p></td>
+<td><p>2.004914e+01</p></td>
+<td><p>2.004914e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.053458e-08</p></td>
+<td><p>2.053458e-08</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>9.520674e+00</p></td>
+<td><p>9.520674e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.848552e+06</p></td>
+<td><p>2.848552e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.331423e-01</p></td>
+<td><p>1.331423e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.118017e+03</p></td>
+<td><p>1.118012e+03</p></td>
+<td><p>5.000000e-03</p></td>
+<td><p>7.646678e+05</p></td>
+<td><p>7.646678e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.400000e+02</p></td>
+<td><p>2.398373e+01</p></td>
+<td><p>2.398373e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.488410e-08</p></td>
+<td><p>3.488410e-08</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.130405e+01</p></td>
+<td><p>1.130405e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.855997e+06</p></td>
+<td><p>2.855997e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.360050e-01</p></td>
+<td><p>1.360050e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.114335e+03</p></td>
+<td><p>1.114330e+03</p></td>
+<td><p>5.000000e-03</p></td>
+<td><p>7.945321e+05</p></td>
+<td><p>7.945321e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>2.500000e+02</p></td>
+<td><p>2.847274e+01</p></td>
+<td><p>2.847274e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.784812e-08</p></td>
+<td><p>5.784812e-08</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.333665e+01</p></td>
+<td><p>1.333665e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.862472e+06</p></td>
+<td><p>2.862472e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.390418e-01</p></td>
+<td><p>1.390418e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.110802e+03</p></td>
+<td><p>1.110796e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>8.240708e+05</p></td>
+<td><p>8.240708e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.600000e+02</p></td>
+<td><p>3.355527e+01</p></td>
+<td><p>3.355527e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>9.398356e-08</p></td>
+<td><p>9.398356e-08</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.563936e+01</p></td>
+<td><p>1.563936e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.867988e+06</p></td>
+<td><p>2.867988e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.422660e-01</p></td>
+<td><p>1.422660e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.107447e+03</p></td>
+<td><p>1.107441e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>8.532506e+05</p></td>
+<td><p>8.532506e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>2.700000e+02</p></td>
+<td><p>3.926720e+01</p></td>
+<td><p>3.926720e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.501216e-07</p></td>
+<td><p>1.501216e-07</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.823261e+01</p></td>
+<td><p>1.823261e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.872567e+06</p></td>
+<td><p>2.872567e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.456913e-01</p></td>
+<td><p>1.456913e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.104301e+03</p></td>
+<td><p>1.104295e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>8.820340e+05</p></td>
+<td><p>8.820340e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.800000e+02</p></td>
+<td><p>4.564030e+01</p></td>
+<td><p>4.564030e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.365514e-07</p></td>
+<td><p>2.365514e-07</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.113582e+01</p></td>
+<td><p>2.113582e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.876252e+06</p></td>
+<td><p>2.876252e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.493322e-01</p></td>
+<td><p>1.493322e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.101398e+03</p></td>
+<td><p>1.101393e+03</p></td>
+<td><p>5.000000e-03</p></td>
+<td><p>9.103795e+05</p></td>
+<td><p>9.103795e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>2.900000e+02</p></td>
+<td><p>5.270133e+01</p></td>
+<td><p>5.270133e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.688709e-07</p></td>
+<td><p>3.688709e-07</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.436673e+01</p></td>
+<td><p>2.436673e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.879107e+06</p></td>
+<td><p>2.879107e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.532036e-01</p></td>
+<td><p>1.532036e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.098773e+03</p></td>
+<td><p>1.098767e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>9.382411e+05</p></td>
+<td><p>9.382411e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.000000e+02</p></td>
+<td><p>6.047119e+01</p></td>
+<td><p>6.047119e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.708744e-07</p></td>
+<td><p>5.708744e-07</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.794041e+01</p></td>
+<td><p>2.794041e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.881217e+06</p></td>
+<td><p>2.881217e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.573207e-01</p></td>
+<td><p>1.573207e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.096462e+03</p></td>
+<td><p>1.096456e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>9.655686e+05</p></td>
+<td><p>9.655686e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>3.100000e+02</p></td>
+<td><p>6.896404e+01</p></td>
+<td><p>6.896404e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.790270e-07</p></td>
+<td><p>8.790270e-07</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.186817e+01</p></td>
+<td><p>3.186817e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.882692e+06</p></td>
+<td><p>2.882692e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.616990e-01</p></td>
+<td><p>1.616990e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.094502e+03</p></td>
+<td><p>1.094496e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>9.923080e+05</p></td>
+<td><p>9.923080e+05</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.200000e+02</p></td>
+<td><p>7.818661e+01</p></td>
+<td><p>7.818661e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.349297e-06</p></td>
+<td><p>1.349297e-06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.615613e+01</p></td>
+<td><p>3.615613e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.883668e+06</p></td>
+<td><p>2.883668e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.663545e-01</p></td>
+<td><p>1.663545e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.092933e+03</p></td>
+<td><p>1.092926e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.018401e+06</p></td>
+<td><p>1.018401e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>3.300000e+02</p></td>
+<td><p>8.813747e+01</p></td>
+<td><p>8.813747e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.067356e-06</p></td>
+<td><p>2.067356e-06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.080361e+01</p></td>
+<td><p>4.080361e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.884310e+06</p></td>
+<td><p>2.884310e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.713030e-01</p></td>
+<td><p>1.713030e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.091793e+03</p></td>
+<td><p>1.091786e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.043787e+06</p></td>
+<td><p>1.043787e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.400000e+02</p></td>
+<td><p>9.880643e+01</p></td>
+<td><p>9.880643e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.163311e-06</p></td>
+<td><p>3.163311e-06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.580128e+01</p></td>
+<td><p>4.580128e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.884810e+06</p></td>
+<td><p>2.884810e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.765608e-01</p></td>
+<td><p>1.765608e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.091122e+03</p></td>
+<td><p>1.091116e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>1.068402e+06</p></td>
+<td><p>1.068402e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>3.500000e+02</p></td>
+<td><p>1.101741e+02</p></td>
+<td><p>1.101741e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.831712e-06</p></td>
+<td><p>4.831712e-06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.112938e+01</p></td>
+<td><p>5.112938e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.885386e+06</p></td>
+<td><p>2.885386e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.821439e-01</p></td>
+<td><p>1.821439e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.090960e+03</p></td>
+<td><p>1.090954e+03</p></td>
+<td><p>6.000000e-03</p></td>
+<td><p>1.092181e+06</p></td>
+<td><p>1.092181e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.600000e+02</p></td>
+<td><p>1.222113e+02</p></td>
+<td><p>1.222113e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.353896e-06</p></td>
+<td><p>7.353896e-06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.675612e+01</p></td>
+<td><p>5.675612e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.886280e+06</p></td>
+<td><p>2.886280e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.880683e-01</p></td>
+<td><p>1.880683e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.091345e+03</p></td>
+<td><p>1.091338e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.115058e+06</p></td>
+<td><p>1.115058e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>3.700000e+02</p></td>
+<td><p>1.348791e+02</p></td>
+<td><p>1.348791e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.108310e-05</p></td>
+<td><p>1.108310e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.263659e+01</p></td>
+<td><p>6.263659e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.887746e+06</p></td>
+<td><p>2.887746e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.943500e-01</p></td>
+<td><p>1.943500e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.092313e+03</p></td>
+<td><p>1.092306e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.136968e+06</p></td>
+<td><p>1.136968e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.800000e+02</p></td>
+<td><p>1.481286e+02</p></td>
+<td><p>1.481286e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.592905e-05</p></td>
+<td><p>1.592905e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.871223e+01</p></td>
+<td><p>6.871223e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.890049e+06</p></td>
+<td><p>2.890049e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.010048e-01</p></td>
+<td><p>2.010048e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.093898e+03</p></td>
+<td><p>1.093891e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.157848e+06</p></td>
+<td><p>1.157848e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>3.900000e+02</p></td>
+<td><p>1.619005e+02</p></td>
+<td><p>1.619005e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.309145e-05</p></td>
+<td><p>2.309145e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.491287e+01</p></td>
+<td><p>7.491287e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.893440e+06</p></td>
+<td><p>2.893440e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.080482e-01</p></td>
+<td><p>2.080482e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.096131e+03</p></td>
+<td><p>1.096124e+03</p></td>
+<td><p>7.000000e-03</p></td>
+<td><p>1.177640e+06</p></td>
+<td><p>1.177640e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.000000e+02</p></td>
+<td><p>1.761260e+02</p></td>
+<td><p>1.761260e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.323791e-05</p></td>
+<td><p>3.323792e-05</p></td>
+<td><p>-1.000000e-11</p></td>
+<td><p>8.115787e+01</p></td>
+<td><p>8.115787e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.898153e+06</p></td>
+<td><p>2.898153e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.154955e-01</p></td>
+<td><p>2.154955e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.099039e+03</p></td>
+<td><p>1.099031e+03</p></td>
+<td><p>8.000000e-03</p></td>
+<td><p>1.196287e+06</p></td>
+<td><p>1.196287e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>4.100000e+02</p></td>
+<td><p>1.907265e+02</p></td>
+<td><p>1.907265e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.661210e-05</p></td>
+<td><p>4.661210e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.735924e+01</p></td>
+<td><p>8.735924e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.904397e+06</p></td>
+<td><p>2.904397e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.233616e-01</p></td>
+<td><p>2.233616e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.102643e+03</p></td>
+<td><p>1.102635e+03</p></td>
+<td><p>8.000000e-03</p></td>
+<td><p>1.213743e+06</p></td>
+<td><p>1.213743e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.200000e+02</p></td>
+<td><p>2.056139e+02</p></td>
+<td><p>2.056139e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.312192e-05</p></td>
+<td><p>6.312192e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>9.342567e+01</p></td>
+<td><p>9.342567e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.912344e+06</p></td>
+<td><p>2.912344e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.316612e-01</p></td>
+<td><p>2.316612e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.106959e+03</p></td>
+<td><p>1.106951e+03</p></td>
+<td><p>8.000000e-03</p></td>
+<td><p>1.229966e+06</p></td>
+<td><p>1.229966e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>4.300000e+02</p></td>
+<td><p>2.206918e+02</p></td>
+<td><p>2.206918e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.228289e-05</p></td>
+<td><p>8.228290e-05</p></td>
+<td><p>-1.000000e-11</p></td>
+<td><p>9.926656e+01</p></td>
+<td><p>9.926656e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.922124e+06</p></td>
+<td><p>2.922124e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.404086e-01</p></td>
+<td><p>2.404087e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.111998e+03</p></td>
+<td><p>1.111989e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.244923e+06</p></td>
+<td><p>1.244923e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.400000e+02</p></td>
+<td><p>2.358556e+02</p></td>
+<td><p>2.358556e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.032952e-04</p></td>
+<td><p>1.032952e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.047961e+02</p></td>
+<td><p>1.047961e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.933827e+06</p></td>
+<td><p>2.933827e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.496179e-01</p></td>
+<td><p>2.496179e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.117763e+03</p></td>
+<td><p>1.117754e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.258590e+06</p></td>
+<td><p>1.258590e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>4.500000e+02</p></td>
+<td><p>2.509935e+02</p></td>
+<td><p>2.509935e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.252098e-04</p></td>
+<td><p>1.252098e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.099370e+02</p></td>
+<td><p>1.099370e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.947500e+06</p></td>
+<td><p>2.947500e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.593027e-01</p></td>
+<td><p>2.593027e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.124252e+03</p></td>
+<td><p>1.124243e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.270951e+06</p></td>
+<td><p>1.270951e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.600000e+02</p></td>
+<td><p>2.659875e+02</p></td>
+<td><p>2.659875e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.471108e-04</p></td>
+<td><p>1.471109e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>1.146224e+02</p></td>
+<td><p>1.146224e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.963152e+06</p></td>
+<td><p>2.963152e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.694764e-01</p></td>
+<td><p>2.694764e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.131455e+03</p></td>
+<td><p>1.131446e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.281998e+06</p></td>
+<td><p>1.281998e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>4.700000e+02</p></td>
+<td><p>2.807141e+02</p></td>
+<td><p>2.807141e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.682544e-04</p></td>
+<td><p>1.682544e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.187982e+02</p></td>
+<td><p>1.187982e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.980763e+06</p></td>
+<td><p>2.980763e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.801520e-01</p></td>
+<td><p>2.801520e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.139357e+03</p></td>
+<td><p>1.139348e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.291734e+06</p></td>
+<td><p>1.291734e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.800000e+02</p></td>
+<td><p>2.950460e+02</p></td>
+<td><p>2.950460e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.881345e-04</p></td>
+<td><p>1.881345e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.224229e+02</p></td>
+<td><p>1.224229e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.000283e+06</p></td>
+<td><p>3.000283e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.913424e-01</p></td>
+<td><p>2.913424e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.147937e+03</p></td>
+<td><p>1.147928e+03</p></td>
+<td><p>9.000000e-03</p></td>
+<td><p>1.300167e+06</p></td>
+<td><p>1.300167e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>4.900000e+02</p></td>
+<td><p>3.088529e+02</p></td>
+<td><p>3.088529e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.064848e-04</p></td>
+<td><p>2.064848e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.254670e+02</p></td>
+<td><p>1.254670e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.021648e+06</p></td>
+<td><p>3.021648e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.030602e-01</p></td>
+<td><p>3.030602e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.157169e+03</p></td>
+<td><p>1.157159e+03</p></td>
+<td><p>1.000000e-02</p></td>
+<td><p>1.307313e+06</p></td>
+<td><p>1.307313e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.000000e+02</p></td>
+<td><p>3.220027e+02</p></td>
+<td><p>3.220027e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.232388e-04</p></td>
+<td><p>2.232388e-04</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.279121e+02</p></td>
+<td><p>1.279121e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.044776e+06</p></td>
+<td><p>3.044776e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.153180e-01</p></td>
+<td><p>3.153180e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.167021e+03</p></td>
+<td><p>1.167011e+03</p></td>
+<td><p>1.000000e-02</p></td>
+<td><p>1.313192e+06</p></td>
+<td><p>1.313192e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>5.100000e+02</p></td>
+<td><p>3.343633e+02</p></td>
+<td><p>3.343633e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.386012e-04</p></td>
+<td><p>2.386013e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>1.297493e+02</p></td>
+<td><p>1.297493e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.069581e+06</p></td>
+<td><p>3.069581e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.281281e-01</p></td>
+<td><p>3.281281e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.177459e+03</p></td>
+<td><p>1.177448e+03</p></td>
+<td><p>1.100000e-02</p></td>
+<td><p>1.317830e+06</p></td>
+<td><p>1.317830e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.200000e+02</p></td>
+<td><p>3.458035e+02</p></td>
+<td><p>3.458035e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.523677e-04</p></td>
+<td><p>2.523679e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.309768e+02</p></td>
+<td><p>1.309768e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.095975e+06</p></td>
+<td><p>3.095975e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.415028e-01</p></td>
+<td><p>3.415028e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.188445e+03</p></td>
+<td><p>1.188434e+03</p></td>
+<td><p>1.100000e-02</p></td>
+<td><p>1.321257e+06</p></td>
+<td><p>1.321257e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>5.300000e+02</p></td>
+<td><p>3.561946e+02</p></td>
+<td><p>3.561946e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.640061e-04</p></td>
+<td><p>2.640062e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>1.315988e+02</p></td>
+<td><p>1.315988e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.123871e+06</p></td>
+<td><p>3.123871e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.554545e-01</p></td>
+<td><p>3.554545e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.199939e+03</p></td>
+<td><p>1.199928e+03</p></td>
+<td><p>1.100000e-02</p></td>
+<td><p>1.323505e+06</p></td>
+<td><p>1.323505e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.400000e+02</p></td>
+<td><p>3.654117e+02</p></td>
+<td><p>3.654117e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.730387e-04</p></td>
+<td><p>2.730389e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.316244e+02</p></td>
+<td><p>1.316244e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.153183e+06</p></td>
+<td><p>3.153183e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.699956e-01</p></td>
+<td><p>3.699956e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.211900e+03</p></td>
+<td><p>1.211888e+03</p></td>
+<td><p>1.200000e-02</p></td>
+<td><p>1.324608e+06</p></td>
+<td><p>1.324608e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>5.500000e+02</p></td>
+<td><p>3.733353e+02</p></td>
+<td><p>3.733353e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.790616e-04</p></td>
+<td><p>2.790618e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.310675e+02</p></td>
+<td><p>1.310674e+02</p></td>
+<td><p>1.000000e-04</p></td>
+<td><p>3.183828e+06</p></td>
+<td><p>3.183828e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.851384e-01</p></td>
+<td><p>3.851384e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.224284e+03</p></td>
+<td><p>1.224272e+03</p></td>
+<td><p>1.200000e-02</p></td>
+<td><p>1.324602e+06</p></td>
+<td><p>1.324602e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.600000e+02</p></td>
+<td><p>3.798522e+02</p></td>
+<td><p>3.798522e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.817623e-04</p></td>
+<td><p>2.817625e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.299449e+02</p></td>
+<td><p>1.299449e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.215724e+06</p></td>
+<td><p>3.215724e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.008955e-01</p></td>
+<td><p>4.008956e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.237051e+03</p></td>
+<td><p>1.237038e+03</p></td>
+<td><p>1.300000e-02</p></td>
+<td><p>1.323522e+06</p></td>
+<td><p>1.323522e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>5.700000e+02</p></td>
+<td><p>3.848571e+02</p></td>
+<td><p>3.848571e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.809375e-04</p></td>
+<td><p>2.809377e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.282768e+02</p></td>
+<td><p>1.282768e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.248791e+06</p></td>
+<td><p>3.248791e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.172798e-01</p></td>
+<td><p>4.172798e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.250157e+03</p></td>
+<td><p>1.250144e+03</p></td>
+<td><p>1.300000e-02</p></td>
+<td><p>1.321403e+06</p></td>
+<td><p>1.321403e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.800000e+02</p></td>
+<td><p>3.882536e+02</p></td>
+<td><p>3.882536e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.765080e-04</p></td>
+<td><p>2.765082e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.260856e+02</p></td>
+<td><p>1.260856e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.282951e+06</p></td>
+<td><p>3.282951e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.343040e-01</p></td>
+<td><p>4.343040e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.263561e+03</p></td>
+<td><p>1.263548e+03</p></td>
+<td><p>1.300000e-02</p></td>
+<td><p>1.318281e+06</p></td>
+<td><p>1.318281e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-even"><td><p>5.900000e+02</p></td>
+<td><p>3.899551e+02</p></td>
+<td><p>3.899551e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.685299e-04</p></td>
+<td><p>2.685301e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.233958e+02</p></td>
+<td><p>1.233958e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.318126e+06</p></td>
+<td><p>3.318126e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.519813e-01</p></td>
+<td><p>4.519813e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.277224e+03</p></td>
+<td><p>1.277210e+03</p></td>
+<td><p>1.400000e-02</p></td>
+<td><p>1.314187e+06</p></td>
+<td><p>1.314187e+06</p></td>
+<td><p>0.000000e+00</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.000000e+02</p></td>
+<td><p>3.898861e+02</p></td>
+<td><p>3.898861e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.572002e-04</p></td>
+<td><p>2.572003e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>1.202335e+02</p></td>
+<td><p>1.202335e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.354241e+06</p></td>
+<td><p>3.354241e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.703249e-01</p></td>
+<td><p>4.703249e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.291108e+03</p></td>
+<td><p>1.291093e+03</p></td>
+<td><p>1.500000e-02</p></td>
+<td><p>1.314038e+06</p></td>
+<td><p>1.305679e+06</p></td>
+<td><p>8.359000e+03</p></td>
+</tr>
+<tr class="row-even"><td><p>6.100000e+02</p></td>
+<td><p>3.879827e+02</p></td>
+<td><p>3.879827e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.428548e-04</p></td>
+<td><p>2.428550e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.166262e+02</p></td>
+<td><p>1.166262e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.391220e+06</p></td>
+<td><p>3.391220e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.893482e-01</p></td>
+<td><p>4.893483e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.305176e+03</p></td>
+<td><p>1.305162e+03</p></td>
+<td><p>1.400000e-02</p></td>
+<td><p>1.308676e+06</p></td>
+<td><p>1.299684e+06</p></td>
+<td><p>8.992000e+03</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.200000e+02</p></td>
+<td><p>3.841930e+02</p></td>
+<td><p>3.841930e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.259578e-04</p></td>
+<td><p>2.259580e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.126027e+02</p></td>
+<td><p>1.126027e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.428986e+06</p></td>
+<td><p>3.428986e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.090650e-01</p></td>
+<td><p>5.090651e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.319398e+03</p></td>
+<td><p>1.319382e+03</p></td>
+<td><p>1.600000e-02</p></td>
+<td><p>1.302491e+06</p></td>
+<td><p>1.292843e+06</p></td>
+<td><p>9.648000e+03</p></td>
+</tr>
+<tr class="row-even"><td><p>6.300000e+02</p></td>
+<td><p>3.784779e+02</p></td>
+<td><p>3.784779e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.070803e-04</p></td>
+<td><p>2.070805e-04</p></td>
+<td><p>-2.000000e-10</p></td>
+<td><p>1.081924e+02</p></td>
+<td><p>1.081924e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.467464e+06</p></td>
+<td><p>3.467464e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.294890e-01</p></td>
+<td><p>5.294890e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.333741e+03</p></td>
+<td><p>1.333725e+03</p></td>
+<td><p>1.600000e-02</p></td>
+<td><p>1.295510e+06</p></td>
+<td><p>1.285185e+06</p></td>
+<td><p>1.032500e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.400000e+02</p></td>
+<td><p>3.708112e+02</p></td>
+<td><p>3.708112e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.868697e-04</p></td>
+<td><p>1.868698e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>1.034255e+02</p></td>
+<td><p>1.034255e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.506576e+06</p></td>
+<td><p>3.506576e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.506338e-01</p></td>
+<td><p>5.506339e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.348181e+03</p></td>
+<td><p>1.348163e+03</p></td>
+<td><p>1.800000e-02</p></td>
+<td><p>1.287760e+06</p></td>
+<td><p>1.276733e+06</p></td>
+<td><p>1.102700e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>6.500000e+02</p></td>
+<td><p>3.611795e+02</p></td>
+<td><p>3.611795e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.660102e-04</p></td>
+<td><p>1.660103e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>9.833198e+01</p></td>
+<td><p>9.833198e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.546246e+06</p></td>
+<td><p>3.546246e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.725135e-01</p></td>
+<td><p>5.725135e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.362692e+03</p></td>
+<td><p>1.362673e+03</p></td>
+<td><p>1.900000e-02</p></td>
+<td><p>1.279267e+06</p></td>
+<td><p>1.267510e+06</p></td>
+<td><p>1.175700e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.600000e+02</p></td>
+<td><p>3.495818e+02</p></td>
+<td><p>3.495818e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.451794e-04</p></td>
+<td><p>1.451795e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>9.294209e+01</p></td>
+<td><p>9.294209e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.586397e+06</p></td>
+<td><p>3.586397e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.951418e-01</p></td>
+<td><p>5.951418e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.377254e+03</p></td>
+<td><p>1.377231e+03</p></td>
+<td><p>2.300000e-02</p></td>
+<td><p>1.270054e+06</p></td>
+<td><p>1.257532e+06</p></td>
+<td><p>1.252200e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>6.700000e+02</p></td>
+<td><p>3.360296e+02</p></td>
+<td><p>3.360296e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.250038e-04</p></td>
+<td><p>1.250039e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>8.728546e+01</p></td>
+<td><p>8.728546e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.626950e+06</p></td>
+<td><p>3.626950e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.185324e-01</p></td>
+<td><p>6.185324e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.391846e+03</p></td>
+<td><p>1.391819e+03</p></td>
+<td><p>2.700000e-02</p></td>
+<td><p>1.260144e+06</p></td>
+<td><p>1.246814e+06</p></td>
+<td><p>1.333000e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>6.800000e+02</p></td>
+<td><p>3.205456e+02</p></td>
+<td><p>3.205456e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.060195e-04</p></td>
+<td><p>1.060196e-04</p></td>
+<td><p>-1.000000e-10</p></td>
+<td><p>8.139101e+01</p></td>
+<td><p>8.139101e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.667830e+06</p></td>
+<td><p>3.667830e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.426988e-01</p></td>
+<td><p>6.426988e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.406447e+03</p></td>
+<td><p>1.406413e+03</p></td>
+<td><p>3.400000e-02</p></td>
+<td><p>1.249559e+06</p></td>
+<td><p>1.235367e+06</p></td>
+<td><p>1.419200e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>6.900000e+02</p></td>
+<td><p>3.031631e+02</p></td>
+<td><p>3.031631e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.864348e-05</p></td>
+<td><p>8.864353e-05</p></td>
+<td><p>-5.000000e-11</p></td>
+<td><p>7.528658e+01</p></td>
+<td><p>7.528658e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.708960e+06</p></td>
+<td><p>3.708960e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.676543e-01</p></td>
+<td><p>6.676543e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.421033e+03</p></td>
+<td><p>1.420990e+03</p></td>
+<td><p>4.300000e-02</p></td>
+<td><p>1.238317e+06</p></td>
+<td><p>1.223198e+06</p></td>
+<td><p>1.511900e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.000000e+02</p></td>
+<td><p>2.839251e+02</p></td>
+<td><p>2.839251e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.315776e-05</p></td>
+<td><p>7.315780e-05</p></td>
+<td><p>-4.000000e-11</p></td>
+<td><p>6.899872e+01</p></td>
+<td><p>6.899872e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.750267e+06</p></td>
+<td><p>3.750267e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>6.934117e-01</p></td>
+<td><p>6.934117e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.435572e+03</p></td>
+<td><p>1.435516e+03</p></td>
+<td><p>5.600000e-02</p></td>
+<td><p>1.226436e+06</p></td>
+<td><p>1.210311e+06</p></td>
+<td><p>1.612500e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>7.100000e+02</p></td>
+<td><p>2.628823e+02</p></td>
+<td><p>2.628823e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>5.970889e-05</p></td>
+<td><p>5.970892e-05</p></td>
+<td><p>-3.000000e-11</p></td>
+<td><p>6.255233e+01</p></td>
+<td><p>6.255233e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.791677e+06</p></td>
+<td><p>3.791677e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.199835e-01</p></td>
+<td><p>7.199835e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.450017e+03</p></td>
+<td><p>1.449943e+03</p></td>
+<td><p>7.400000e-02</p></td>
+<td><p>1.213934e+06</p></td>
+<td><p>1.196708e+06</p></td>
+<td><p>1.722600e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.200000e+02</p></td>
+<td><p>2.400921e+02</p></td>
+<td><p>2.400921e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.832134e-05</p></td>
+<td><p>4.832136e-05</p></td>
+<td><p>-2.000000e-11</p></td>
+<td><p>5.597053e+01</p></td>
+<td><p>5.597053e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.833121e+06</p></td>
+<td><p>3.833121e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.473816e-01</p></td>
+<td><p>7.473816e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.464298e+03</p></td>
+<td><p>1.464200e+03</p></td>
+<td><p>9.800000e-02</p></td>
+<td><p>1.200825e+06</p></td>
+<td><p>1.182389e+06</p></td>
+<td><p>1.843600e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>7.300000e+02</p></td>
+<td><p>2.156167e+02</p></td>
+<td><p>2.156167e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.892226e-05</p></td>
+<td><p>3.892228e-05</p></td>
+<td><p>-2.000000e-11</p></td>
+<td><p>4.927440e+01</p></td>
+<td><p>4.927440e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.874532e+06</p></td>
+<td><p>3.874532e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.756174e-01</p></td>
+<td><p>7.756175e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.478314e+03</p></td>
+<td><p>1.478184e+03</p></td>
+<td><p>1.300000e-01</p></td>
+<td><p>1.187122e+06</p></td>
+<td><p>1.167350e+06</p></td>
+<td><p>1.977200e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.400000e+02</p></td>
+<td><p>1.895214e+02</p></td>
+<td><p>1.895214e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.137444e-05</p></td>
+<td><p>3.137445e-05</p></td>
+<td><p>-1.000000e-11</p></td>
+<td><p>4.248285e+01</p></td>
+<td><p>4.248285e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.915849e+06</p></td>
+<td><p>3.915849e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.047018e-01</p></td>
+<td><p>8.047018e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.491915e+03</p></td>
+<td><p>1.491744e+03</p></td>
+<td><p>1.710000e-01</p></td>
+<td><p>1.172840e+06</p></td>
+<td><p>1.151587e+06</p></td>
+<td><p>2.125300e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>7.500000e+02</p></td>
+<td><p>1.618724e+02</p></td>
+<td><p>1.618724e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.551608e-05</p></td>
+<td><p>2.551609e-05</p></td>
+<td><p>-1.000000e-11</p></td>
+<td><p>3.561250e+01</p></td>
+<td><p>3.561250e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.957013e+06</p></td>
+<td><p>3.957013e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.346448e-01</p></td>
+<td><p>8.346449e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.504902e+03</p></td>
+<td><p>1.504678e+03</p></td>
+<td><p>2.240000e-01</p></td>
+<td><p>1.157990e+06</p></td>
+<td><p>1.135093e+06</p></td>
+<td><p>2.289700e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.600000e+02</p></td>
+<td><p>1.327350e+02</p></td>
+<td><p>1.327350e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.121360e-05</p></td>
+<td><p>2.121361e-05</p></td>
+<td><p>-1.000000e-11</p></td>
+<td><p>2.867762e+01</p></td>
+<td><p>2.867762e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>3.997971e+06</p></td>
+<td><p>3.997971e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.654562e-01</p></td>
+<td><p>8.654562e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.517018e+03</p></td>
+<td><p>1.516729e+03</p></td>
+<td><p>2.890000e-01</p></td>
+<td><p>1.142582e+06</p></td>
+<td><p>1.117860e+06</p></td>
+<td><p>2.472200e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>7.700000e+02</p></td>
+<td><p>1.021716e+02</p></td>
+<td><p>1.021716e+02</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.846040e-05</p></td>
+<td><p>1.846040e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.169011e+01</p></td>
+<td><p>2.169011e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.038676e+06</p></td>
+<td><p>4.038676e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>8.971448e-01</p></td>
+<td><p>8.971449e-01</p></td>
+<td><p>-1.000000e-07</p></td>
+<td><p>1.527976e+03</p></td>
+<td><p>1.527608e+03</p></td>
+<td><p>3.680000e-01</p></td>
+<td><p>1.126627e+06</p></td>
+<td><p>1.099878e+06</p></td>
+<td><p>2.674900e+04</p></td>
+</tr>
+<tr class="row-odd"><td><p>7.800000e+02</p></td>
+<td><p>7.023945e+01</p></td>
+<td><p>7.023945e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.769436e-05</p></td>
+<td><p>1.769436e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.465964e+01</p></td>
+<td><p>1.465964e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.079085e+06</p></td>
+<td><p>4.079085e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>9.297195e-01</p></td>
+<td><p>9.297195e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.537505e+03</p></td>
+<td><p>1.537042e+03</p></td>
+<td><p>4.630000e-01</p></td>
+<td><p>1.110133e+06</p></td>
+<td><p>1.081136e+06</p></td>
+<td><p>2.899700e+04</p></td>
+</tr>
+<tr class="row-even"><td><p>7.900000e+02</p></td>
+<td><p>3.698947e+01</p></td>
+<td><p>3.698947e+01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>2.180569e-05</p></td>
+<td><p>2.180569e-05</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>7.593799e+00</p></td>
+<td><p>7.593799e+00</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>4.119149e+06</p></td>
+<td><p>4.119149e+06</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>9.631885e-01</p></td>
+<td><p>9.631885e-01</p></td>
+<td><p>0.000000e+00</p></td>
+<td><p>1.545472e+03</p></td>
+<td><p>1.544898e+03</p></td>
+<td><p>5.740000e-01</p></td>
+<td><p>1.093109e+06</p></td>
+<td><p>1.061624e+06</p></td>
+<td><p>3.148500e+04</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">IAPWS95</label><div class="tab-content docutils container">
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The help function for 3D plot can be downloaded at here: <a class="reference download internal" download="" href="../../_downloads/ecf6a7585e55e7f3b0d666efe7c8391d/helpfunc.py"><code class="xref download docutils literal notranslate"><span class="pre">helpfunc.py</span></code></a></p>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  55.915 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-h2onacl-pt-plot-vlh-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/844c49f34495b414090590f95ccb6811/plot_VLH.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_VLH.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/c6b331a2fe52166ab0fe54834b4573df/plot_VLH.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_VLH.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_VL.html" class="btn btn-neutral float-right" title="4. Vapor + Liquid coexistence surface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_haliteLiquidus.html" class="btn btn-neutral float-left" title="2. Halite liquidus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <div class="info">
+      <div class="copyright">
+      
+
+      &copy; Zhikui Guo, Lars Ruepke
+
+
+      
+      </div>
+    </div>
+  </div>
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+      
+        <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+          <span class="rst-current-version" data-toggle="rst-current-version">
+            <span class="fa fa-book"> xThermo Manual</span>
+            v: latest
+            <span class="fa fa-caret-down"></span>
+          </span>
+          <div class="rst-other-versions">
+            <dl>
+              <dt>English version</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_en.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_en.pdf">2.0</a></dd>
+                
+              
+            </dl>
+            <dl>
+              <dt>中文版本</dt>
+              
+                
+                <dd><a href="https://hydrothermal-openfoam.gitlab.io/saltwatereos/downloads/xThermo_zh.pdf">latest</a></dd>
+                
+                <dd><a href="#/xThermo_zh.pdf">2.0</a></dd>
+                
+              
+            </dl>
+          </div>
+        </div>
+      
+    
+
+</body>
+</html>
