@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**00:10.798** total execution time for **gallery_NaCl_pT** files:
+**00:09.797** total execution time for **gallery_NaCl_pT** files:
 
 +-------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_NaCl_pT_plot_Props_NaCl.py` (``plot_Props_NaCl.py``)               | 00:06.762 | 0.0 MB |
+| :ref:`sphx_glr_gallery_NaCl_pT_plot_Props_NaCl.py` (``plot_Props_NaCl.py``)               | 00:06.163 | 0.0 MB |
 +-------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_NaCl_pT_plot_PhaseDiagram_NaCl.py` (``plot_PhaseDiagram_NaCl.py``) | 00:04.036 | 0.0 MB |
+| :ref:`sphx_glr_gallery_NaCl_pT_plot_PhaseDiagram_NaCl.py` (``plot_PhaseDiagram_NaCl.py``) | 00:03.634 | 0.0 MB |
 +-------------------------------------------------------------------------------------------+-----------+--------+

@@ -5,12 +5,12 @@
 
 Computation times
 =================
-**10:53.855** total execution time for **gallery_H2ONaCl_HPX** files:
+**08:19.107** total execution time for **gallery_H2ONaCl_HPX** files:
 
 +---------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_Properties_HPX.py` (``plot_Properties_HPX.py``)     | 10:07.917 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_Properties_HPX.py` (``plot_Properties_HPX.py``)     | 07:40.650 | 0.0 MB |
 +---------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_PhaseDiagram_HPX.py` (``plot_PhaseDiagram_HPX.py``) | 00:45.938 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_HPX_plot_PhaseDiagram_HPX.py` (``plot_PhaseDiagram_HPX.py``) | 00:38.457 | 0.0 MB |
 +---------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_gallery_H2ONaCl_HPX_helpfunc.py` (``helpfunc.py``)                           | 00:00.000 | 0.0 MB |
 +---------------------------------------------------------------------------------------------+-----------+--------+

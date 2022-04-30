@@ -5,22 +5,22 @@
 
 Computation times
 =================
-**08:37.427** total execution time for **gallery_H2ONaCl_pT** files:
+**07:16.443** total execution time for **gallery_H2ONaCl_pT** files:
 
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VL.py` (``plot_VL.py``)                             | 03:59.120 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VL.py` (``plot_VL.py``)                             | 03:20.416 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_Properties_PTX.py` (``plot_Properties_PTX.py``)     | 01:23.566 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_Properties_PTX.py` (``plot_Properties_PTX.py``)     | 01:04.179 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VLH.py` (``plot_VLH.py``)                           | 00:55.915 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VLH.py` (``plot_VLH.py``)                           | 00:49.902 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_PhaseDiagram_PTX.py` (``plot_PhaseDiagram_PTX.py``) | 00:54.553 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_PhaseDiagram_PTX.py` (``plot_PhaseDiagram_PTX.py``) | 00:48.437 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_critical.py` (``plot_critical.py``)                 | 00:39.968 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_critical.py` (``plot_critical.py``)                 | 00:34.788 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VH.py` (``plot_VH.py``)                             | 00:31.665 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_VH.py` (``plot_VH.py``)                             | 00:27.267 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_haliteLiquidus.py` (``plot_haliteLiquidus.py``)     | 00:12.639 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2ONaCl_pT_plot_haliteLiquidus.py` (``plot_haliteLiquidus.py``)     | 00:11.454 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_gallery_H2ONaCl_pT_helpfunc.py` (``helpfunc.py``)                           | 00:00.000 | 0.0 MB |
 +--------------------------------------------------------------------------------------------+-----------+--------+
