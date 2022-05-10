@@ -339,7 +339,7 @@ Constant X
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  4.179 seconds)
+   **Total running time of the script:** ( 1 minutes  34.003 seconds)
 
 
 .. _sphx_glr_download_gallery_H2ONaCl_pT_plot_Properties_PTX.py:

@@ -304,7 +304,7 @@ Result data calculated by |xThermo| based on both water EOS of IAPS84 and IAPWS9
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.454 seconds)
+   **Total running time of the script:** ( 0 minutes  17.214 seconds)
 
 
 .. _sphx_glr_download_gallery_H2ONaCl_pT_plot_haliteLiquidus.py:

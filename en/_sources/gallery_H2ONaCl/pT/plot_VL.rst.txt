@@ -701,7 +701,7 @@ Composition in mole fraction(left panel) and mass fraction (right panel)
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 3 minutes  20.416 seconds)
+   **Total running time of the script:** ( 5 minutes  14.919 seconds)
 
 
 .. _sphx_glr_download_gallery_H2ONaCl_pT_plot_VL.py:

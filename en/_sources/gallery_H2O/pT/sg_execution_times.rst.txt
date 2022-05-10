@@ -5,14 +5,14 @@
 
 Computation times
 =================
-**02:31.451** total execution time for **gallery_H2O_pT** files:
+**03:35.373** total execution time for **gallery_H2O_pT** files:
 
 +--------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2O_pT_plot_Density_pT.py` (``plot_Density_pT.py``)           | 00:49.060 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2O_pT_plot_Density_pT.py` (``plot_Density_pT.py``)           | 01:07.979 | 0.0 MB |
 +--------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2O_pT_plot_Enthalpy_pT.py` (``plot_Enthalpy_pT.py``)         | 00:46.527 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2O_pT_plot_Enthalpy_pT.py` (``plot_Enthalpy_pT.py``)         | 01:07.927 | 0.0 MB |
 +--------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2O_pT_plot_Viscosity_pT.py` (``plot_Viscosity_pT.py``)       | 00:32.126 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2O_pT_plot_Viscosity_pT.py` (``plot_Viscosity_pT.py``)       | 00:44.949 | 0.0 MB |
 +--------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_H2O_pT_plot_PhaseDiagram_pT.py` (``plot_PhaseDiagram_pT.py``) | 00:23.738 | 0.0 MB |
+| :ref:`sphx_glr_gallery_H2O_pT_plot_PhaseDiagram_pT.py` (``plot_PhaseDiagram_pT.py``) | 00:34.518 | 0.0 MB |
 +--------------------------------------------------------------------------------------+-----------+--------+
