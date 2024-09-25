@@ -28,122 +28,122 @@ jobs:
           # - {version: '3.8', lib: 'python38.lib' }
           - {version: '3.9', lib: 'python39.lib' }
     steps:
-      # checkout source code
-      - uses: actions/checkout@v2
+      # # checkout source code
+      # - uses: actions/checkout@v2
 
-      # config msbuild
-      - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1
+      # # config msbuild
+      # - name: Add MSBuild to PATH
+      #   uses: microsoft/setup-msbuild@v1
 
-      # # install Qt5
-      # - name: Install Qt
-      #   uses: jurplel/install-qt-action@v2.13.0
+      # # # install Qt5
+      # # - name: Install Qt
+      # #   uses: jurplel/install-qt-action@v2.13.0
+      # #   with:
+      # #     version: '5.15.2'
+      # #     host: 'windows'
+      # #     target: 'desktop'
+      # #     dir: '${{ github.workspace }}/QT/'
+
+      # # install dependencies, e.g. VTK, swig
+      # - name: install dependencies
+      #   working-directory: ${{ env.GITHUB_WORKSPACE }}
+      #   run: |
+      #     git clone https://github.com/zguoch/dependencies_swEOS.git
+      #     cd dependencies_swEOS/windows
+      #     unzip -qq swigwin-4.0.2.zip
+      #     unzip -qq VTK8.2.zip
+      #     unzip -qq gsl-msvc14-x64.2.3.0.2779.zip
+      #     unzip -qq gsl-msvc14-x86.2.3.0.2779.zip
+
+      # # clone xThermo source
+      # - name: clone source and compile library
+      #   run: |
+      #     git clone https://${{env.access_token}}@github.com/zguoch/xThermo_source.git xThermo
+      #     cd xThermo
+      #     git submodule update --init --recursive
+
+      # - name: Set up Python version
+      #   uses: actions/setup-python@v2
       #   with:
-      #     version: '5.15.2'
-      #     host: 'windows'
-      #     target: 'desktop'
-      #     dir: '${{ github.workspace }}/QT/'
+      #     python-version: ${{ matrix.python.version }}
 
-      # install dependencies, e.g. VTK, swig
-      - name: install dependencies
-        working-directory: ${{ env.GITHUB_WORKSPACE }}
-        run: |
-          git clone https://github.com/zguoch/dependencies_swEOS.git
-          cd dependencies_swEOS/windows
-          unzip -qq swigwin-4.0.2.zip
-          unzip -qq VTK8.2.zip
-          unzip -qq gsl-msvc14-x64.2.3.0.2779.zip
-          unzip -qq gsl-msvc14-x86.2.3.0.2779.zip
+      # # get short SHA of commit 
+      # - name: Add SHORT_SHA env property with commit short sha
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      # - name: info 
+      #   run: |
+      #     cmake --version
+      #     g++ --version
+      #     echo ${{ github.ref }}
+      #     echo "commit id short" ${SHORT_SHA}
+      #     python --version
 
-      # clone xThermo source
-      - name: clone source and compile library
-        run: |
-          git clone https://${{env.access_token}}@github.com/zguoch/xThermo_source.git xThermo
-          cd xThermo
-          git submodule update --init --recursive
+      # # setup matlab environment
+      # - name: Set up MATLAB
+      #   uses: matlab-actions/setup-matlab@v1
 
-      - name: Set up Python version
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python.version }}
+      # # build ThirdParties
+      # - name: build ThirdParties
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermo
+      #     cd ThirdParties
+      #     # compile coolProp
+      #     cd coolprop
+      #     git apply ../CoolProp_patches/381c8535.patch
+      #     mkdir build
+      #     cd build
+      #     # build shared libs
+      #     cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_SHARED_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
+      #     cmake --build . --target INSTALL --config Release -j 8
+      #     # build static libs
+      #     # rm -r *
+      #     cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_STATIC_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
+      #     cmake --build . --target INSTALL --config Release -j 8
 
-      # get short SHA of commit 
-      - name: Add SHORT_SHA env property with commit short sha
-        run: |
-          cd ${{env.HOME}}
-          echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - name: info 
-        run: |
-          cmake --version
-          g++ --version
-          echo ${{ github.ref }}
-          echo "commit id short" ${SHORT_SHA}
-          python --version
+      # debug workflow
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
-      # setup matlab environment
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-
-      # build ThirdParties
-      - name: build ThirdParties
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo
-          cd ThirdParties
-          # compile coolProp
-          cd coolprop
-          git apply ../CoolProp_patches/381c8535.patch
-          mkdir build
-          cd build
-          # build shared libs
-          cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_SHARED_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
-          cmake --build . --target INSTALL --config Release -j 8
-          # build static libs
-          # rm -r *
-          cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_STATIC_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
-          cmake --build . --target INSTALL --config Release -j 8
-
-      # # debug workflow
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
-
-      # build xThermo
-      - name: build xThermo
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo
-          mkdir build
-          cd build
-          # build static libraries and python API
-          cmake ..
-          cmake --build . --target INSTALL --config Release
-          # build shared libraries
-          cmake -DBUILD_SHARED=ON ..
-          cmake --build . --target INSTALL --config Release
+      # # build xThermo
+      # - name: build xThermo
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermo
+      #     mkdir build
+      #     cd build
+      #     # build static libraries and python API
+      #     cmake ..
+      #     cmake --build . --target INSTALL --config Release
+      #     # build shared libraries
+      #     cmake -DBUILD_SHARED=ON ..
+      #     cmake --build . --target INSTALL --config Release
       
-      # build Matlab API
-      - name: build Matlab API
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo/Library/API/Matlab
-          $ENV:PATH += ";C:\Program Files\MATLAB\R2022a\bin\win64"
-          mex prop_TPX.cpp -I'../../../install/include' -I'../../../install/include/PROST' -I'../../../install/include/CoolProp' -DNO_TIMER=1 -DFMT_USE_WINDOWS_H=0 -L'../../../install/SHARED' -lxThermo
-          mex P_X_Critical.cpp -I'../../../install/include' -I'../../../install/include/PROST' -I'../../../install/include/CoolProp' -DNO_TIMER=1 -DFMT_USE_WINDOWS_H=0 -L'../../../install/SHARED' -lxThermo
-          cp ../../../install/SHARED/*.dll .
-          cd ..
-          cp -r Matlab ../../install/API
+      # # build Matlab API
+      # - name: build Matlab API
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermo/Library/API/Matlab
+      #     $ENV:PATH += ";C:\Program Files\MATLAB\R2022a\bin\win64"
+      #     mex prop_TPX.cpp -I'../../../install/include' -I'../../../install/include/PROST' -I'../../../install/include/CoolProp' -DNO_TIMER=1 -DFMT_USE_WINDOWS_H=0 -L'../../../install/SHARED' -lxThermo
+      #     mex P_X_Critical.cpp -I'../../../install/include' -I'../../../install/include/PROST' -I'../../../install/include/CoolProp' -DNO_TIMER=1 -DFMT_USE_WINDOWS_H=0 -L'../../../install/SHARED' -lxThermo
+      #     cp ../../../install/SHARED/*.dll .
+      #     cd ..
+      #     cp -r Matlab ../../install/API
 
       
-      # package xThermo
-      - name: package library
-        run: | 
-          cd ${{env.HOME}}
-          mkdir xThermo_Windows
-          cp -r xThermo/install/* xThermo_Windows
-          7z a -tzip xThermo_Windows.zip xThermo_Windows
+      # # package xThermo
+      # - name: package library
+      #   run: | 
+      #     cd ${{env.HOME}}
+      #     mkdir xThermo_Windows
+      #     cp -r xThermo/install/* xThermo_Windows
+      #     7z a -tzip xThermo_Windows.zip xThermo_Windows
           
-      # upload library
-      - uses: actions/upload-artifact@v2
-        with:
-          name: xThermo_Windows_${{ env.SHORT_SHA }}
-          path: xThermo_Windows.zip
+      # # upload library
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: xThermo_Windows_${{ env.SHORT_SHA }}
+      #     path: xThermo_Windows.zip
