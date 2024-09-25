@@ -31,29 +31,29 @@ jobs:
       # checkout source code
       - uses: actions/checkout@v3
 
-      # config msbuild
-      - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v2
+      # # config msbuild
+      # - name: Add MSBuild to PATH
+      #   uses: microsoft/setup-msbuild@v2
 
-      # install Qt5
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2.13.0
-        with:
-          version: '5.15.2'
-          host: 'windows'
-          target: 'desktop'
-          dir: '${{ github.workspace }}/QT/'
+      # # install Qt5
+      # - name: Install Qt
+      #   uses: jurplel/install-qt-action@v2.13.0
+      #   with:
+      #     version: '5.15.2'
+      #     host: 'windows'
+      #     target: 'desktop'
+      #     dir: '${{ github.workspace }}/QT/'
 
-      # install dependencies, e.g. VTK, swig
-      - name: install dependencies
-        working-directory: ${{ env.GITHUB_WORKSPACE }}
-        run: |
-          git clone https://github.com/zguoch/dependencies_swEOS.git
-          cd dependencies_swEOS/windows
-          unzip -qq swigwin-4.0.2.zip
-          unzip -qq VTK_9.2-static.zip
-          unzip -qq gsl-msvc14-x64.2.3.0.2779.zip
-          unzip -qq gsl-msvc14-x86.2.3.0.2779.zip
+      # # install dependencies, e.g. VTK, swig
+      # - name: install dependencies
+      #   working-directory: ${{ env.GITHUB_WORKSPACE }}
+      #   run: |
+      #     git clone https://github.com/zguoch/dependencies_swEOS.git
+      #     cd dependencies_swEOS/windows
+      #     unzip -qq swigwin-4.0.2.zip
+      #     unzip -qq VTK_9.2-static.zip
+      #     unzip -qq gsl-msvc14-x64.2.3.0.2779.zip
+      #     unzip -qq gsl-msvc14-x86.2.3.0.2779.zip
 
       # clone xThermo source
       - name: clone source and compile library
