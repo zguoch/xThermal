@@ -82,7 +82,7 @@ jobs:
 
       # setup matlab environment
       - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
+        uses: matlab-actions/setup-matlab@v2
 
       # build ThirdParties
       - name: build ThirdParties
@@ -107,19 +107,19 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
-      # # build xThermo
-      # - name: build xThermo
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermo
-      #     mkdir build
-      #     cd build
-      #     # build static libraries and python API
-      #     cmake ..
-      #     cmake --build . --target INSTALL --config Release
-      #     # build shared libraries
-      #     cmake -DBUILD_SHARED=ON ..
-      #     cmake --build . --target INSTALL --config Release
+      # build xThermo
+      - name: build xThermo
+        run: |
+          cd ${{env.HOME}}
+          cd xThermo
+          mkdir build
+          cd build
+          # build static libraries and python API
+          cmake -DVTK_DIR=`pwd`/../../dependencies_xThermal/windows/VTK_9.2-static/Releasex64/lib/cmake/vtk-9.2 ..
+          cmake --build . --target INSTALL --config Release
+          # build shared libraries
+          cmake -DBUILD_SHARED=ON ..
+          cmake --build . --target INSTALL --config Release
       
       # # build Matlab API
       # - name: build Matlab API
