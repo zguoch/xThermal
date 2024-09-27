@@ -72,7 +72,7 @@ jobs:
         run: |
           cd ${{env.HOME}}
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      # - name: info 
+      - name: info 
         run: |
           cmake --version
           g++ --version
