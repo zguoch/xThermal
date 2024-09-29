@@ -103,10 +103,6 @@ jobs:
           cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_STATIC_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
           cmake --build . --target INSTALL --config Release -j 8
 
-      # debug workflow
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       # build xThermo
       - name: build xThermo
         run: |
@@ -142,6 +138,9 @@ jobs:
       #     cp -r xThermo/install/* xThermo_Windows
       #     7z a -tzip xThermo_Windows.zip xThermo_Windows
           
+        # debug workflow
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       # # upload library
       # - uses: actions/upload-artifact@v2
       #   with:
