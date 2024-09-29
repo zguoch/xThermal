@@ -39,6 +39,7 @@ jobs:
           mv Release 9.2.6-static-release
           cd ../gsl
           tar -zxvf gsl_Darwin_arm64.tar.gz
+          tar -zxvf gsl_Darwin_x86_64.tar.gz
           cd ../CoolProp
           tar -zxvf CoolProp_Darwin_arm64.tar.gz
 
