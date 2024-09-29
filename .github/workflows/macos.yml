@@ -106,11 +106,11 @@ jobs:
           # cp -rf xThermal/install/* xThermal_OSX
           zip -r xThermal_OSX.zip xThermal/install
           
-      # upload library
-      - uses: actions/upload-artifact@v2
-        with:
-          name: xThermal_OSX_${SHORT_SHA}
-          path: xThermal_OSX.zip
+      # # upload library
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: xThermal_OSX_${SHORT_SHA}
+      #     path: xThermal_OSX.zip
       
       # # tag 上传Release
       # - name: uploadRelease
