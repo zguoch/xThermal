@@ -103,19 +103,19 @@ jobs:
           cmake -DCOOLPROP_INSTALL_PREFIX=${{env.HOME}}/xThermo/ThirdParties/install/CoolProp -DCOOLPROP_STATIC_LIBRARY=ON -G "Visual Studio 17 2022" -DCMAKE_GENERATOR_PLATFORM=${{env.BUILD_PLATFORM}} ..
           cmake --build . --target INSTALL --config Release -j 8
 
-      # build xThermo
-      - name: build xThermo
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo
-          mkdir build
-          cd build
-          # build static libraries and python API
-          cmake -DVTK_DIR=`pwd`/../../dependencies_xThermal/windows/VTK_9.2-static/Releasex64/lib/cmake/vtk-9.2 ..
-          cmake --build . --target INSTALL --config Release
-          # build shared libraries
-          cmake -DBUILD_SHARED=ON ..
-          cmake --build . --target INSTALL --config Release
+      # # build xThermo
+      # - name: build xThermo
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermo
+      #     mkdir build
+      #     cd build
+      #     # build static libraries and python API
+      #     cmake -DVTK_DIR=`pwd`/../../dependencies_xThermal/windows/VTK_9.2-static/Releasex64/lib/cmake/vtk-9.2 ..
+      #     cmake --build . --target INSTALL --config Release
+      #     # build shared libraries
+      #     cmake -DBUILD_SHARED=ON ..
+      #     cmake --build . --target INSTALL --config Release
       
       # # build Matlab API
       # - name: build Matlab API
