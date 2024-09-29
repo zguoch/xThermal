@@ -132,11 +132,12 @@ jobs:
           cp -r xThermal/install/* xThermal_Windows
           7z a -tzip xThermal_Windows.zip xThermal_Windows
           
-        # debug workflow
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      #   # debug workflow
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+
       # upload library
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: xThermal_Windows_${SHORT_SHA}
           path: xThermal_Windows.zip
