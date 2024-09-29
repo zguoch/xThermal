@@ -1,7 +1,7 @@
 name: Windows
 on: 
   push:
-    branches: mainx
+    branches: main
     tags:
       - 'V*'
 env:
@@ -139,5 +139,5 @@ jobs:
       # upload library
       - uses: actions/upload-artifact@v3
         with:
-          name: xThermal_Windows_${SHORT_SHA}
+          name: xThermal_Windows_py${{ matrix.python-version }}_$(git rev-parse --short HEAD)
           path: xThermal_Windows.zip

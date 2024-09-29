@@ -29,10 +29,21 @@ jobs:
           brew install libomp
           brew install automake
           brew install hugo
-          # brew install vtk@8.2
-          # export LDFLAGS="-L/usr/local/opt/vtk@8.2/lib"
-          # export CPPFLAGS="-I/usr/local/opt/vtk@8.2/include"
       
+      # install dependencies, e.g. VTK, swig
+      - name: install dependencies
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+        run: |
+          git clone https://github.com/zguoch/dependencies_swEOS.git dependencies_xThermal
+          cd dependencies_xThermal/MacOS/VTK
+          tar -zxvf 9.2.6-static-release.tar.gz
+          mv Release 9.2.6-static-release
+          cd ../gsl
+          tar -zxvf gsl_Darwin_arm64.tar.gz
+          cd ../CoolProp
+          tar -zxvf CoolProp_Darwin_arm64.tar.gz
+
+
       # clone xThermal source
       - name: clone source and compile library
         run: |
@@ -61,14 +72,17 @@ jobs:
       - name: Set up MATLAB
         uses: matlab-actions/setup-matlab@v2
 
-      # # build ThirdParties
-      # - name: build ThirdParties
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermal
-      #     cd ThirdParties
-      #     bash CoolProp.sh
-      #     bash gsl.sh
+      # build ThirdParties
+      - name: build ThirdParties
+        run: |
+          cd ${{env.HOME}}
+          cd xThermal
+          cd ThirdParties
+          # bash CoolProp.sh
+          # bash gsl.sh
+          mkdir install
+          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_arm64 .
+          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/CoolProp/CoolProp_Darwin_arm64 .
 
       # # build xThermal
       # - name: build xThermal
@@ -89,22 +103,22 @@ jobs:
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
-      # build Matlab API
-      - name: build Matlab API
-        run: |
-          cd ${{env.HOME}}
-          cd xThermal/Library/API/Matlab
-          bash make.sh
-          cd ..
-          cp -rf Matlab ../../install/API
+      # # build Matlab API
+      # - name: build Matlab API
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal/Library/API/Matlab
+      #     bash make.sh
+      #     cd ..
+      #     cp -rf Matlab ../../install/API
 
-      # package xThermal
-      - name: package library
-        run: | 
-          cd ${{env.HOME}}
-          # mkdir xThermal_OSX
-          # cp -rf xThermal/install/* xThermal_OSX
-          zip -r xThermal_OSX.zip xThermal/install
+      # # package xThermal
+      # - name: package library
+      #   run: | 
+      #     cd ${{env.HOME}}
+      #     # mkdir xThermal_OSX
+      #     # cp -rf xThermal/install/* xThermal_OSX
+      #     zip -r xThermal_OSX.zip xThermal/install
           
       # # upload library
       # - uses: actions/upload-artifact@v3
