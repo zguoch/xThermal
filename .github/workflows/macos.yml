@@ -15,7 +15,6 @@ jobs:
       APPLEDEVELOPERID_APP: ${{ secrets.APPLEDEVELOPERID_APP }}
       access_token: ${{ secrets.access_token }}
       SourceCodeRepoPWD: ${{ secrets.SourceCodeRepoPWD }}
-      QT_DIR: /usr/local/Cellar/qt@5/5.15.2
       Path_Pythons: /Users/runner/hostedtoolcache/Python
       AppInstaller: xThermal-MacOSX-Installer
       HOME: /Users/runner/work/xThermal/xThermal
@@ -81,50 +80,48 @@ jobs:
           # bash CoolProp.sh
           # bash gsl.sh
           mkdir install
+          cd install
           cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_arm64 .
+          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_x86_64 .
           cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/CoolProp/CoolProp_Darwin_arm64 .
 
-      # # build xThermal
-      # - name: build xThermal
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermal
-      #     mkdir build
-      #     cd build
-      #     cmake ..
-      #     make 
-      #     make install
-          
+      # build xThermal
+      - name: build xThermal
+        run: |
+          cd ${{env.HOME}}
+          cd xThermal
+          mkdir build
+          cd build
+          export Qt5_DIR=/opt/homebrew/Cellar/qt@5/5.15.13_1/lib/cmake/Qt5
+          export PATH="/opt/homebrew/Cellar/qt@5/5.15.13_1/bin:$PATH"
+          export VTK_DIR=${{env.HOME}}/dependencies_xThermal/MacOS/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
+          cmake ..
+          make 
+          macdeployqt xThermal.app -dmg
+          make install
+          # build matlab api
+          cmake -DBuild_API_Matlab=ON ..
+          make install
 
-      # debug workflow through ssh
+      # # debug workflow through ssh
       # - name: install oh my zsh
       #   run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
-      # # build Matlab API
-      # - name: build Matlab API
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermal/Library/API/Matlab
-      #     bash make.sh
-      #     cd ..
-      #     cp -rf Matlab ../../install/API
-
-      # # package xThermal
-      # - name: package library
-      #   run: | 
-      #     cd ${{env.HOME}}
-      #     # mkdir xThermal_OSX
-      #     # cp -rf xThermal/install/* xThermal_OSX
-      #     zip -r xThermal_OSX.zip xThermal/install
+      # package xThermal
+      - name: package library
+        run: | 
+          cd ${{env.HOME}}
+          # mkdir xThermal_OSX
+          # cp -rf xThermal/install/* xThermal_OSX
+          zip -r xThermal_OSX.zip xThermal/install
           
-      # # upload library
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: xThermal_OSX_${SHORT_SHA}
-      #     path: xThermal_OSX.zip
+      # upload library
+      - uses: actions/upload-artifact@v3
+        with:
+          name: xThermal_OSX_${SHORT_SHA}
+          path: xThermal_OSX.zip
       
       # # tag 上传Release
       # - name: uploadRelease
