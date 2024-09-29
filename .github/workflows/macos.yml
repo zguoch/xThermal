@@ -1,12 +1,12 @@
 name: MacOS
 on: 
   push:
-    branches: mainx
+    branches: main
     tags:
       - 'V*'
 jobs:
   buildApp:
-    name: build xThermo
+    name: build xThermal
     runs-on: macos-latest
     env:
       MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
@@ -17,8 +17,8 @@ jobs:
       SourceCodeRepoPWD: ${{ secrets.SourceCodeRepoPWD }}
       QT_DIR: /usr/local/Cellar/qt@5/5.15.2
       Path_Pythons: /Users/runner/hostedtoolcache/Python
-      AppInstaller: xThermo-MacOSX-Installer
-      HOME: /Users/runner/work/xThermo/xThermo
+      AppInstaller: xThermal-MacOSX-Installer
+      HOME: /Users/runner/work/xThermal/xThermal
     steps:
       # checkout source code
       - uses: actions/checkout@v2
@@ -33,17 +33,17 @@ jobs:
           # export LDFLAGS="-L/usr/local/opt/vtk@8.2/lib"
           # export CPPFLAGS="-I/usr/local/opt/vtk@8.2/include"
       
-      # clone xThermo source
+      # clone xThermal source
       - name: clone source and compile library
         run: |
-          git clone https://${{env.access_token}}@github.com/zguoch/xThermo_source.git xThermo
-          cd xThermo
+          git clone https://${{env.access_token}}@github.com/zguoch/xThermal_source.git xThermal
+          cd xThermal
           git submodule update --init --recursive
   
       # get short SHA of commit 
       - name: Add SHORT_SHA env property with commit short sha
         run: |
-          cd ${{env.HOME}}/xThermo
+          cd ${{env.HOME}}/xThermal
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       
@@ -53,64 +53,64 @@ jobs:
           cmake --version
           g++ --version
           echo ${{ github.ref }}
-          echo "Short commit ID of xThermo is " ${SHORT_SHA}
-          echo "Git tag of xThermo is : " ${GIT_TAG}
+          echo "Short commit ID of xThermal is $SHORT_SHA"
+          echo "Git tag of xThermal is : ${GIT_TAG}"
           python3 --version
       
       # setup matlab environment
       - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
+        uses: matlab-actions/setup-matlab@v2
 
-      # build ThirdParties
-      - name: build ThirdParties
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo
-          cd ThirdParties
-          bash CoolProp.sh
-          bash gsl.sh
+      # # build ThirdParties
+      # - name: build ThirdParties
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal
+      #     cd ThirdParties
+      #     bash CoolProp.sh
+      #     bash gsl.sh
 
-      # build xThermo
-      - name: build xThermo
-        run: |
-          cd ${{env.HOME}}
-          cd xThermo
-          mkdir build
-          cd build
-          cmake ..
-          make 
-          make install
+      # # build xThermal
+      # - name: build xThermal
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal
+      #     mkdir build
+      #     cd build
+      #     cmake ..
+      #     make 
+      #     make install
           
 
-      # # debug workflow through ssh
+      # debug workflow through ssh
       # - name: install oh my zsh
       #   run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       # build Matlab API
       - name: build Matlab API
         run: |
           cd ${{env.HOME}}
-          cd xThermo/Library/API/Matlab
+          cd xThermal/Library/API/Matlab
           bash make.sh
           cd ..
           cp -rf Matlab ../../install/API
 
-      # package xThermo
+      # package xThermal
       - name: package library
         run: | 
           cd ${{env.HOME}}
-          # mkdir xThermo_OSX
-          # cp -rf xThermo/install/* xThermo_OSX
-          zip -r xThermo_OSX.zip xThermo/install
+          # mkdir xThermal_OSX
+          # cp -rf xThermal/install/* xThermal_OSX
+          zip -r xThermal_OSX.zip xThermal/install
           
       # upload library
       - uses: actions/upload-artifact@v2
         with:
-          name: xThermo_OSX_${{ env.SHORT_SHA }}
-          path: xThermo_OSX.zip
+          name: xThermal_OSX_${SHORT_SHA}
+          path: xThermal_OSX.zip
       
       # # tag 上传Release
       # - name: uploadRelease
