@@ -88,23 +88,23 @@ jobs:
           cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_x86_64 .
           cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/CoolProp/CoolProp_Darwin_arm64 .
 
-      # build xThermal
-      - name: build xThermal
-        run: |
-          cd ${{env.HOME}}
-          cd xThermal
-          mkdir build
-          cd build
-          export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
-          export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
-          export VTK_DIR=${{env.HOME}}/dependencies_xThermal/MacOS/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
-          cmake ..
-          make 
-          macdeployqt xThermal.app -dmg
-          make install
-          # build matlab api
-          cmake -DBuild_API_Matlab=ON ..
-          make install
+      # # build xThermal
+      # - name: build xThermal
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal
+      #     mkdir build
+      #     cd build
+      #     export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
+      #     export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+      #     export VTK_DIR=${{env.HOME}}/dependencies_xThermal/MacOS/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
+      #     cmake ..
+      #     make 
+      #     macdeployqt xThermal.app -dmg
+      #     make install
+      #     # build matlab api
+      #     cmake -DBuild_API_Matlab=ON ..
+      #     make install
 
       # debug workflow through ssh
       - name: install oh my zsh
