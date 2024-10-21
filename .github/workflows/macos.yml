@@ -1,7 +1,7 @@
 name: MacOS
 on: 
   push:
-    branches: main
+    branches: mainx
     tags:
       - 'V*'
 jobs:
@@ -41,6 +41,8 @@ jobs:
           brew install hugo
           brew install qt@5
           pip install twine
+          pip install wheel
+
       # install dependencies, e.g. VTK, swig
       - name: install dependencies
         working-directory: ${{ env.GITHUB_WORKSPACE }}
@@ -131,12 +133,35 @@ jobs:
           cd ${{env.HOME}}
           # mkdir xThermal_OSX
           # cp -rf xThermal/install/* xThermal_OSX
-          zip -r xThermal_OSX.zip xThermal/install
+          zip -r xThermal_OSX_arm64.zip xThermal/install
+          zip -r xThermal_OSX_App_arm64.zip xThermal/install/App
           
       # upload library
       - uses: actions/upload-artifact@v3
         with:
           name: xThermal_OSX_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
-          path: xThermal_OSX.zip
+          path: xThermal_OSX_arm64.zip
       
+      # tag 上传Release
+      - name: uploadRelease
+        if: startsWith(github.event.ref, 'refs/tags/')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # 文章发表之前只上传app，不上传源代码
+          file: ${{env.HOME}}/xThermal_OSX_App.zip
+          asset_name: xThermal_OSX_App_arm64.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+      # # tag upload Python APIs
+      # - name: uploadRelease
+      #   if: startsWith(github.event.ref, 'refs/tags/')
+      #   uses: svenstaro/upload-release-action@v2
+      #   with:
+      #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+      #     file: API_Python_MacOSX.zip
+      #     asset_name: API_Python_MacOSX.zip
+      #     tag: ${{ github.ref }}
+      #     overwrite: true
+
 

@@ -1,7 +1,7 @@
 name: MacOS
 on: 
   push:
-    branches: mainx
+    branches: main
     tags:
       - 'V*'
 jobs:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         # get more versions information: https://github.com/actions/runner-images?tab=readme-ov-file
-        python-version: ['3.8', '3.9', '3.10', '3.11','3.12', '3.13'] 
+        python-version: ['3.8']  #, '3.9', '3.10', '3.11','3.12', '3.13'
     steps:
       # checkout source code
       - uses: actions/checkout@v2
@@ -41,6 +41,8 @@ jobs:
           brew install hugo
           brew install qt@5
           pip install twine
+          pip install wheel
+
       # install dependencies, e.g. VTK, swig
       - name: install dependencies
         working-directory: ${{ env.GITHUB_WORKSPACE }}
@@ -131,12 +133,12 @@ jobs:
           cd ${{env.HOME}}
           # mkdir xThermal_OSX
           # cp -rf xThermal/install/* xThermal_OSX
-          zip -r xThermal_OSX.zip xThermal/install
+          zip -r xThermal_OSX_x86_64.zip xThermal/install
           
       # upload library
       - uses: actions/upload-artifact@v3
         with:
-          name: xThermal_OSX_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
-          path: xThermal_OSX.zip
+          name: xThermal_OSX_x86_64_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
+          path: xThermal_OSX_x86_64.zip
       
 
