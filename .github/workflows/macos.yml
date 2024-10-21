@@ -38,27 +38,27 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      # # install dependencies, e.g. VTK, swig
-      # - name: install dependencies
-      #   working-directory: ${{ env.GITHUB_WORKSPACE }}
-      #   run: |
-      #     git clone https://github.com/zguoch/dependencies_swEOS.git dependencies_xThermal
-      #     cd dependencies_xThermal/MacOS/VTK
-      #     tar -zxvf 9.2.6-static-release.tar.gz
-      #     mv Release 9.2.6-static-release
-      #     cd ../gsl
-      #     tar -zxvf gsl_Darwin_arm64.tar.gz
-      #     tar -zxvf gsl_Darwin_x86_64.tar.gz
-      #     cd ../CoolProp
-      #     tar -zxvf CoolProp_Darwin_arm64.tar.gz
+      # install dependencies, e.g. VTK, swig
+      - name: install dependencies
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+        run: |
+          git clone https://github.com/zguoch/dependencies_swEOS.git dependencies_xThermal
+          cd dependencies_xThermal/MacOS/VTK
+          tar -zxvf 9.2.6-static-release.tar.gz
+          mv Release 9.2.6-static-release
+          cd ../gsl
+          tar -zxvf gsl_Darwin_arm64.tar.gz
+          tar -zxvf gsl_Darwin_x86_64.tar.gz
+          cd ../CoolProp
+          tar -zxvf CoolProp_Darwin_arm64.tar.gz
 
 
-      # # clone xThermal source
-      # - name: clone source and compile library
-      #   run: |
-      #     git clone https://${{env.access_token}}@github.com/zguoch/xThermal_source.git xThermal
-      #     cd xThermal
-      #     git submodule update --init --recursive
+      # clone xThermal source
+      - name: clone source and compile library
+        run: |
+          git clone https://${{env.access_token}}@github.com/zguoch/xThermal_source.git xThermal
+          cd xThermal
+          git submodule update --init --recursive
   
       # get short SHA of commit 
       - name: Add SHORT_SHA env property with commit short sha
