@@ -1,7 +1,7 @@
 name: MacOS
 on: 
   push:
-    branches: mainx
+    # branches: main
     tags:
       - 'V*'
 jobs:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         # get more versions information: https://github.com/actions/runner-images?tab=readme-ov-file
-        python-version: ['3.8'] #, '3.9', '3.10', '3.11','3.12', '3.13'
+        python-version: ['3.8', '3.9', '3.10', '3.11','3.12', '3.13']
     steps:
       # checkout source code
       - uses: actions/checkout@v2
