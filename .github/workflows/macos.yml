@@ -11,6 +11,7 @@ jobs:
     env:
       MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
       MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
+      PYPI_PUBLISH_TOKEN: ${{ secrets.PYPI_PUBLISH_TOKEN }}
       TMP_PWD: hydrothermalfoam
       APPLEDEVELOPERID_APP: ${{ secrets.APPLEDEVELOPERID_APP }}
       access_token: ${{ secrets.access_token }}
@@ -20,10 +21,17 @@ jobs:
       HOME: /Users/runner/work/xThermal/xThermal
     strategy:
       matrix:
-        python-version: ['3.8', '3.9', '3.10', '3.11','3.12'] 
+        # get more versions information: https://github.com/actions/runner-images?tab=readme-ov-file
+        python-version: ['3.8', '3.9', '3.10', '3.11','3.12', '3.13'] 
     steps:
       # checkout source code
       - uses: actions/checkout@v2
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
       - name: install dependence
         run: |
           # brew install tcl-tk
@@ -32,12 +40,7 @@ jobs:
           brew install automake
           brew install hugo
           brew install qt@5
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-
+          pip install twine
       # install dependencies, e.g. VTK, swig
       - name: install dependencies
         working-directory: ${{ env.GITHUB_WORKSPACE }}
@@ -108,13 +111,15 @@ jobs:
           export VTK_DIR=${{env.HOME}}/dependencies_xThermal/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
           # OpenGL版本问题导致之前在电脑上编译的vtk需要依赖MacOSX14.4.sdk，其实14.5也能用，但是为了防止cmake出错，就这样搞一下
           sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
-          cmake ..
+          cmake -DPYPI_TOKEN=${{env.PYPI_PUBLISH_TOKEN}} ..
           make 
           macdeployqt xThermal.app -dmg
           make install
           # build matlab api
           cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
           make install
+          cd ../install/API/python/cp${{ matrix.python-version }}
+          bash publish.sh
 
       # # debug workflow through ssh
       # - name: install oh my zsh
