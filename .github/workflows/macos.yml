@@ -22,157 +22,126 @@ jobs:
     strategy:
       matrix:
         # get more versions information: https://github.com/actions/runner-images?tab=readme-ov-file
-        python-version: ['3.8'] #, '3.9', '3.10', '3.11','3.12', '3.13'
+        python-version: ['3.8','3.9', '3.10', '3.11','3.12', '3.13'] #, 
     steps:
       # checkout source code
       - uses: actions/checkout@v2
       
-      # - name: Set up Python ${{ matrix.python-version }}
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
 
-      # - name: install dependence
-      #   run: |
-      #     # brew install tcl-tk
-      #     brew install swig
-      #     brew install libomp
-      #     brew install automake
-      #     brew install hugo
-      #     brew install qt@5
-      #     pip install twine
-      #     pip install wheel
+      - name: install dependence
+        run: |
+          # brew install tcl-tk
+          brew install swig
+          brew install libomp
+          brew install automake
+          brew install hugo
+          brew install qt@5
+          pip install twine
+          pip install wheel
 
-      # # install dependencies, e.g. VTK, swig
-      # - name: install dependencies
-      #   working-directory: ${{ env.GITHUB_WORKSPACE }}
-      #   run: |
-      #     git clone https://github.com/zguoch/dep_xThermal_macos.git dependencies_xThermal
-      #     cd dependencies_xThermal/VTK
-      #     tar -zxvf 9.2.6-static-release.tar.gz
-      #     mv Release 9.2.6-static-release
-      #     cd ../gsl
-      #     tar -zxvf gsl_Darwin_arm64.tar.gz
-      #     cd ../CoolProp
-      #     tar -zxvf CoolProp_Darwin_arm64.tar.gz
+      # install dependencies, e.g. VTK, swig
+      - name: install dependencies
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+        run: |
+          git clone https://github.com/zguoch/dep_xThermal_macos.git dependencies_xThermal
+          cd dependencies_xThermal/VTK
+          tar -zxvf 9.2.6-static-release.tar.gz
+          mv Release 9.2.6-static-release
+          cd ../gsl
+          tar -zxvf gsl_Darwin_arm64.tar.gz
+          cd ../CoolProp
+          tar -zxvf CoolProp_Darwin_arm64.tar.gz
 
 
-      # # clone xThermal source
-      # - name: clone source and compile library
-      #   run: |
-      #     git clone https://${{env.access_token}}@github.com/zguoch/xThermal_source.git xThermal
-      #     cd xThermal
-      #     git submodule update --init --recursive
+      # clone xThermal source
+      - name: clone source and compile library
+        run: |
+          git clone https://${{env.access_token}}@github.com/zguoch/xThermal_source.git xThermal
+          cd xThermal
+          git submodule update --init --recursive
   
-      # # get short SHA of commit 
-      # - name: Add SHORT_SHA env property with commit short sha
-      #   run: |
-      #     cd ${{env.HOME}}/xThermal
-      #     echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      #     echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      # get short SHA of commit 
+      - name: Add SHORT_SHA env property with commit short sha
+        run: |
+          cd ${{env.HOME}}/xThermal
+          echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       
-      # # print some information
-      # - name: info 
-      #   run: |
-      #     cmake --version
-      #     g++ --version
-      #     echo ${{ github.ref }}
-      #     echo "Short commit ID of xThermal is $SHORT_SHA"
-      #     echo "Git tag of xThermal is : ${GIT_TAG}"
-      #     python3 --version
+      # print some information
+      - name: info 
+        run: |
+          cmake --version
+          g++ --version
+          echo ${{ github.ref }}
+          echo "Short commit ID of xThermal is $SHORT_SHA"
+          echo "Git tag of xThermal is : ${GIT_TAG}"
+          python3 --version
       
-      # # setup matlab environment
-      # - name: Set up MATLAB
-      #   uses: matlab-actions/setup-matlab@v2
+      # setup matlab environment
+      - name: Set up MATLAB
+        uses: matlab-actions/setup-matlab@v2
 
 
-      # # build ThirdParties
-      # - name: build ThirdParties
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermal
-      #     cd ThirdParties
-      #     # bash CoolProp.sh
-      #     # bash gsl.sh
-      #     mkdir install
-      #     cd install
-      #     cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_arm64 .
-      #     cp -rf ${{env.HOME}}/dependencies_xThermal/CoolProp/CoolProp_Darwin_arm64 .
+      # build ThirdParties
+      - name: build ThirdParties
+        run: |
+          cd ${{env.HOME}}
+          cd xThermal
+          cd ThirdParties
+          # bash CoolProp.sh
+          # bash gsl.sh
+          mkdir install
+          cd install
+          cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_arm64 .
+          cp -rf ${{env.HOME}}/dependencies_xThermal/CoolProp/CoolProp_Darwin_arm64 .
 
-      # # build xThermal
-      # - name: build xThermal
-      #   run: |
-      #     cd ${{env.HOME}}
-      #     cd xThermal
-      #     mkdir build
-      #     cd build
-      #     export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
-      #     export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
-      #     export VTK_DIR=${{env.HOME}}/dependencies_xThermal/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
-      #     # OpenGL版本问题导致之前在电脑上编译的vtk需要依赖MacOSX14.4.sdk，其实14.5也能用，但是为了防止cmake出错，就这样搞一下
-      #     sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
-      #     cmake -DPYPI_TOKEN=${{env.PYPI_PUBLISH_TOKEN}} ..
-      #     make 
-      #     macdeployqt xThermal.app -dmg
-      #     make install
-      #     # build matlab api
-      #     cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
-      #     make install
-      #     cd ../install/API/python/cp${{ matrix.python-version }}
-      #     # bash publish.sh
+      # build xThermal
+      - name: build xThermal
+        run: |
+          cd ${{env.HOME}}
+          cd xThermal
+          mkdir build
+          cd build
+          export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
+          export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+          export VTK_DIR=${{env.HOME}}/dependencies_xThermal/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
+          # OpenGL版本问题导致之前在电脑上编译的vtk需要依赖MacOSX14.4.sdk，其实14.5也能用，但是为了防止cmake出错，就这样搞一下
+          sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
+          cmake -DPYPI_TOKEN=${{env.PYPI_PUBLISH_TOKEN}} ..
+          make 
+          macdeployqt xThermal.app -dmg
+          make install
+          # build matlab api
+          cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
+          make install
+          cd ../install/API/python/cp${{ matrix.python-version }}
+          # bash publish.sh
 
-      # # package xThermal
-      # - name: package library
-      #   run: | 
-      #     cd ${{env.HOME}}
-      #     # mkdir xThermal_OSX
-      #     # cp -rf xThermal/install/* xThermal_OSX
-      #     zip -r xThermal_OSX_arm64.zip xThermal/install
-      #     zip -r xThermal_OSX_App_arm64.zip xThermal/install/App
+      # package xThermal
+      - name: package library
+        run: | 
+          cd ${{env.HOME}}
+          # mkdir xThermal_OSX
+          # cp -rf xThermal/install/* xThermal_OSX
+          zip -r xThermal_OSX_arm64.zip xThermal/install
+          zip -r xThermal_OSX_App_arm64.zip xThermal/install/App
           
-      # # debug workflow through ssh
-      # - name: install oh my zsh
-      #   run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
+      # debug workflow through ssh
+      - name: install oh my zsh
+        run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
-      # # upload library
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: xThermal_OSX_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
-      #     path: xThermal_OSX_arm64.zip
+      # upload library
+      - uses: actions/upload-artifact@v3
+        with:
+          name: xThermal_OSX_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
+          path: xThermal_OSX_arm64.zip
       
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ${{env.HOME}}/README.md
-          asset_name: my-artifact.zip
-          asset_content_type: application/zip
-
-
-      # - name: Upload Release Assets
-      #   uses: actions/upload-release-asset@v1
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ${{env.HOME}}/README.md  # 替换为你的文件路径
-      #     asset_name: readme.md1  # 替换为你希望在发布中显示的文件名
-      #     asset_content_type: application/octet-stream
-
       # # tag 上传Release
       # - name: uploadRelease
       #   if: startsWith(github.event.ref, 'refs/tags/')
