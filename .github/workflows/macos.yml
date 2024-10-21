@@ -42,8 +42,8 @@ jobs:
       - name: install dependencies
         working-directory: ${{ env.GITHUB_WORKSPACE }}
         run: |
-          git clone https://github.com/zguoch/dependencies_xthermal.git dependencies_xThermal
-          cd dependencies_xThermal/MacOS/VTK
+          git clone https://github.com/zguoch/dep_xThermal_macos.git dependencies_xThermal
+          cd dependencies_xThermal/VTK
           tar -zxvf 9.2.6-static-release.tar.gz
           mv Release 9.2.6-static-release
           cd ../gsl
@@ -60,80 +60,80 @@ jobs:
           cd xThermal
           git submodule update --init --recursive
   
-      # get short SHA of commit 
-      - name: Add SHORT_SHA env property with commit short sha
-        run: |
-          cd ${{env.HOME}}/xThermal
-          echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      # # get short SHA of commit 
+      # - name: Add SHORT_SHA env property with commit short sha
+      #   run: |
+      #     cd ${{env.HOME}}/xThermal
+      #     echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+      #     echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       
-      # print some information
-      - name: info 
-        run: |
-          cmake --version
-          g++ --version
-          echo ${{ github.ref }}
-          echo "Short commit ID of xThermal is $SHORT_SHA"
-          echo "Git tag of xThermal is : ${GIT_TAG}"
-          python3 --version
+      # # print some information
+      # - name: info 
+      #   run: |
+      #     cmake --version
+      #     g++ --version
+      #     echo ${{ github.ref }}
+      #     echo "Short commit ID of xThermal is $SHORT_SHA"
+      #     echo "Git tag of xThermal is : ${GIT_TAG}"
+      #     python3 --version
       
-      # setup matlab environment
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v2
+      # # setup matlab environment
+      # - name: Set up MATLAB
+      #   uses: matlab-actions/setup-matlab@v2
 
 
-      # build ThirdParties
-      - name: build ThirdParties
-        run: |
-          cd ${{env.HOME}}
-          cd xThermal
-          cd ThirdParties
-          # bash CoolProp.sh
-          # bash gsl.sh
-          mkdir install
-          cd install
-          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_arm64 .
-          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/gsl/gsl_Darwin_x86_64 .
-          cp -rf ${{env.HOME}}/dependencies_xThermal/MacOS/CoolProp/CoolProp_Darwin_arm64 .
+      # # build ThirdParties
+      # - name: build ThirdParties
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal
+      #     cd ThirdParties
+      #     # bash CoolProp.sh
+      #     # bash gsl.sh
+      #     mkdir install
+      #     cd install
+      #     cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_arm64 .
+      #     cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_x86_64 .
+      #     cp -rf ${{env.HOME}}/dependencies_xThermal/CoolProp/CoolProp_Darwin_arm64 .
 
-      # build xThermal
-      - name: build xThermal
-        run: |
-          cd ${{env.HOME}}
-          cd xThermal
-          mkdir build
-          cd build
-          export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
-          export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
-          export VTK_DIR=${{env.HOME}}/dependencies_xThermal/MacOS/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
-          # OpenGL版本问题导致之前在电脑上编译的vtk需要依赖MacOSX14.4.sdk，其实14.5也能用，但是为了防止cmake出错，就这样搞一下
-          sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
-          cmake ..
-          make 
-          macdeployqt xThermal.app -dmg
-          make install
-          # build matlab api
-          cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
-          make install
+      # # build xThermal
+      # - name: build xThermal
+      #   run: |
+      #     cd ${{env.HOME}}
+      #     cd xThermal
+      #     mkdir build
+      #     cd build
+      #     export Qt5_DIR=/opt/homebrew/opt/qt@5/lib/cmake/Qt5
+      #     export PATH="/opt/homebrew/opt/qt@5/bin:$PATH"
+      #     export VTK_DIR=${{env.HOME}}/dependencies_xThermal/VTK/9.2.6-static-release/lib/cmake/vtk-9.2
+      #     # OpenGL版本问题导致之前在电脑上编译的vtk需要依赖MacOSX14.4.sdk，其实14.5也能用，但是为了防止cmake出错，就这样搞一下
+      #     sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX14.5.sdk /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
+      #     cmake ..
+      #     make 
+      #     macdeployqt xThermal.app -dmg
+      #     make install
+      #     # build matlab api
+      #     cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
+      #     make install
 
-      # # # debug workflow through ssh
-      # # - name: install oh my zsh
-      # #   run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      # # - name: Setup tmate session
-      # #   uses: mxschmitt/action-tmate@v3
+      # debug workflow through ssh
+      - name: install oh my zsh
+        run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
-      # package xThermal
-      - name: package library
-        run: | 
-          cd ${{env.HOME}}
-          # mkdir xThermal_OSX
-          # cp -rf xThermal/install/* xThermal_OSX
-          zip -r xThermal_OSX.zip xThermal/install
+      # # package xThermal
+      # - name: package library
+      #   run: | 
+      #     cd ${{env.HOME}}
+      #     # mkdir xThermal_OSX
+      #     # cp -rf xThermal/install/* xThermal_OSX
+      #     zip -r xThermal_OSX.zip xThermal/install
           
-      # upload library
-      - uses: actions/upload-artifact@v3
-        with:
-          name: xThermal_OSX_${{ env.SHORT_SHA }}
-          path: xThermal_OSX.zip
+      # # upload library
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: xThermal_OSX_${{ env.SHORT_SHA }}
+      #     path: xThermal_OSX.zip
       
 
