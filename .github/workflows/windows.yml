@@ -71,8 +71,9 @@ jobs:
       # get short SHA of commit 
       - name: Add SHORT_SHA env property with commit short sha
         run: |
-          cd ${{env.HOME}}
+          cd ${{env.HOME}}/xThermal
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: info 
         run: |
           cmake --version
@@ -139,5 +140,5 @@ jobs:
       # upload library
       - uses: actions/upload-artifact@v3
         with:
-          name: xThermal_Windows_py${{ matrix.python-version }}_$(git rev-parse --short HEAD)
+          name: xThermal_Windows_${{ env.SHORT_SHA }}_py${{ matrix.python-version }}
           path: xThermal_Windows.zip
