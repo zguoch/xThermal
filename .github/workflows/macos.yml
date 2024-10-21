@@ -1,7 +1,7 @@
 name: MacOS
 on: 
   push:
-    # branches: main
+    branches: main
     tags:
       - 'V*'
 jobs:
@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         # get more versions information: https://github.com/actions/runner-images?tab=readme-ov-file
-        python-version: ['3.8', '3.9', '3.10', '3.11','3.12', '3.13']
+        python-version: ['3.8'] #, '3.9', '3.10', '3.11','3.12', '3.13'
     steps:
       # checkout source code
       - uses: actions/checkout@v2
@@ -121,12 +121,6 @@ jobs:
           cd ../install/API/python/cp${{ matrix.python-version }}
           # bash publish.sh
 
-      # debug workflow through ssh
-      - name: install oh my zsh
-        run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       # package xThermal
       - name: package library
         run: | 
@@ -136,6 +130,12 @@ jobs:
           zip -r xThermal_OSX_arm64.zip xThermal/install
           zip -r xThermal_OSX_App_arm64.zip xThermal/install/App
           
+      # debug workflow through ssh
+      - name: install oh my zsh
+        run: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       # upload library
       - uses: actions/upload-artifact@v3
         with:

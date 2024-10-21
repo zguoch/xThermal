@@ -2,8 +2,8 @@ name: MacOS
 on: 
   push:
     branches: mainx
-    tags:
-      - 'V*'
+    # tags:
+    #   - 'V*'
 jobs:
   buildApp:
     name: build xThermal
