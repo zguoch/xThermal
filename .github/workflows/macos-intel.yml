@@ -1,13 +1,13 @@
 name: MacOS
 on: 
   push:
-    branches: mainx
+    branches: main
     tags:
       - 'V*'
 jobs:
   buildApp:
     name: build xThermal
-    runs-on: macos-latest
+    runs-on: macos-latest-large
     env:
       MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
       MACOS_CERTIFICATE_PWD: ${{ secrets.MACOS_CERTIFICATE_PWD }}
@@ -50,10 +50,9 @@ jobs:
           tar -zxvf 9.2.6-static-release.tar.gz
           mv Release 9.2.6-static-release
           cd ../gsl
-          tar -zxvf gsl_Darwin_arm64.tar.gz
           tar -zxvf gsl_Darwin_x86_64.tar.gz
           cd ../CoolProp
-          tar -zxvf CoolProp_Darwin_arm64.tar.gz
+          tar -zxvf CoolProp_Darwin_x86_64.tar.gz
 
 
       # clone xThermal source
@@ -95,9 +94,8 @@ jobs:
           # bash gsl.sh
           mkdir install
           cd install
-          cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_arm64 .
           cp -rf ${{env.HOME}}/dependencies_xThermal/gsl/gsl_Darwin_x86_64 .
-          cp -rf ${{env.HOME}}/dependencies_xThermal/CoolProp/CoolProp_Darwin_arm64 .
+          cp -rf ${{env.HOME}}/dependencies_xThermal/CoolProp/CoolProp_Darwin_x86_64 .
 
       # build xThermal
       - name: build xThermal
@@ -116,7 +114,7 @@ jobs:
           macdeployqt xThermal.app -dmg
           make install
           # build matlab api
-          cmake -DBuild_API_Matlab=ON -DARCH_MATLAB=arm64 ..
+          cmake -DBuild_API_Matlab=ON ..
           make install
           cd ../install/API/python/cp${{ matrix.python-version }}
           bash publish.sh
