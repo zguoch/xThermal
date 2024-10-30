@@ -1,7 +1,7 @@
 name: Windows
 on: 
   push:
-    branches: mainx
+    branches: main
     # tags:
     #   - 'V*'
 env:
@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11','3.12']
+        python-version: ['3.7'] #, '3.8', '3.9', '3.10', '3.11','3.12'
         # python:
           # - {version: '2.7', lib: 'python27.lib' }
           # - {version: '3.5', lib: 'python35.lib' }
@@ -44,6 +44,10 @@ jobs:
           host: 'windows'
           target: 'desktop'
           dir: '${{ github.workspace }}/QT/'
+
+      #   # debug workflow
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       # install dependencies, e.g. VTK, swig
       - name: install dependencies
@@ -133,9 +137,6 @@ jobs:
           cp -r xThermal/install/* xThermal_Windows
           7z a -tzip xThermal_Windows.zip xThermal_Windows
           
-      #   # debug workflow
-      # - name: Setup tmate session
-      #   uses: mxschmitt/action-tmate@v3
 
       # upload library
       - uses: actions/upload-artifact@v3
