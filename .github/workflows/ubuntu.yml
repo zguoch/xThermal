@@ -19,15 +19,21 @@ jobs:
       # checkout source code
       - uses: actions/checkout@v2
       
-      # # install QT5
-      # - name: Install Qt
-      #   uses: jurplel/install-qt-action@v2.13.0
-      #   with:
-      #     version: '5.15.2'
-      #     host: 'linux'
-      #     target: 'desktop'
-      #     dir: '${{ github.workspace }}/QT/'
-      
+      # install QT5
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2.13.0
+        with:
+          version: '5.15.2'
+          host: 'linux'
+          target: 'desktop'
+          dir: '${{ github.workspace }}/QT/'
+      # debug workflow
+      - name: install oh my zsh
+        run: |
+          sudo apt-get install zsh
+          sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       # install some useful packages 
       - name: install dependence
         run: |
