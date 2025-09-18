@@ -18,11 +18,11 @@ jobs:
       Path_Pythons: /opt/hostedtoolcache/Python
     steps:
       # checkout source code
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 
       
       # install QT5
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2.13.0
+        uses: jurplel/install-qt-action@v4
         with:
           version: '5.15.2'
           host: 'linux'
